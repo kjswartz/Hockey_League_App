@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :leagues
   resources :teams
-  resources :players
+  resources :users
 
 end

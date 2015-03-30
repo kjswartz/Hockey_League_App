@@ -38,7 +38,28 @@ ActiveRecord::Schema.define(version: 20150330200250) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "players", force: :cascade do |t|
+  create_table "rosters", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "rosters", ["team_id"], name: "index_rosters_on_team_id", using: :btree
+  add_index "rosters", ["user_id"], name: "index_rosters_on_user_id", using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "active",     default: true
+    t.string   "owner"
+    t.integer  "league_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "teams", ["league_id"], name: "index_teams_on_league_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
@@ -55,28 +76,7 @@ ActiveRecord::Schema.define(version: 20150330200250) do
     t.datetime "updated_at",                      null: false
   end
 
-  create_table "rosters", force: :cascade do |t|
-    t.integer  "team_id"
-    t.integer  "player_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "rosters", ["player_id"], name: "index_rosters_on_player_id", using: :btree
-  add_index "rosters", ["team_id"], name: "index_rosters_on_team_id", using: :btree
-
-  create_table "teams", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "active",     default: true
-    t.string   "owner"
-    t.integer  "league_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  add_index "teams", ["league_id"], name: "index_teams_on_league_id", using: :btree
-
-  add_foreign_key "rosters", "players"
   add_foreign_key "rosters", "teams"
+  add_foreign_key "rosters", "users"
   add_foreign_key "teams", "leagues"
 end
