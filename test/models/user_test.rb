@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: players
+# Table name: users
 #
 #  id              :integer          not null, primary key
 #  name            :string
@@ -21,7 +21,7 @@
 
 require 'test_helper'
 
-class PlayerTest < ActiveSupport::TestCase
+class UserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
