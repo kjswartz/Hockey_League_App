@@ -72,13 +72,13 @@
 
 ### Users should be able to upload an avatar
 #### Review using carrierwave
-1. Install carrierwave gem
-2. Create an uploader
-3. Setup the initializer
-4. Setup S3 security
-5. Setup S3 bucket
-6. Install fog gem
-7. Install minimagic gem
+1. ~~Install carrierwave gem~~
+2. ~~Create an uploader~~
+3. ~~Setup the initializer~~
+4. ~~Setup S3 security~~
+5. ~~Setup S3 bucket~~
+6. ~~Install fog gem~~
+7. ~~Install minimagic gem~~
 8. Modify the user form with a file field and cache field
 9. Adjust the controller params
 
