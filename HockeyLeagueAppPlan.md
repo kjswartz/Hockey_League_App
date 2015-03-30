@@ -1,45 +1,28 @@
 # App Idea: Intramural Hockey League Social Network
 
 ## Features (what will it do?)
-1. User signup/in/out
+1. User signup/in/out (facebook/twitter authentication if time)
 2. email users signup
-3. List out leagues (skill levels)
-4. Have teams listed/separated out by leagues
-5. Team pages for team members
-6. list out game schedules
-7. list out team stats (wins/lose/ties/points)
-8. player profiles
-9. list out player stats (goals/assists/penalty minutes)
-10. Individual team forums for team news/events
-11. team calendars for tracking team players schedules
-12. group messaging or email or poll for ability to make games
-13. admin site for CRUD of leages/teams/players
-14. teamless player pool for potential individuals looking to join a team
-15. Set different admin access levels (team owners)
-16. League owner/admin adds/accepts teams into the league
-17. Team owners have to accept/add players to the team
-18. Players create a profile and ask to join team.
-19. Players can belong to multiple teams
-20. League forums/news for fans/potential players/supporters
-21. Player status - injured/out of town/looking for a new team/league
+3. individual player profile pages (bio/stats)
+4. Individual Team pages (schedules/team news)
+5. League pages showing teams belonging to league
+6. League forums/news for fans/potential players, team stats/standings
+7. admin site for CRUD of leages/teams/players
 
 ## User Stories
 1. Visitors should be able to visit the home page
 2. Visitors should be able to visit leagues and see schedules of teams
 3. Visitors should be able to browse teams and see players
-4. Visitors should be able to see general team news (i.e. looking for players)
-5. Visitors should be able to signup
-6. Users should be able create a player profile page
-7. Users should be able to describe background and desire to join league/team
-8. Users should be able to ask to join teams
-9. Users should be able to post in league forums
-10. Team owners should be able to add and remove players from roster
-11. League owner/admin should be able to add and remove teams.
-12. Admin should be able to CRUD leagues
-13. Admin should be able to CRUD teams
-14. Admin should be able to CRUD users/players
-15. Players part of a team should be able to update calendar
-16. Players should be able to mass email team for communication.
+4. Visitors should be able to signup and create a player profile page
+5. Users should be able to request to join teams
+6. Users should be able to post in league forums
+7. Team owners should be able to add and remove players from roster
+8. League owner/admin should be able to add and remove teams.
+9. Admin should be able to CRUD leagues
+10. Admin should be able to CRUD teams
+11. Admin should be able to CRUD users/players
+12. Players part of a team should be able to update calendar/post in team forum
+
 
 ## Tasks
 
@@ -84,9 +67,9 @@
 
 ### Setup Leagues
 1. Create leagues controller
-2. Create route for leagues pages
-3. links to each league on welcome page
-4. Create leagues show page (display each team of the league)
+2. links to each league on welcome page
+3. Create leagues show page (display each team of the league)
+4. Create route for leagues show page
 5. Create/seed leagues info
 6. Admin is responsible for over seeing Leagues
 
@@ -131,6 +114,7 @@
 - [ ] email (string)
 - [ ] password (string)
 - [ ] avatar (string)
+????- [ ] Phone number (integer or string)
 - [ ] bio (text)
 - [ ] team (string)
 - [ ] goals (integer)
