@@ -1,0 +1,10 @@
+development:
+  adapter: postgresql
+  database: hockey_league_dev
+  host: localhost
+
+
+test:
+  adapter: postgresql
+  database:  hockey_league_test
+  host: localhost
