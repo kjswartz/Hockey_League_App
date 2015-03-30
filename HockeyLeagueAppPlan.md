@@ -11,17 +11,14 @@
 
 ## User Stories
 1. Visitors should be able to visit the home page
-2. Visitors should be able to visit leagues and see schedules of teams
-3. Visitors should be able to browse teams and see players
-4. Visitors should be able to signup and create a player profile page
-5. Users should be able to request to join teams
-6. Users should be able to post in league forums
-7. Team owners should be able to add and remove players from roster
-8. League owner/admin should be able to add and remove teams.
-9. Admin should be able to CRUD leagues
-10. Admin should be able to CRUD teams
-11. Admin should be able to CRUD users/players
-12. Players part of a team should be able to update calendar/post in team forum
+2. Visitors should be able to browse teams and see players
+3. Visitors should be able to signup and create a player profile page
+4. Users should be able to request to join teams
+5. Team owners should be able to add and remove players from roster
+6. League owner/admin should be able to add and remove teams.
+7. Admin should be able to CRUD leagues
+8. Admin should be able to CRUD teams
+9. Admin should be able to CRUD users/players
 
 
 ## Tasks
@@ -40,8 +37,16 @@
 1. Leagues (has_many teams)
 2. Teams (belongs_to league | has_many players through teamplayers)
 3. Players (has_many teams through teamplayer)
-4. TeamPlayers (references teams/players)
-5. Permissions
+4. Roster (references teams/players)
+5. Active Admin
+6. Seed
+
+### Setup Admin
+#### Review Active admin
+1. setup Active Admin
+2. Admin should be able to manipulate stats
+3. Admin should be able to update/edit team names/status
+4. setup admin routes
 
 ### Visitors should be able to sign up
 #### Review using bcrypt
@@ -73,6 +78,7 @@
 5. Create/seed leagues info
 6. Admin is responsible for over seeing Leagues
 
+
 ### Setup teams
 1. Create teams controller (create/permissions)
 2. Create form for setting up teams
@@ -86,13 +92,6 @@
 10. Team owners should be able to set/revoke permissions
 11. Setup routes for team views
 
-### Setup Admin
-#### Review Active admin
-1. setup Active Admin
-1. SuperAdmin should be able to CRUD everything
-2. publisherAdmin should be able to manipulate stats
-3. publisherAdmin should be able to update/edit team names/status
-4. setup admin routes
 
 ### Setup about page
 1. create an about page detailing app and myself
@@ -103,37 +102,36 @@
 - [ ] skill
 - [ ] description
 
-2 Teams (belongs_to league | has_many players through teamplayers)
+2 Teams (belongs_to league | has_many players through roster)
 - [ ] name (string)
 - [ ] owners (string)??
-?????- [ ] active/inactive (boolean) | status (string: active, inactive)
+- [ ] active/inactive (boolean)
 - [ ] references league
 
-3 Players (has_many teams through teamplayer)
+3 Players (has_many teams through roster)
 - [ ] name (string)
 - [ ] email (string)
 - [ ] password (string)
 - [ ] avatar (string)
-????- [ ] Phone number (integer or string)
+- [ ] Phone number (string)
 - [ ] bio (text)
-- [ ] team (string)
+- [ ] team (foriegnkey)
 - [ ] goals (integer)
 - [ ] assists (integer)
 - [ ] penalties (integer)
 - [ ] role (string)
-?????- [ ] active/inactive (boolean) | status (string: active, inactive)
+- [ ] active/inactive (boolean)
 
-4 TeamPlayers (belongs_to team | belongs_to player)
+4 Roster (belongs_to team | belongs_to player)
 - [ ] references teams
 - [ ] references players
 
-5 Permissions (belongs_to player)
+<!-- 5 Permissions (belongs_to player)
 - [ ] admin
 - [ ] TeamOwner
 - [ ] TeamMember
 - [ ] registered user
-- [ ] guest
-- [ ] references players
+- [ ] references players -->
 
 ## Controllers
 1 Session
