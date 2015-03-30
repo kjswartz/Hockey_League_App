@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
+gem 'activeadmin', github: 'activeadmin'
 gem 'annotate', '~> 2.6.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
