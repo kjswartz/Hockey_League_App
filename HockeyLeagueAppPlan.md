@@ -44,14 +44,14 @@
 ## Tasks
 
 ### Visitors should be able to visit the home page
-1. Setup Rails app
-2. Configure my root route
-3. Create my welcome controller and welcome/home page
-4. Setup GitHub repo
-5. Setup gitignore list
-6. Setup initial heroku app and push to it
-7. add thin gem and production gem to work on heroku.
-8. Add Procfile
+1. ~~Setup Rails app~~
+2. ~~Configure my root route~~
+3. ~~Create my welcome controller and welcome/home page~~
+4. ~~Setup GitHub repo~~
+5. ~~Setup gitignore list~~
+6. ~~Setup initial heroku app and push to it~~
+7. ~~add thin gem and production gem to work on heroku.~~
+8. ~~Add Procfile~~
 
 ### Create all models and migrations
 1. Leagues (has_many teams)
