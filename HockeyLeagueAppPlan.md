@@ -188,16 +188,17 @@
 
 ### Gems
 - [ ] gem 'activeadmin', github: 'activeadmin' (setting up active admin)
-- [ ] gem 'faker' (seeding db)
-- [ ] gem 'fog' (carrierwave/images)
+- [x] gem 'bcrypt', '~> 3.1.7'
+- [x] gem 'faker' (seeding db)
+- [x] gem 'fog' (carrierwave/images)
 - [ ] gem 'kaminari' (pagination of listing all players if necessary)
-- [ ] gem "mini_magick" (carrierwave images)
-- [ ] gem 'pg' (postgres db)
-- [ ] gem 'thin' (webserver to work on heroku)
-- [ ] group :production do (needed to work on heroku)
+- [x] gem "mini_magick" (carrierwave images)
+- [x] gem 'pg' (postgres db)
+- [x] gem 'thin' (webserver to work on heroku)
+- [x] group :production do (needed to work on heroku)
         gem 'rails_12factor'
       end
-- [ ] group :development, :test do
+- [x] group :development, :test do
         gem 'byebug'
         gem 'web-console', '~> 2.0'
         gem 'spring'
