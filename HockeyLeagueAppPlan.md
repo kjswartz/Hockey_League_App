@@ -3,22 +3,22 @@
 ## Features (what will it do?)
 1. User signup/in/out (facebook/twitter authentication if time)
 2. email users signup
-3. individual player profile pages (bio/stats)
+3. individual user profile pages (bio/stats)
 4. Individual Team pages (schedules/team news)
 5. League pages showing teams belonging to league
-6. League forums/news for fans/potential players, team stats/standings
-7. admin site for CRUD of leages/teams/players
+6. League forums/news for fans/potential users, team stats/standings
+7. admin site for CRUD of leages/teams/users
 
 ## User Stories
 1. Visitors should be able to visit the home page
-2. Visitors should be able to browse teams and see players
-3. Visitors should be able to signup and create a player profile page
+2. Visitors should be able to browse teams and see users
+3. Visitors should be able to signup and create a user profile page
 4. Users should be able to request to join teams
-5. Team owners should be able to add and remove players from roster
+5. Team owners should be able to add and remove users from roster
 6. League owner/admin should be able to add and remove teams.
 7. Admin should be able to CRUD leagues
 8. Admin should be able to CRUD teams
-9. Admin should be able to CRUD users/players
+9. Admin should be able to CRUD users/users
 
 
 ## Tasks
@@ -34,11 +34,11 @@
 8. ~~Add Procfile~~
 
 ### Create all models and migrations
-1. Leagues (has_many teams)
-2. Teams (belongs_to league | has_many players through teamplayers)
-3. Players (has_many teams through teamplayer)
-4. Roster (references teams/players)
-5. Active Admin
+1. ~~Leagues (has_many teams)~~
+2. ~~Teams (belongs_to league | has_many users through teamusers)~~
+3. ~~Users (has_many teams through teamuser)~~
+4. ~~Roster (references teams/users)~~
+5. ~~Active Admin~~
 6. Seed
 
 ### Setup Admin
@@ -85,9 +85,9 @@
 3. teams must belong to a league (dropdown select form for leagues)
 4. New teams must be approved by admin
 5. Create Team views (Member view / visitor view)
-6. visitor view: flat front page with players, schedule, contact info
-7. Players should be able to request to join team (link)
-8. Team owner's should be able to approve Players/drop players
+6. visitor view: flat front page with users, schedule, contact info
+7. Users should be able to request to join team (link)
+8. Team owner's should be able to approve Users/drop users
 9. Team membership area should have forum, calendar function, schedule
 10. Team owners should be able to set/revoke permissions
 11. Setup routes for team views
@@ -102,13 +102,13 @@
 - [x] skill (string)
 - [x] description (string)
 
-2 Teams (belongs_to league | has_many players through roster)
+2 Teams (belongs_to league | has_many users through roster)
 - [x] name (string)
 - [x] owners (string)??
 - [x] active/inactive (boolean)
 - [x] references league
 
-3 Players (has_many teams through roster)
+3 Users (has_many teams through roster)
 - [x] name (string)
 - [x] email (string)
 - [x] password_digest (string)
@@ -121,16 +121,16 @@
 - [x] role (string)
 - [x] active/inactive (boolean)
 
-4 Roster (belongs_to team | belongs_to player)
+4 Roster (belongs_to team | belongs_to user)
 - [x] references teams
-- [x] references players
+- [x] references users
 
-<!-- 5 Permissions (belongs_to player)
+<!-- 5 Permissions (belongs_to user)
 - [ ] admin
 - [ ] TeamOwner
 - [ ] TeamMember
 - [ ] registered user
-- [ ] references players -->
+- [ ] references users -->
 
 ## Controllers
 1 Session
@@ -152,7 +152,7 @@
 - [ ] show
 - [ ] index
 
-4 Player
+4 User
 - [ ] show
 - [ ] index
 - [ ] create
@@ -166,7 +166,7 @@
 3. Environment variables
 4. Kaminari
 5. bcrypt
-6. Search engine (browse player names)
+6. Search engine (browse user names)
 7. Active admin
 8. OmniAuth (facebook authentication)
 
@@ -175,7 +175,7 @@
 - [x] gem 'bcrypt', '~> 3.1.7'
 - [x] gem 'faker' (seeding db)
 - [x] gem 'fog' (carrierwave/images)
-- [ ] gem 'kaminari' (pagination of listing all players if necessary)
+- [ ] gem 'kaminari' (pagination of listing all users if necessary)
 - [x] gem "mini_magick" (carrierwave images)
 - [x] gem 'pg' (postgres db)
 - [x] gem 'thin' (webserver to work on heroku)
