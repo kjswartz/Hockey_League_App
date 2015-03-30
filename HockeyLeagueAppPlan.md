@@ -99,32 +99,31 @@
 
 ## Data / Models
 1 Leagues (has_many teams)
-- [ ] skill
-- [ ] description
+- [x] skill (string)
+- [x] description (string)
 
 2 Teams (belongs_to league | has_many players through roster)
-- [ ] name (string)
-- [ ] owners (string)??
-- [ ] active/inactive (boolean)
-- [ ] references league
+- [x] name (string)
+- [x] owners (string)??
+- [x] active/inactive (boolean)
+- [x] references league
 
 3 Players (has_many teams through roster)
-- [ ] name (string)
-- [ ] email (string)
-- [ ] password (string)
-- [ ] avatar (string)
-- [ ] Phone number (string)
-- [ ] bio (text)
-- [ ] team (foriegnkey)
-- [ ] goals (integer)
-- [ ] assists (integer)
-- [ ] penalties (integer)
-- [ ] role (string)
-- [ ] active/inactive (boolean)
+- [x] name (string)
+- [x] email (string)
+- [x] password_digest (string)
+- [x] avatar (string)
+- [x] Phone (string)
+- [x] bio (text)
+- [x] goals (integer)
+- [x] assists (integer)
+- [x] penalties (integer)
+- [x] role (string)
+- [x] active/inactive (boolean)
 
 4 Roster (belongs_to team | belongs_to player)
-- [ ] references teams
-- [ ] references players
+- [x] references teams
+- [x] references players
 
 <!-- 5 Permissions (belongs_to player)
 - [ ] admin
