@@ -111,6 +111,9 @@
 3. publisherAdmin should be able to update/edit team names/status
 4. setup admin routes
 
+### Setup about page
+1. create an about page detailing app and myself
+2. about view
 
 ## Data / Models
 1 Leagues (has_many teams)
