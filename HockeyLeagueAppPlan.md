@@ -161,7 +161,7 @@
 - [ ] create
 - [ ] update/edit
 - [ ] destroy
-- [ ] role
+
 
 ## Technologies/Gems
 1. S3
