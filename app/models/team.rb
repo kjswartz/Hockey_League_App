@@ -15,6 +15,7 @@ class Team < ActiveRecord::Base
   #associations
   belongs_to :league
   has_many :users, through: :rosters
+  has_many :rosters
 
   #validations
   validates :league, presence: true

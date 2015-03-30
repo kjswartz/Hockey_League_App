@@ -2,9 +2,6 @@ ActiveAdmin.register User do
 
   permit_params(:name, :email, :avatar, :avatar_cache, :bio, :remove_avatar)
 
-  scope :admin
-  scope :non_admin
-
   form do |f|
     inputs '' do
       input :name
