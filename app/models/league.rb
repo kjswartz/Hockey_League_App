@@ -14,5 +14,5 @@ class League < ActiveRecord::Base
   has_many :teams
 
   validates :skill, presence: true, uniqueness: { case_sensitive: false }
-  validates :description, presence: true
+
 end

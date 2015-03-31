@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  permit_params(:name, :email, :avatar, :avatar_cache, :bio, :remove_avatar)
+  permit_params(:name, :email, :avatar, :avatar_cache, :bio, :remove_avatar, :active)
 
   form do |f|
     inputs '' do
