@@ -48,8 +48,9 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = User.where(id: current_user).find_by(id: params[:id])
-      redirect_to root_path, alert: "Permission not configured." if @user.nil?
+      @user = User.find(params[:id])
+      # @user = User.where(id: current_user).find_by(id: params[:id])
+      # redirect_to root_path, alert: "Permission not configured." if @user.nil?
     end
 
     def user_params
