@@ -72,10 +72,10 @@
 
 ### Setup Leagues
 1. ~~Seed leagues through Admin section.~~
-2. links to each league on welcome page
-3. Create leagues show page (display each team of the league)
-4. Create route for leagues show page
-5. Admin is responsible for over seeing Leagues
+2. ~~links to each league on welcome page~~
+3. ~~Create leagues show page (display each team of the league)~~
+4. ~~Create route for leagues show page~~
+5. ~~Admin is responsible for over seeing Leagues~~
 
 
 ### Setup teams
