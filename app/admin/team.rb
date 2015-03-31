@@ -24,4 +24,7 @@ ActiveAdmin.register Team do
     actions
   end
 
+  preserve_default_filters!
+  filter :league, collection: League.all.collect { |l| [l.skill, l.id] }
+
 end
