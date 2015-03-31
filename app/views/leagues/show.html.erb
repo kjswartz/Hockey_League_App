@@ -1,2 +1,7 @@
-<h1>League#show</h1>
-<p>Find me in app/views/league/show.html.erb</p>
+<h1><%= @league.skill %> Page</h1>
+
+<ul>
+  <% @league.teams.each do |team| %>
+    <li><%= link_to team.name, team_path(team) %></li>
+  <% end %>
+</ul>
