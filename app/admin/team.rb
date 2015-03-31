@@ -14,12 +14,16 @@ ActiveAdmin.register Team do
 
   index do
     selectable_column
-    column :id
     column :league do |team|
-      team.league.skill
+      link_to team.league.skill, admin_league_path(team.league.id)
     end
-    column :name
+    column 'Team' do |team|
+      link_to team.name, admin_team_path(team.id)
+    end
     column :owner
+    column 'Player Count' do |team|
+      team.users.count
+    end
     column :active
     actions
   end
