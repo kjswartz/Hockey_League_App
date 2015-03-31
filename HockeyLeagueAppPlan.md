@@ -39,18 +39,18 @@
 3. ~~Users (has_many teams through teamuser)~~
 4. ~~Roster (references teams/users)~~
 5. ~~Active Admin~~
-6. Seed
+6. ~~Seed~~
 
 ### Setup Admin
 #### Review Active admin
-1. setup Active Admin
+1. ~~setup Active Admin~~
 2. Admin should be able to manipulate stats
-3. Admin should be able to update/edit team names/status
-4. setup admin routes
+3. ~~Admin should be able to update/edit team names/status~~
+4. ~~setup admin routes~~
 
 ### Visitors should be able to sign up
 #### Review using bcrypt
-1. Create a session controller
+1. ~~Create a session controller~~
 2. Create a signup route and action
 3. Create a signup form
 4. Create an action to create the user upon signup
@@ -71,12 +71,11 @@
 9. Adjust the controller params
 
 ### Setup Leagues
-1. Create leagues controller
+1. ~~Seed leagues through Admin section.~~
 2. links to each league on welcome page
 3. Create leagues show page (display each team of the league)
 4. Create route for leagues show page
-5. Create/seed leagues info
-6. Admin is responsible for over seeing Leagues
+5. Admin is responsible for over seeing Leagues
 
 
 ### Setup teams
@@ -134,14 +133,11 @@
 
 ## Controllers
 1 Session
-- [ ] signup
-- [ ] signin
-- [ ] singout
+- [x] signup
+- [x] signin
+- [x] singout
 
 2 League
-- [ ] create
-- [ ] update
-- [ ] destroy
 - [ ] show
 - [ ] index
 
@@ -153,11 +149,11 @@
 - [ ] index
 
 4 User
-- [ ] show
-- [ ] index
-- [ ] create
-- [ ] update/edit
-- [ ] destroy
+- [x] show
+- [x] index
+- [x] create
+- [x] update/edit
+- [x] destroy
 
 
 ## Technologies/Gems
@@ -168,10 +164,12 @@
 5. bcrypt
 6. Search engine (browse user names)
 7. Active admin
-8. OmniAuth (facebook authentication)
+8. Twitter Bootstrap
+OmniAuth (facebook authentication)
+
 
 ### Gems
-- [ ] gem 'activeadmin', github: 'activeadmin' (setting up active admin)
+- [x] gem 'activeadmin', github: 'activeadmin' (setting up active admin)
 - [x] gem 'bcrypt', '~> 3.1.7'
 - [x] gem 'faker' (seeding db)
 - [x] gem 'fog' (carrierwave/images)
