@@ -17,6 +17,7 @@
 #  penalties       :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  games_played    :integer
 #
 
 class User < ActiveRecord::Base
