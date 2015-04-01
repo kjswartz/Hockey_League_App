@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   #validations
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, on: :create
 
   mount_uploader :avatar, AvatarUploader
 
