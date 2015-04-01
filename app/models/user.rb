@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 
   #associations
   has_many :teams, through: :rosters
-  has_many :rosters
+  has_many :rosters, dependent: :destroy
 
   #validations
   validates :name, presence: true

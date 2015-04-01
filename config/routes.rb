@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources :leagues, only: [:index, :show]
   resources :teams, only: [:show]
-  resources :users
+  resources :users, except: [:destroy]
 
 end
