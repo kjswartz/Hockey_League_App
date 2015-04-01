@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331232512) do
+ActiveRecord::Schema.define(version: 20150401172714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(version: 20150331232512) do
     t.string   "role"
     t.boolean  "active",          default: true
     t.boolean  "admin",           default: false
-    t.integer  "goals"
-    t.integer  "assists"
-    t.integer  "penalties"
+    t.integer  "goals",           default: 0
+    t.integer  "assists",         default: 0
+    t.integer  "penalties",       default: 0
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "games_played"

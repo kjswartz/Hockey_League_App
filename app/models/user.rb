@@ -36,8 +36,6 @@ class User < ActiveRecord::Base
 
   # Methods
   def game_points
-    goals = 0 if goals.nil?
-    assists = 0 if assists.nil?
     goals + assists
   end
 
