@@ -2,23 +2,23 @@
 
 ## Features (what will it do?)
 1. User signup/in/out (facebook/twitter authentication if time)
-2. email users signup
-3. individual user profile pages (bio/stats)
+2. ~~email users signup~~
+3. ~~individual user profile pages (bio/stats)~~
 4. Individual Team pages (schedules/team news)
-5. League pages showing teams belonging to league
+5. ~~League pages showing teams belonging to league~~
 6. League forums/news for fans/potential users, team stats/standings
-7. admin site for CRUD of leages/teams/users
+7. ~~admin site for CRUD of leages/teams/users~~
 
 ## User Stories
-1. Visitors should be able to visit the home page
-2. Visitors should be able to browse teams and see users
-3. Visitors should be able to signup and create a user profile page
+1. ~~Visitors should be able to visit the home page~~
+2. ~~Visitors should be able to browse teams and see users~~
+3. ~~Visitors should be able to signup and create a user profile page~~
 4. Users should be able to request to join teams
 5. Team owners should be able to add and remove users from roster
 6. League owner/admin should be able to add and remove teams.
-7. Admin should be able to CRUD leagues
-8. Admin should be able to CRUD teams
-9. Admin should be able to CRUD users/users
+7. ~~Admin should be able to CRUD leagues~~
+8. ~~Admin should be able to CRUD teams~~
+9. ~~Admin should be able to CRUD users/users~~
 
 
 ## Tasks
@@ -55,8 +55,8 @@
 3. ~~Create a signup form~~
 4. ~~Create an action to create the user upon signup~~
 5. ~~Add validations to user model (name, email, password)~~
-6. Add link on home page/nav to sign up
-7. add mailer
+6. ~~Add link on home page/nav to sign up~~
+7. ~~add mailer~~
 8. incorporate facebook/twitter signup/signin (do at end)
 
 ### Users should be able to upload an avatar
@@ -68,8 +68,8 @@
 5. ~~Setup S3 bucket~~
 6. ~~Install fog gem~~
 7. ~~Install minimagic gem~~
-8. Modify the user form with a file field and cache field
-9. Adjust the controller params
+8. ~~Modify the user form with a file field and cache field~~
+9. ~~Adjust the controller params~~
 
 ### Setup Leagues
 1. ~~Seed leagues through Admin section.~~
@@ -133,8 +133,8 @@
 - [x] singout
 
 2 League
-- [ ] show
-- [ ] index
+- [x] show
+- [x] index
 
 3 Team
 - [ ] create
@@ -193,3 +193,4 @@ OmniAuth (facebook authentication)
 2. Haven't set multiple roles before
 
 Do not set defaults in migration for stats!
+Create Branches before big changes!
