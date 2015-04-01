@@ -1,10 +1,9 @@
 @teams = Team.all
-
+i = 59
 @teams.each do |team|
   puts "#{team.name} being seeded"
-  x = 0
+  puts "Teams left #{i}"
   10.times do |counter|
-    puts "User count #{x}"
     User.create(name: Faker::Name.name,
                email: Faker::Internet.safe_email,
                remote_avatar_url: Faker::Avatar.image,
@@ -14,7 +13,8 @@
                goals: rand(1..15),
                assists: rand(1..10),
                penalties: rand(1..20),
-               password: 'password')
-    x += 1
+               password: 'password',
+               games_played: rand(1..11))
+    i -= 1
   end
 end
