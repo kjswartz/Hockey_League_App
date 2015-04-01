@@ -4,9 +4,9 @@ ActiveAdmin.register Team do
 
   form do |f|
     inputs '' do
-      input :league, collection: League.all.collect { |l| [l.skill, l.id] }
+      input :league, collection: League.order("skill ASC").all.collect { |l| [l.skill, l.id] }
       input :name
-      input :owner
+      input :owner, collection: User.order("email ASC").all.collect { |u| [u.email, u.id] }
       input :active
     end
     actions

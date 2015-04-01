@@ -7,7 +7,7 @@ ActiveAdmin.register User do
       input :name
       input :email
       input :avatar
-      input :teams, :as => :check_boxes, :collection => Team.order("name ASC").all
+      input :teams, as: :check_boxes, collection: Team.order("name ASC").all
       input :bio
     end
     actions

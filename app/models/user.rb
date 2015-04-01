@@ -22,6 +22,7 @@
 #
 
 class User < ActiveRecord::Base
+  ROLES = %w(teamowner teammember)
   has_secure_password
 
   #associations
@@ -32,6 +33,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, on: :create
+  validates :role, inclusion: { in: ROLES}
 
   mount_uploader :avatar, AvatarUploader
 
