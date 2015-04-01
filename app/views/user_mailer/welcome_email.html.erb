@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1 style="color:blue;">Welcome to the Intramural Hockey League, <%= @user.name.upcase %>!</h1>
+    <p>You have successfully signed up to the Intramural Hockey Laague</p>
+    <p>You can log in using your email: <strong><%= @user.email %></strong>, and password.</p>
+    <p>
+      To login to the site, just follow this link: <%= link_to 'Hockey League', @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </br>
+    <p>v/r,</p>
+    <p>Kyle S.</p>
+    <p>Email: Kyles_app_support@gmail.com</p>
+    <p>Phone (Mon-Fri 8am-5pm est): 1-800-867-5309</p>
+  </body>
+</html>

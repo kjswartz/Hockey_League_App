@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def create
@@ -20,11 +21,13 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        # UserMailer.welcome_email(@user).deliver_later
+        UserMailer.welcome_email(@user).deliver_later
         format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render json: @user, status: :created, location: @user }
       else
         flash[:error] = "We were unable to sign you up. #{@user.errors.full_messages.join('. ')}"
         format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,9 +51,8 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = User.find(params[:id])
-      # @user = User.where(id: current_user).find_by(id: params[:id])
-      # redirect_to root_path, alert: "Permission not configured." if @user.nil?
+      @user = User.where(id: current_user).find_by(id: params[:id])
+      redirect_to root_path, alert: "Permission not configured." if @user.nil?
     end
 
     def user_params
