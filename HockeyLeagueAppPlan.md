@@ -51,10 +51,10 @@
 ### Visitors should be able to sign up
 #### Review using bcrypt
 1. ~~Create a session controller~~
-2. Create a signup route and action
-3. Create a signup form
-4. Create an action to create the user upon signup
-5. Add validations to user model (name, email, password)
+2. ~~Create a signup route and action~~
+3. ~~Create a signup form~~
+4. ~~Create an action to create the user upon signup~~
+5. ~~Add validations to user model (name, email, password)~~
 6. Add link on home page/nav to sign up
 7. incorporate facebook/twitter signup/signin (do at end)
 
@@ -124,12 +124,6 @@
 - [x] references teams
 - [x] references users
 
-<!-- 5 Permissions (belongs_to user)
-- [ ] admin
-- [ ] TeamOwner
-- [ ] TeamMember
-- [ ] registered user
-- [ ] references users -->
 
 ## Controllers
 1 Session
@@ -165,11 +159,13 @@
 6. Search engine (browse user names)
 7. Active admin
 8. Twitter Bootstrap
+9. bootstrap_forms
 OmniAuth (facebook authentication)
 
 
 ### Gems
 - [x] gem 'activeadmin', github: 'activeadmin' (setting up active admin)
+- [x] gem 'bootstrap_form'
 - [x] gem 'bcrypt', '~> 3.1.7'
 - [x] gem 'faker' (seeding db)
 - [x] gem 'fog' (carrierwave/images)
