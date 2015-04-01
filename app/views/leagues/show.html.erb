@@ -1,5 +1,5 @@
-<h1><%= @league.skill %> Page</h1>
-
+<h1><%= @league.skill %> League Page</h1>
+<h3>Teams:</h3>
 <ul>
   <% @league.teams.each do |team| %>
     <li><%= link_to team.name, team_path(team) %></li>

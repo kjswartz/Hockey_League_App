@@ -1,5 +1,6 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
+      <p class="navbar-text"><%= link_to "Home", root_path %></p>
       <% if signed_in? %>
         <p class="navbar-text navbar-right"><%= link_to 'Sign Out', session_signout_path, method: :delete %> </p>
         <% if current_user.admin? %>
