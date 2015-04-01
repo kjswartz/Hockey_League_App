@@ -2,8 +2,8 @@
 <%= image_tag(@user.avatar.url) %>
 <ul>
 Contact Information:
-<li><%= @user.email %></li>
-<li><%= @user.phone %></li>
+<li>Email: <%= @user.email %></li>
+<li>Phone: <%= @user.phone %></li>
 Stats
 <li>Goals: <%= @user.goals %></li>
 <li>Assists: <%= @user.assists %></li>
@@ -12,3 +12,7 @@ Stats
 About:
 <li><%= @user.bio %></li>
 </ul>
+
+<% if @user == current_user %>
+  <%= link_to 'Edit Profile', edit_user_path(@user) %>
+<% end %>
