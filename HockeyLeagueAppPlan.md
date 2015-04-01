@@ -85,13 +85,18 @@
 3. teams must belong to a league (dropdown select form for leagues)
 4. New teams must be approved by admin
 5. Create Team views (Member view / visitor view)
-6. visitor view: flat front page with users, schedule, contact info
+6. ~~visitor view: flat front page with users, schedule, contact info~~
 7. Users should be able to request to join team (link)
 8. Team owner's should be able to approve Users/drop users
 9. Team membership area should have forum, calendar function, schedule
 10. Team owners should be able to set/revoke permissions
 11. Setup routes for team views
 
+### Additional User functionality
+1. ~~add deleted_at datetime to user model~~
+2. Users should be able to deacitvate (not delete) their account
+http://stackoverflow.com/questions/12740397/how-to-simplify-the-soft-delete-process-with-ruby-on-rails
+3. signin with facebook
 
 ### Setup about page
 1. create an about page detailing app and myself

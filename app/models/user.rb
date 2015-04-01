@@ -12,12 +12,13 @@
 #  role            :string
 #  active          :boolean          default("true")
 #  admin           :boolean          default("false")
-#  goals           :integer
-#  assists         :integer
-#  penalties       :integer
+#  goals           :integer          default("0")
+#  assists         :integer          default("0")
+#  penalties       :integer          default("0")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  games_played    :integer
+#  deleted_at      :datetime
 #
 
 class User < ActiveRecord::Base
