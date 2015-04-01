@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :current_user
 
   def authenticate_admin_user!
-    redirect_to root_path unless current_user.admin?
+    redirect_to root_path unless current_user.try(:admin)
   end
 
   def current_user
