@@ -34,4 +34,9 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  # Methods
+  def game_points
+    goals + assists
+  end
+
 end
