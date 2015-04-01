@@ -56,7 +56,8 @@
 4. ~~Create an action to create the user upon signup~~
 5. ~~Add validations to user model (name, email, password)~~
 6. Add link on home page/nav to sign up
-7. incorporate facebook/twitter signup/signin (do at end)
+7. add mailer
+8. incorporate facebook/twitter signup/signin (do at end)
 
 ### Users should be able to upload an avatar
 #### Review using carrierwave
