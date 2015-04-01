@@ -190,3 +190,5 @@ OmniAuth (facebook authentication)
 1. Haven't used facebook/twitter signup
 - [ ] https://coderwall.com/p/bsfitw/ruby-on-rails-4-authentication-with-facebook-and-omniauth
 2. Haven't set multiple roles before
+
+Do not set defaults in migration for stats!
