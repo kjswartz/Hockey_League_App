@@ -1,2 +1,14 @@
 <h1><%= @user.name %></h1>
 <%= image_tag(@user.avatar.url) %>
+<ul>
+Contact Information:
+<li><%= @user.email %></li>
+<li><%= @user.phone %></li>
+Stats
+<li>Goals: <%= @user.goals %></li>
+<li>Assists: <%= @user.assists %></li>
+<li>Points: <%= @user.game_points %></li>
+<li>Penalty Minutes: <%= @user.penalties %></li>
+About:
+<li><%= @user.bio %></li>
+</ul>
