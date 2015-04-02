@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
   def request_team_access_email(user, team)
     @user = user
     @team = team
-    @url = "https://rocky-sea-8876.herokuapp.co/teams/#{@team.id}"
+    @url = "https://rocky-sea-8876.herokuapp.com/teams/#{@team.id}"
     mail(to: @team.owner, subject: "Welcome to the Hockey League App")
   end
 
