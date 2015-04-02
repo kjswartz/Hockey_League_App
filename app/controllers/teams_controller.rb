@@ -14,13 +14,13 @@ class TeamsController < ApplicationController
 
   def subscribe
     UserMailer.request_team_access_email(current_user, @team).deliver_later
-    redirect_to @team
+    redirect_to [@team.league, @team]
   end
 
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to [@team.league, @team], notice: 'Team was successfully updated.' }
       else
         format.html { render :edit }
       end
