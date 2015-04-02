@@ -1,8 +1,8 @@
-<% if signed_in? && current_user.is_owner_of_team?(@team) %>
+<% if signed_in? && current_user.team_owner?(@team) %>
   <p>You are the team owner: <%= link_to 'Edit', edit_team_path(@team) %></p>
 <% end %>
 
-<% if signed_in? && current_user.is_team_member?(@team) %>
+<% if signed_in? && current_user.team_member?(@team) %>
 Team Member Features
 <li>Calendar</li>
 <li>Schedule</li>
@@ -12,7 +12,7 @@ Team Member Features
 
 <h1><%= @team.name.titlecase %> Team Page</h1>
 
-<% if signed_in? && !current_user.is_team_member?(@team) %>
+<% if signed_in? && !current_user.team_member?(@team) %>
   <a id="membershiprequestModal">Request to Join team</a>
 <% end %>
 

@@ -40,11 +40,11 @@ class User < ActiveRecord::Base
     goals + assists
   end
 
-  def is_owner_of_team?(team)
+  def team_owner?(team)
     self.email == team.owner
   end
 
-  def is_team_member?(team)
+  def team_member?(team)
     team.users.find_by(id: self)
   end
 end
