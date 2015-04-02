@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1 style="color:blue;">Pending Request from <%= @user.name.titlecase %>!</h1>
+
+    <p> Dear <%= @team.owner %></p>
+    <p><%= @user.name.titlecase %> has requested access to the <%= @team.name.titlecase %></p>
+    <p>Thanks for joining and have a great day!</p>
+  </br>
+    <p>v/r,</p>
+    <p><%= @user.name.titlecase %></p>
+  </body>
+</html>

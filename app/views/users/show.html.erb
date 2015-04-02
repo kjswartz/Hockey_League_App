@@ -11,6 +11,10 @@ Stats
 <li>Penalty Minutes: <%= @user.penalties %></li>
 About:
 <li><%= @user.bio %></li>
+Current Teams:
+  <% @user.teams.each do |team| %>
+    <li><%= link_to team.name, team %></li>
+  <% end %>
 </ul>
 
 <% if @user == current_user %>
