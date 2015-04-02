@@ -33,21 +33,11 @@ class TeamsController < ApplicationController
   private
     def set_team
       @team = Team.find(params[:id])
-      # @team_owner = true if current_user.try(:email) == @team.owner
-      # @team_member = true if @team.users.find_by(id: current_user)
     end
 
     def team_owner
-      redirect_to root_path, alert: "Permission not configured." if @team_owner.nil?
+      redirect_to root_path, alert: "Permission not configured." if !current_user.team_owner?(@team)
     end
-
-    # def team_owner
-    #   @team_owner = true if current_user[:email] == @team.owner
-    # end
-    #
-    # def team_member
-    #   @team_member = true if @team.users.find_by(id: current_user)
-    # end
 
     def league_select
       @league_select = League.all.collect { |l| [l.skill, l.id] }
