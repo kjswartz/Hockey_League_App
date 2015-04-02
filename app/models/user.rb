@@ -40,4 +40,13 @@ class User < ActiveRecord::Base
     goals + assists
   end
 
+  def is_owner_of_team?(team)
+    self.email == team.owner
+    # @team_owner = true if current_user.try(:email) == @team.owner
+  end
+
+  def is_team_member?(team)
+    team.users.find_by(id: self)
+  # @team_member = true if @team.users.find_by(id: current_user)
+  end
 end

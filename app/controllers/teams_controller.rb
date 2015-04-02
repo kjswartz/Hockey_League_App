@@ -17,7 +17,7 @@ class TeamsController < ApplicationController
 
   def subscribe
     UserMailer.request_team_access_email(@current_user, @team).deliver_later
-    redirect_to '/'
+    redirect_to @team
   end
 
   def update
@@ -33,8 +33,8 @@ class TeamsController < ApplicationController
   private
     def set_team
       @team = Team.find(params[:id])
-      @team_owner = true if current_user.try(:email) == @team.owner
-      @team_member = true if @team.users.find_by(id: current_user)
+      # @team_owner = true if current_user.try(:email) == @team.owner
+      # @team_member = true if @team.users.find_by(id: current_user)
     end
 
     def team_owner
