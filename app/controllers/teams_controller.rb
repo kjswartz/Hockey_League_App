@@ -16,7 +16,7 @@ class TeamsController < ApplicationController
   end
 
   def subscribe
-    UserMailer.request_team_access_email(@current_user, @team).deliver_later
+    UserMailer.request_team_access_email(current_user, @team).deliver_later
     redirect_to @team
   end
 

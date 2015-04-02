@@ -1,8 +1,8 @@
-<h1>request form for team access</h1>
+<h1>Request for Team Membership</h1>
 <%= bootstrap_form_tag url: {action: "subscribe"} do |f| %>
-  <%= f.text_field :name, value: @current_user.try(:name) %>
-  <%= f.email_field :email, value: @current_user.try(:email) %>
-  <%= f.text_field :phone, value: @current_user.try(:phone) %>
+  <%= f.text_field :name, value: current_user.try(:name) %>
+  <%= f.email_field :email, value: current_user.try(:email) %>
+  <%= f.text_field :phone, value: current_user.try(:phone) %>
   <%= f.text_field :Message, value: "I am requesting access to join #{@team.name}'s Team Page." %>
   <%= f.hidden_field :id, value: @team.id %>
   <%= f.submit "Submit" %>
