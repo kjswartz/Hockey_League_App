@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team
+  before_action :set_team, except: [:subscribe]
   before_action :team_owner, only: [:edit, :update]
   before_action :league_select, only: [:new, :edit, :update, :create]
 
@@ -15,8 +15,13 @@ class TeamsController < ApplicationController
   def edit
   end
 
+  def subscribe
+    @team = Team.find_by(id: params[:teamid])
+    UserMailer.request_team_access_email(@current_user, @team).deliver_later
+    redirect_to '/'
+  end
+
   def update
-    redirect_to root_path, alert: "Permission not configured." if @team_owner.nil?
     respond_to do |format|
       if @team.update(team_params)
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
@@ -29,7 +34,7 @@ class TeamsController < ApplicationController
   private
     def set_team
       @team = Team.find(params[:id])
-      @team_owner = true if current_user[:email] == @team.owner
+      @team_owner = true if current_user.try(:email) == @team.owner
       @team_member = true if @team.users.find_by(id: current_user)
     end
 
