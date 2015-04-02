@@ -2,12 +2,19 @@
   <p>You are the team owner: <%= link_to 'Edit', edit_team_path(@team) %></p>
 <% end %>
 
+<% if @team_member %>
+Team Member Features
+<li>Calendar</li>
+<li>Schedule</li>
+<li>Forum</li>
+<li>Announcements</li>
+<% end %>
 
 <h1><%= @team.name.titlecase %> Team Page</h1>
 
-  <% if !@team_member.present? %>
-    <p>Request to Join team</p>
-  <% end %>
+<% if @team_member.nil? && !current_user.nil? %>
+  <a id="membershiprequestModal">Request to Join team</a>
+<% end %>
 
 <h3>Players:</h3>
 <ul>
@@ -15,3 +22,22 @@
     <li><%= image_tag(user.avatar.url(:thumb)) %> <%= link_to user.name, user_path(user) %></li>
   <% end %>
 </ul>
+
+
+
+
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Team Access Request</h4>
+      </div>
+      <div class="modal-body">
+        <%= render "requestform" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
