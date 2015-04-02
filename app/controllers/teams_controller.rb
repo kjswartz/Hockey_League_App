@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, except: [:subscribe]
+  before_action :set_team
   before_action :team_owner, only: [:edit, :update]
   before_action :league_select, only: [:new, :edit, :update, :create]
 
@@ -16,7 +16,6 @@ class TeamsController < ApplicationController
   end
 
   def subscribe
-    @team = Team.find_by(id: params[:teamid])
     UserMailer.request_team_access_email(@current_user, @team).deliver_later
     redirect_to '/'
   end
