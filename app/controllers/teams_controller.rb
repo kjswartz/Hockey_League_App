@@ -3,9 +3,6 @@ class TeamsController < ApplicationController
   before_action :team_owner, only: [:edit, :update]
   before_action :league_select, only: [:new, :edit, :update, :create]
 
-  def index
-  end
-
   def show
   end
 
@@ -33,6 +30,7 @@ class TeamsController < ApplicationController
   private
     def set_team
       @team = Team.find(params[:id])
+      @owner = User.find_by(email: @team.owner)
     end
 
     def team_owner

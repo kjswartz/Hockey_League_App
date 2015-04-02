@@ -14,7 +14,7 @@
 2. ~~Visitors should be able to browse teams and see users~~
 3. ~~Visitors should be able to signup and create a user profile page~~
 4. ~~Users should be able to request to join teams~~
-5. Team owners should be able to add and remove users from roster
+5. ~~Team owners should be able to add and remove users from roster~~
 6. ~~League owner/admin should be able to add and remove teams.~~
 7. ~~Admin should be able to CRUD leagues~~
 8. ~~Admin should be able to CRUD teams~~
@@ -80,14 +80,14 @@
 
 
 ### Setup teams
-1. Create teams controller (create/permissions)
+1. ~~Create teams controller (create/permissions)~~
 2. Create form for setting up teams
 3. teams must belong to a league (dropdown select form for leagues)
 4. New teams must be approved by admin
 5. Create Team views (Member view / visitor view)
 6. ~~visitor view: flat front page with users, schedule, contact info~~
 7. ~~Users should be able to request to join team (link)~~
-8. Team owner's should be able to approve Users/drop users
+8. ~~Team owner's should be able to approve Users/drop users~~
 9. Team membership area should have forum, calendar function, schedule
 10. Team owners should be able to set/revoke permissions
 11. Setup routes for team views
