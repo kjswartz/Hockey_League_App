@@ -2,5 +2,6 @@
   <%= f.alert_message 'Please fix the following errors:' %>
   <%= f.text_field :name %>
   <%= f.text_field :owner %>
+  <%= f.collection_select :user_ids, User.order("name ASC").all, :id, :email, {include_blank: true, hide_label: true}, {class: 'chosen-select', multiple: true} %>
   <%= f.submit "Update" %>
 <% end %>

@@ -199,3 +199,8 @@ OmniAuth (facebook authentication)
 
 Do not set defaults in migration for stats!
 Create Branches before big changes!
+
+##MISC
+1. add eager loading
+2. nest team routes under leagues
+3. slug some urls
