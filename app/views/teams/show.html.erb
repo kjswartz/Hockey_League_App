@@ -1,9 +1,14 @@
-<% if @team.owner == @current_user.email %>
+<% if @team_owner %>
   <p>You are the team owner: <%= link_to 'Edit', edit_team_path(@team) %></p>
 <% end %>
 
+
 <h1><%= @team.name.titlecase %> Team Page</h1>
-<p>Request to Join team</p>
+
+  <% if !@team_member.present? %>
+    <p>Request to Join team</p>
+  <% end %>
+
 <h3>Players:</h3>
 <ul>
   <% @team.users.each do |user| %>
