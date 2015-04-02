@@ -4,6 +4,6 @@
   <%= f.email_field :email, value: @current_user.try(:email) %>
   <%= f.text_field :phone, value: @current_user.try(:phone) %>
   <%= f.text_field :Message, value: "I am requesting access to join #{@team.name}'s Team Page." %>
-  <%= f.hidden_field :teamid, value: @team.id %>
+  <%= f.hidden_field :id, value: @team.id %>
   <%= f.submit "Submit" %>
 <% end %>
