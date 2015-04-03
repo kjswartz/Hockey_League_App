@@ -4,8 +4,10 @@
 $(document).on 'page:change', ->
   $('#membershiprequestModal').click ->
     $('#basicModal').modal 'show'
+  $('#eventcalendarModal').click ->
+    $('#eventModal').modal 'show'
   # enable chosen js
   $('.chosen-select').chosen
-    width: '1000px'
+    width: '300px'
     no_results_text: "Oops, nothing found!"
     allow_single_deselect: true
