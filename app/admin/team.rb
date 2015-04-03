@@ -1,6 +1,6 @@
 ActiveAdmin.register Team do
 
-  permit_params(:name, :active, :owner, :league_id)
+  permit_params(:name, :active, :owner, :league_id, :win, :lose, :tie, :opponent, :event, events: [])
 
   form do |f|
     inputs '' do

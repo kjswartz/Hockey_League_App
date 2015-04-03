@@ -34,7 +34,7 @@
 
 <h3>Added by Opponent</h3>
 <% @opponentevents.each do |e| %>
-  <li>vs <strong><%= e.team.name %></strong> Game Time: <strong><%= e.game_time.strftime("%R %A %D") %></strong></li>
+  <li>vs <strong><%= e.opponent.name %></strong> Game Time: <strong><%= e.game_time.strftime("%R %A %D") %></strong></li>
 <% end %>
 
 
