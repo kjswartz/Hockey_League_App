@@ -1,6 +1,6 @@
 <h1>Add Event to Schedule</h1>
-<%= bootstrap_form_for(Event.new, url: team_events_path(@team, @event)) do |f| %>
-  <%= f.date_field :game_time %>
-  <%= f.collection_select :opponent_id, Team.order("name ASC").all, :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-select'} %>
-  <%= f.submit "Add Event" %>
+<%= bootstrap_form_for([@team, @event]) do |f| %>
+  <%= f.datetime_select :game_time %>
+  <%= f.collection_select :opponent_id, Team.order("name ASC").where(league_id: @team.league_id), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-select'} %>
+  <%= f.submit %>
 <% end %>

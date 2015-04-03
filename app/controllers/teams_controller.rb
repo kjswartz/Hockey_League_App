@@ -4,6 +4,8 @@ class TeamsController < ApplicationController
   before_action :league_select, only: [:new, :edit, :update, :create]
 
   def show
+    @event = @team.events.new
+    @events = @team.events.where(team_id: @team)
   end
 
   def new

@@ -26,6 +26,16 @@
 </ul>
 
 
+<h3>Game Schedule</h3>
+<% @events.each do |e| %>
+  <li>Opponent: <strong><%= e.opponent.name %></strong> Game Time: <strong><%= e.game_time.strftime("%R %A %D") %></strong></li>
+<% end %>
+
+
+
+
+
+
 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -41,9 +51,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
