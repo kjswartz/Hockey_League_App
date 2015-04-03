@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
   def show
     @event = @team.events.new
     @events = @team.events.where(team_id: @team)
+    @opponentevents = Event.where(opponent_id: @team)
   end
 
   def new

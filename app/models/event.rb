@@ -13,4 +13,7 @@
 class Event < ActiveRecord::Base
   belongs_to :opponent, class: Team
   belongs_to :team
+
+  validates :game_time, presence: true
+  validates :opponent_id, presence: true
 end

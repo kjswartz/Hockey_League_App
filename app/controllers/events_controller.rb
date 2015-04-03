@@ -1,15 +1,20 @@
 class EventsController < ApplicationController
   before_action :set_team
 
+  def new
+  end
+
   def create
     @event = @team.events.new(event_params)
 
     respond_to do |format|
       if @event.save
         format.html { redirect_to @team, notice: 'Event was successfully created.' }
+        # format.json { render :show, status: :created, location: @team }
       else
-        flash[:error] = "We were unable to add this event. #{@event.errors.full_messages.join('. ')}"
-        format.html { render :new }
+        format.html { redirect_to @team }
+        # format.html { render :new }
+        # format.json { render json: @event }
       end
     end
   end
