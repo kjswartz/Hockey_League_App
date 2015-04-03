@@ -8,6 +8,6 @@ $(document).on 'page:change', ->
     $('#eventModal').modal 'show'
   # enable chosen js
   $('.chosen-select').chosen
-    width: '300px'
+    width: '500px'
     no_results_text: "Oops, nothing found!"
     allow_single_deselect: true
