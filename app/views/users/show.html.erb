@@ -13,7 +13,7 @@ About:
 <li><%= @user.bio %></li>
 Current Teams:
   <% @user.teams.each do |team| %>
-    <li><%= link_to team.name, league_team_path(team.league, team) %></li>
+    <li><%= link_to team.name, team %></li>
   <% end %>
 </ul>
 

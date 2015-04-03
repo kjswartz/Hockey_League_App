@@ -1,4 +1,4 @@
-<%= bootstrap_form_for([@team.league, @team]) do |f| %>
+<%= bootstrap_form_for(@team) do |f| %>
   <%= f.alert_message 'Please fix the following errors:' %>
   <%= f.text_field :name %>
   <%= f.text_field :owner %>
