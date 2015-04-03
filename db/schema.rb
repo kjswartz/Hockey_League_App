@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401201110) do
+ActiveRecord::Schema.define(version: 20150403022355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20150401201110) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "game_time"
+    t.integer  "opponent_id"
+    t.integer  "team_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "events", ["opponent_id"], name: "index_events_on_opponent_id", using: :btree
+  add_index "events", ["team_id"], name: "index_events_on_team_id", using: :btree
 
   create_table "leagues", force: :cascade do |t|
     t.string   "skill"
@@ -81,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150401201110) do
     t.datetime "deleted_at"
   end
 
+  add_foreign_key "events", "teams"
   add_foreign_key "rosters", "teams"
   add_foreign_key "rosters", "users"
   add_foreign_key "teams", "leagues"

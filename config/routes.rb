@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :leagues, only: [:index, :show]
   resources :users, except: [:destroy]
-  resources :teams, only: [:show, :edit, :update]
+  resources :teams, only: [:show, :edit, :update] do
+    resources :events
+  end
 
 end
