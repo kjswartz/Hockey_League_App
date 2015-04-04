@@ -3,11 +3,13 @@
 # Table name: events
 #
 #  id          :integer          not null, primary key
-#  game_time   :datetime
-#  opponent_id :integer
+#  start_date  :datetime
 #  team_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  stop_date   :datetime
+#  user_id     :integer
+#  description :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

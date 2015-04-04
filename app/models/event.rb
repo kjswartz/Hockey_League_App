@@ -3,17 +3,23 @@
 # Table name: events
 #
 #  id          :integer          not null, primary key
-#  game_time   :datetime
-#  opponent_id :integer
+#  start_date  :datetime
 #  team_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  stop_date   :datetime
+#  user_id     :integer
+#  description :string
 #
 
 class Event < ActiveRecord::Base
-  belongs_to :opponent, class: Team
   belongs_to :team
+  belongs_to :user
 
-  validates :game_time, presence: true
-  validates :opponent_id, presence: true
+  validates :start_date, presence: true
+  validates :stop_date, presence: true
+  validates :description, presence: true
+  validates :user_id, presence: true
+  validates :team_id, presence: true
+
 end
