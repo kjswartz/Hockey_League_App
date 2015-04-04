@@ -5,14 +5,16 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = @team.events.new(event_params)
+    @event = Event.new(event_params)
+    @event.team_id = @team.id
+    @event.user_id = current_user.id
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @team, notice: 'Event was successfully created.' }
+        format.html { redirect_to [@team.league, @team], notice: 'Event was successfully created.' }
         # format.json { render :show, status: :created, location: @team }
       else
-        format.html { redirect_to @team }
+        format.html { redirect_to [@team.league, @team] }
         # format.html { render :new }
         # format.json { render json: @event }
       end
@@ -22,7 +24,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @team, notice: 'Event was successfully updated.' }
+        format.html { redirect_to [@team.league, @team], notice: 'Event was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -35,7 +37,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:team_id, :opponent_id, :game_time)
+      params.require(:event).permit(:team_id, :user_id, :start_date, :stop_date, :description)
     end
 
 end

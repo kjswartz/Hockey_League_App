@@ -1,14 +1,14 @@
 <h1><%= @team.name.titlecase %> Team Page</h1>
 
 <% if signed_in? && current_user.team_owner?(@team) %>
-  <p>You are the team owner: <%= link_to 'Edit', edit_team_path(@team) %></p>
+  <p>You are the team owner: <%= link_to 'Edit', edit_league_team_path(@team.league, @team) %></p>
 <% else %>
   <p>The Team Owner is: <%= @owner.name %></p>
 <% end %>
 
 <% if signed_in? && current_user.team_member?(@team) %>
   Team Member Features
-  <li><a id="eventcalendarModal">Add a Game</a></li>
+  <li><a id="eventcalendarModal">Add a Calendar Event</a></li>
   <li>Schedule</li>
   <li>Forum</li>
   <li>Announcements</li>
@@ -25,20 +25,12 @@
   <% end %>
 </ul>
 
-
-<h3>Game Schedule</h3>
+<% if signed_in? && current_user.team_member?(@team) %>
+<h3>Player Schedule</h3>
 <% @events.each do |e| %>
-  <li>Opponent: <strong><%= e.opponent.name %></strong> Game Time: <strong><%= e.game_time.strftime("%R %A %D") %></strong></li>
+  <li><strong><%= e.user.name %></strong>: Date: <strong><%= e.start_date.strftime("%D") %></strong> - <strong><%= e.stop_date.strftime("%D") %></strong> Event: <%= e.description %></li>
 <% end %>
-
-
-<h3>Added by Opponent</h3>
-<% @opponentevents.each do |e| %>
-  <li>vs <strong><%= e.opponent.name %></strong> Game Time: <strong><%= e.game_time.strftime("%R %A %D") %></strong></li>
 <% end %>
-
-
-
 
 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">

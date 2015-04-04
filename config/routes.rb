@@ -7,10 +7,11 @@ Rails.application.routes.draw do
 
   post 'teams/subscribe'
 
-  resources :leagues, only: [:index, :show]
-  resources :users, except: [:destroy]
-  resources :teams, only: [:show, :edit, :update] do
-    resources :events
+  resources :leagues, only: [:index, :show] do
+   resources :teams, only: [:show, :edit, :update] do
+     resources :events
+   end
   end
+  resources :users, except: [:destroy]
 
 end
