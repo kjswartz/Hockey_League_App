@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404133652) do
+ActiveRecord::Schema.define(version: 20150405151254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,25 @@ ActiveRecord::Schema.define(version: 20150404133652) do
   add_index "events", ["team_id"], name: "index_events_on_team_id", using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
+  create_table "games", force: :cascade do |t|
+    t.datetime "time"
+    t.integer  "home_team_id"
+    t.integer  "away_team_id"
+    t.integer  "winner_id"
+    t.integer  "loser_id"
+    t.integer  "home_goals",   default: 0
+    t.integer  "away_goals",   default: 0
+    t.integer  "league_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "games", ["away_team_id"], name: "index_games_on_away_team_id", using: :btree
+  add_index "games", ["home_team_id"], name: "index_games_on_home_team_id", using: :btree
+  add_index "games", ["league_id"], name: "index_games_on_league_id", using: :btree
+  add_index "games", ["loser_id"], name: "index_games_on_loser_id", using: :btree
+  add_index "games", ["winner_id"], name: "index_games_on_winner_id", using: :btree
+
   create_table "leagues", force: :cascade do |t|
     t.string   "skill"
     t.string   "description"
@@ -54,12 +73,27 @@ ActiveRecord::Schema.define(version: 20150404133652) do
   create_table "rosters", force: :cascade do |t|
     t.integer  "team_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "goals",        default: 0
+    t.integer  "assists",      default: 0
+    t.integer  "penalties",    default: 0
+    t.integer  "games_played", default: 0
+    t.string   "role"
   end
 
   add_index "rosters", ["team_id"], name: "index_rosters_on_team_id", using: :btree
   add_index "rosters", ["user_id"], name: "index_rosters_on_user_id", using: :btree
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "schedules", ["game_id"], name: "index_schedules_on_game_id", using: :btree
+  add_index "schedules", ["team_id"], name: "index_schedules_on_team_id", using: :btree
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
@@ -82,21 +116,19 @@ ActiveRecord::Schema.define(version: 20150404133652) do
     t.string   "avatar"
     t.string   "phone"
     t.text     "bio"
-    t.string   "role"
     t.boolean  "active",          default: true
     t.boolean  "admin",           default: false
-    t.integer  "goals",           default: 0
-    t.integer  "assists",         default: 0
-    t.integer  "penalties",       default: 0
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.integer  "games_played"
     t.datetime "deleted_at"
   end
 
   add_foreign_key "events", "teams"
   add_foreign_key "events", "users"
+  add_foreign_key "games", "leagues"
   add_foreign_key "rosters", "teams"
   add_foreign_key "rosters", "users"
+  add_foreign_key "schedules", "games"
+  add_foreign_key "schedules", "teams"
   add_foreign_key "teams", "leagues"
 end
