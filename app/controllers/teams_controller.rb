@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   before_action :league_select, only: [:new, :edit, :update, :create]
 
   def show
-    @event = Event.new
+    @event = @team.events.new(user_id: current_user.try(:id))
     @events = @team.events.where(team_id: @team)
   end
 
@@ -44,6 +44,6 @@ class TeamsController < ApplicationController
     end
 
     def team_params
-      params.require(:team).permit(:name, :league_id, :owner, :active, user_ids: [])
+      params.require(:team).permit(:name, :league_id, :owner, :active, user_ids: [], game_ids: [])
     end
 end

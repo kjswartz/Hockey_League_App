@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   post 'session/signin'
   delete 'session/signout'
 
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   post 'teams/subscribe'
 
   resources :leagues, only: [:index, :show] do
+   resources :games;
    resources :teams, only: [:show, :edit, :update] do
      resources :events
    end

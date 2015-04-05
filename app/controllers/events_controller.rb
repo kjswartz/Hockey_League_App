@@ -6,8 +6,6 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.team_id = @team.id
-    @event.user_id = current_user.id
 
     respond_to do |format|
       if @event.save
@@ -37,7 +35,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:team_id, :user_id, :start_date, :stop_date, :description)
+      params.require(:event).permit(:team_id, :user_id, :start_date, :stop_date, :description, team_ids: [])
     end
 
 end

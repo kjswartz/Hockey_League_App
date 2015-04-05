@@ -20,6 +20,9 @@ class Team < ActiveRecord::Base
   has_many :users, through: :rosters
   has_many :rosters, dependent: :destroy
   has_many :events
+  has_many :schedules
+  has_many :games, through: :schedules
+
 
   #validations
   validates :league, presence: true

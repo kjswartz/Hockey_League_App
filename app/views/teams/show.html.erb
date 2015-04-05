@@ -18,6 +18,13 @@
   <a id="membershiprequestModal">Request to Join team</a>
 <% end %>
 
+<h3>Schedule:</h3>
+<ul>
+  <% @team.games.each do |game| %>
+  <li><%= game.time.strftime("%D") %> | <strong>Home Team</strong> <%= game.home_team.name %> vs <strong>Away Team</strong> <%= game.away_team.name %></li>
+  <% end %>
+</ul>
+
 <h3>Players:</h3>
 <ul>
   <% @team.users.each do |user| %>

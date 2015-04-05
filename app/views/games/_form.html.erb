@@ -1,0 +1,8 @@
+<%= bootstrap_form_for([@game.league, @game]) do |f| %>
+  <%= f.alert_message 'Please fix the following errors:' %>
+  <%= f.datetime_select :time %>
+  <%= f.collection_select :home_team_id, @team_select.order("name ASC"), :id, :name, {include_blank: true, label: 'Home Team'}, {class: 'chosen-select'} %>
+  <%= f.collection_select :away_team_id, @team_select.order("name ASC"), :id, :name, {include_blank: true, label: 'Away Team'}, {class: 'chosen-select'} %>
+  <%= f.hidden_field :league_id %>
+  <%= f.submit "Submit" %>
+<% end %>

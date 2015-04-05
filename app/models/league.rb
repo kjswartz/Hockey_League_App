@@ -12,6 +12,7 @@
 class League < ActiveRecord::Base
   #associations
   has_many :teams
+  has_many :games
 
   validates :skill, presence: true, uniqueness: { case_sensitive: false }
 
