@@ -1,0 +1,36 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id           :integer          not null, primary key
+#  time         :datetime
+#  home_team_id :integer
+#  away_team_id :integer
+#  winner_id    :integer
+#  loser_id     :integer
+#  home_goals   :integer          default("0")
+#  away_goals   :integer          default("0")
+#  league_id    :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 2015-04-05 10:26:59
+  teams_id: 
+  opponent_id: 
+  winner_id: 
+  loser_id: 
+  home_goals: 1
+  opponent_goals: 1
+
+two:
+  time: 2015-04-05 10:26:59
+  teams_id: 
+  opponent_id: 
+  winner_id: 
+  loser_id: 
+  home_goals: 1
+  opponent_goals: 1
