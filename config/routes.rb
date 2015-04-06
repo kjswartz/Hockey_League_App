@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :leagues, only: [:index, :show] do
    resources :games;
-   resources :teams, only: [:show, :edit, :update] do
+   resources :teams do
      resources :events
       member do
         post 'will_attend'

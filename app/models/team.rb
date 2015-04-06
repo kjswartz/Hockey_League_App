@@ -19,8 +19,8 @@ class Team < ActiveRecord::Base
   belongs_to :league
   has_many :users, through: :rosters
   has_many :rosters, dependent: :destroy
-  has_many :events
-  has_many :schedules
+  has_many :events, dependent: :destroy
+  has_many :schedules, dependent: :destroy
   has_many :games, through: :schedules
   has_many :game_attendances, dependent: :destroy
 
@@ -28,5 +28,6 @@ class Team < ActiveRecord::Base
   #validations
   validates :league, presence: true
   validates :name, presence: true, uniqueness: { case_sensitive: false }
+  validates :owner, presence: true
 
 end

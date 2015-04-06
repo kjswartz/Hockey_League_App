@@ -1,7 +1,8 @@
 class TeamsController < ApplicationController
-  before_action :set_team
+  before_action :set_team, except: [:new, :create]
+  before_action :set_league, except: [:subscribe]
   before_action :team_owner, only: [:edit, :update]
-  before_action :league_select, only: [:new, :edit, :update, :create]
+  before_action :league_select, only: [:edit, :update, :create]
 
   def will_attend
     GameAttendance.find_or_create_by(user: current_user, game_id: params[:game_id], team: @team)
@@ -19,6 +20,7 @@ class TeamsController < ApplicationController
   end
 
   def new
+    @team = @league.teams.new
   end
 
   def edit
@@ -27,6 +29,21 @@ class TeamsController < ApplicationController
   def subscribe
     UserMailer.request_team_access_email(current_user, @team).deliver_later
     redirect_to [@team.league, @team]
+  end
+
+  def create
+    @team = Team.new(team_params)
+    @team.users << current_user
+
+    respond_to do |format|
+      if @team.save
+        # UserMailer.welcome_email(@user).deliver_later
+        format.html { redirect_to [@team.league, @team], notice: 'Team created and pending League Admin Approval.' }
+      else
+        flash[:error] = "We were unable to create team. #{@team.errors.full_messages.join('. ')}"
+        format.html { render :new }
+      end
+    end
   end
 
   def update
@@ -43,6 +60,10 @@ class TeamsController < ApplicationController
     def set_team
       @team = Team.find(params[:id])
       @owner = User.find_by(email: @team.owner)
+    end
+
+    def set_league
+      @league = League.find(params[:league_id])
     end
 
     def team_owner

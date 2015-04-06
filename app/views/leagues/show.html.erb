@@ -6,10 +6,15 @@
   <% end %>
 </ul>
 
+<% if signed_in? %>
+  <%= link_to 'New Team Registration', new_league_team_path(@league) %>
+<% end %>
+
 <h3>Schedule:</h3>
   <% if signed_in? && current_user.admin? %>
     <p><%= link_to 'Add a Game', new_league_game_path(@league) %></p>
   <% end %>
+
 <ul>
   <% @league.games.each do |game| %>
     <li><%= game.time.strftime("%D") %> | <%= game.home_team.name %> vs <%= game.away_team.name %></li>

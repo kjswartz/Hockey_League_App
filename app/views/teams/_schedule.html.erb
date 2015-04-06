@@ -1,0 +1,22 @@
+<% @team.games.each do |game| %>
+<li><%= game.time.strftime("%D") %> | <strong>Home Team</strong> <%= game.home_team.name %> vs <strong>Away Team</strong> <%= game.away_team.name %></li>
+
+  <% if signed_in? && current_user.team_member?(@team) %>
+
+    <%= game.team_attendance(@team).count %> Team Members Confirmed: <%= game.attending_members(@team) %>
+
+    <% if game.attending?(current_user, @team) %>
+      <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+      <%= form_tag(not_attend_league_team_path(game.league, @team), method: 'delete') do %>
+        <%= hidden_field_tag(:game_id, game.id) %>
+        <%= submit_tag "Not Attend" %>
+      <% end %>
+    <% else %>
+      <%= form_tag will_attend_league_team_path(game.league, @team) do %>
+        <%= hidden_field_tag(:game_id, game.id) %>
+        <%= submit_tag "Will Attend" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+<% end %>

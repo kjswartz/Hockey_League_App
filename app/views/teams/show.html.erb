@@ -18,35 +18,10 @@
   <a id="membershiprequestModal">Request to Join team</a>
 <% end %>
 
-
-
-<h3>Schedule:</h3>
-<ul>
-  <% @team.games.each do |game| %>
-  <li><%= game.time.strftime("%D") %> | <strong>Home Team</strong> <%= game.home_team.name %> vs <strong>Away Team</strong> <%= game.away_team.name %></li>
-
-    <% if signed_in? && current_user.team_member?(@team) %>
-
-      <%= game.team_attendance(@team).count %> Team Members Confirmed: <%= game.attending_members(@team) %>
-
-      <% if game.attending?(current_user, @team) %>
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-        <%= form_tag(not_attend_league_team_path(game.league, @team), method: 'delete') do %>
-          <%= hidden_field_tag(:game_id, game.id) %>
-          <%= submit_tag "Not Attend" %>
-        <% end %>
-      <% else %>
-        <%= form_tag will_attend_league_team_path(game.league, @team) do %>
-          <%= hidden_field_tag(:game_id, game.id) %>
-          <%= submit_tag "Will Attend" %>
-        <% end %>
-      <% end %>
-    <% end %>
-
-  <% end %>
-</ul>
-
-
+<h3>Game Schedule:</h3>
+  <ul>
+    <%= render 'schedule' %>
+  </ul>
 
 <h3>Players:</h3>
 <ul>
@@ -56,10 +31,10 @@
 </ul>
 
 <% if signed_in? && current_user.team_member?(@team) %>
-<h3>Players Schedule</h3>
-<% @events.each do |e| %>
-  <li><strong><%= e.user.name %></strong>: Date: <strong><%= e.start_date.strftime("%D") %></strong> - <strong><%= e.stop_date.strftime("%D") %></strong> Event: <%= e.description %></li>
-<% end %>
+  <h3>Players Schedule</h3>
+    <% @events.each do |e| %>
+      <li><strong><%= e.user.name %></strong>: Date: <strong><%= e.start_date.strftime("%D") %></strong> - <strong><%= e.stop_date.strftime("%D") %></strong> Event: <%= e.description %></li>
+    <% end %>
 <% end %>
 
 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -69,7 +44,7 @@
         <h4 class="modal-title" id="myModalLabel">Team Access Request</h4>
       </div>
       <div class="modal-body">
-        <%= render "requestform" %>
+        <%= render 'requestform' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -85,7 +60,7 @@
         <h4 class="modal-title" id="myModalLabel">Team Access Request</h4>
       </div>
       <div class="modal-body">
-        <%= render "calendar" %>
+        <%= render 'calendar' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

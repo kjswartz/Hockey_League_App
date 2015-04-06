@@ -1,0 +1,8 @@
+<%= bootstrap_form_for([@league, @team]) do |f| %>
+  <%= f.alert_message 'Please fix the following errors:' %>
+  <%= f.text_field :name, label: 'Team Name' %>
+  <%= f.text_field :league_skill, value: @league.skill, label: 'League' %>
+  <%= f.hidden_field :league_id %>
+  <%= f.text_field :owner, value: current_user.email, label: 'Team Owner' %>
+  <%= f.submit :submit %>
+<% end %>
