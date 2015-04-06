@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405151254) do
+ActiveRecord::Schema.define(version: 20150406010826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20150405151254) do
 
   add_index "events", ["team_id"], name: "index_events_on_team_id", using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
+
+  create_table "game_attendances", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "game_attendances", ["game_id"], name: "index_game_attendances_on_game_id", using: :btree
+  add_index "game_attendances", ["user_id"], name: "index_game_attendances_on_user_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.datetime "time"
@@ -125,6 +135,8 @@ ActiveRecord::Schema.define(version: 20150405151254) do
 
   add_foreign_key "events", "teams"
   add_foreign_key "events", "users"
+  add_foreign_key "game_attendances", "games"
+  add_foreign_key "game_attendances", "users"
   add_foreign_key "games", "leagues"
   add_foreign_key "rosters", "teams"
   add_foreign_key "rosters", "users"

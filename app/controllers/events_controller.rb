@@ -1,9 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_team
 
-  def new
-  end
-
   def create
     @event = Event.new(event_params)
 
