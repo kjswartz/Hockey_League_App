@@ -24,11 +24,27 @@ class Game < ActiveRecord::Base
   belongs_to :loser, class: Team
   has_many :schedules, dependent: :destroy
   has_many :teams, through: :schedules
+  has_many :game_attendances, dependent: :destroy
 
   # Validators
   validates :league_id, presence: true
   validates :home_team_id, presence: true
   validates :away_team_id, presence: true
   validates :time, presence: true
+
+  # Methods
+  def attending?(user, team)
+    game_attendances.find_by(user: user, team: team)
+  end
+
+  def attending_members(team)
+    result = game_attendances.where(team: team).collect{|ga| ga.user.name}.join(", ")
+    return result
+  end
+
+  def team_attendance(team)
+    result = game_attendances.where(team: team)
+    return result
+  end
 
 end

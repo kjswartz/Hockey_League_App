@@ -3,6 +3,16 @@ class TeamsController < ApplicationController
   before_action :team_owner, only: [:edit, :update]
   before_action :league_select, only: [:new, :edit, :update, :create]
 
+  def will_attend
+    GameAttendance.find_or_create_by(user: current_user, game_id: params[:game_id], team: @team)
+    redirect_to league_team_path(@team.league, @team)
+  end
+
+  def not_attend
+    GameAttendance.find_by(user: current_user, game_id: params[:game_id], team: @team).destroy
+    redirect_to league_team_path(@team.league, @team)
+  end
+
   def show
     @event = @team.events.new(user_id: current_user.try(:id))
     @events = @team.events.where(team_id: @team)
@@ -44,6 +54,6 @@ class TeamsController < ApplicationController
     end
 
     def team_params
-      params.require(:team).permit(:name, :league_id, :owner, :active, user_ids: [], game_ids: [])
+      params.require(:team).permit(:name, :game_id, :league_id, :owner, :active, user_ids: [], game_ids: [])
     end
 end

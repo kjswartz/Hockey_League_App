@@ -12,6 +12,10 @@ Rails.application.routes.draw do
    resources :games;
    resources :teams, only: [:show, :edit, :update] do
      resources :events
+      member do
+        post 'will_attend'
+        delete 'not_attend'
+      end
    end
   end
   resources :users, except: [:destroy]

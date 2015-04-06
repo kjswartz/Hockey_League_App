@@ -22,6 +22,7 @@ class Team < ActiveRecord::Base
   has_many :events
   has_many :schedules
   has_many :games, through: :schedules
+  has_many :game_attendances, dependent: :destroy
 
 
   #validations

@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :teams, through: :rosters
   has_many :rosters, dependent: :destroy
   has_many :events
+  has_many :game_attendances, dependent: :destroy
 
   #validations
   validates :name, presence: true
@@ -39,5 +40,5 @@ class User < ActiveRecord::Base
   def team_member?(team)
     team.users.find_by(id: self)
   end
-  
+
 end

@@ -47,11 +47,13 @@ ActiveRecord::Schema.define(version: 20150406010826) do
   create_table "game_attendances", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "game_id"
+    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "game_attendances", ["game_id"], name: "index_game_attendances_on_game_id", using: :btree
+  add_index "game_attendances", ["team_id"], name: "index_game_attendances_on_team_id", using: :btree
   add_index "game_attendances", ["user_id"], name: "index_game_attendances_on_user_id", using: :btree
 
   create_table "games", force: :cascade do |t|
@@ -136,6 +138,7 @@ ActiveRecord::Schema.define(version: 20150406010826) do
   add_foreign_key "events", "teams"
   add_foreign_key "events", "users"
   add_foreign_key "game_attendances", "games"
+  add_foreign_key "game_attendances", "teams"
   add_foreign_key "game_attendances", "users"
   add_foreign_key "games", "leagues"
   add_foreign_key "rosters", "teams"
