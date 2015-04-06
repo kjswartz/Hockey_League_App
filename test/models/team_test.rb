@@ -11,7 +11,6 @@
 #  updated_at :datetime         not null
 #  win        :integer
 #  lose       :integer
-#  tie        :integer
 #
 
 require 'test_helper'
