@@ -1,5 +1,5 @@
 <% @team.games.each do |game| %>
-<li><%= game.time.strftime("%D") %> | <strong>Home Team</strong> <%= game.home_team.name %> vs <strong>Away Team</strong> <%= game.away_team.name %></li>
+<li><%= game.time.strftime("%D") %> | <strong>Home Team</strong> <%= game.home_team.try(:name) %> vs <strong>Away Team</strong> <%= game.away_team.try(:name) %></li>
 
   <% if signed_in? && current_user.team_member?(@team) %>
 

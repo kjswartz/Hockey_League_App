@@ -17,6 +17,6 @@
 
 <ul>
   <% @league.games.each do |game| %>
-    <li><%= game.time.strftime("%D") %> | <%= game.home_team.name %> vs <%= game.away_team.name %></li>
+    <li><%= game.time.strftime("%D") %> | <%= game.home_team.name %> vs <%= game.away_team.try(:name) %></li>
   <% end %>
 </ul>

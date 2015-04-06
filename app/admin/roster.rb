@@ -1,18 +1,25 @@
 ActiveAdmin.register Roster do
 
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+  index do
+    selectable_column
+    column :id
+    column "Team Name" do |roster|
+      roster.team.name
+    end
+    column "User Name" do |roster|
+      roster.user.name
+    end
+    column :goals
+    column :assists
+    column :penalties
+    column :games_played
+    column "Points" do |roster|
+      roster.goals + roster.assists
+    end
+    column :role
+    actions
+  end
 
 
 end

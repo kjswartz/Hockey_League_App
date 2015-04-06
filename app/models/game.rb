@@ -23,7 +23,7 @@ class Game < ActiveRecord::Base
   belongs_to :winner, class: Team
   belongs_to :loser, class: Team
   has_many :schedules, dependent: :destroy
-  has_many :teams, through: :schedules
+  has_many :teams, through: :schedules, dependent: :destroy
   has_many :game_attendances, dependent: :destroy
 
   # Validators
