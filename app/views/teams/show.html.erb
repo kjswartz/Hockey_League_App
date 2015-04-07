@@ -1,41 +1,66 @@
-<h1><%= @team.name.titlecase %> Team Page</h1>
+<div class="container-fluid">
 
-<% if signed_in? && current_user.team_owner?(@team) %>
-  <p>You are the team owner: <%= link_to 'Edit', edit_league_team_path(@team.league, @team) %></p>
-<% else %>
-  <p>The Team Owner is: <%= @owner.name %></p>
-<% end %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1>
+        <%= @team.name.titlecase %>
+        <small>
+          <% if signed_in? && !current_user.team_member?(@team) %>
+            <a id="membershiprequestModal">Request to Join team</a>
+          <% end %>
+        </small>
+      </h1>
+    </div>
+  </div>
 
-<% if signed_in? && current_user.team_member?(@team) %>
-  Team Member Features
-  <li><a id="eventcalendarModal">Add a Calendar Event</a></li>
-  <li>Schedule</li>
-  <li>Forum</li>
-  <li>Announcements</li>
-<% end %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <% if signed_in? && current_user.team_owner?(@team) %>
+        <h4>You are the team owner: <%= link_to 'Edit', edit_league_team_path(@team.league, @team) %></h4>
+      <% else %>
+      <h4>Team Owner: <%= @owner.name %></h4>
+      <% end %>
+    </div>
+  </div>
 
-<% if signed_in? && !current_user.team_member?(@team) %>
-  <a id="membershiprequestModal">Request to Join team</a>
-<% end %>
 
-<h3>Game Schedule:</h3>
-  <ul>
-    <%= render 'schedule' %>
-  </ul>
-
-<h3>Players:</h3>
-<ul>
-  <% @team.users.each do |user| %>
-    <li><%= image_tag(user.avatar.url(:thumb)) %> <%= link_to user.name, user_path(user) %></li>
+  <% if signed_in? && current_user.team_member?(@team) %>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h4>Team Member Features: <small><a id="eventcalendarModal">Add a Calendar Event</a></small></h4>
+      </div>
+    </div>
   <% end %>
-</ul>
 
-<% if signed_in? && current_user.team_member?(@team) %>
-  <h3>Players Schedule</h3>
-    <% @events.each do |e| %>
-      <li><strong><%= e.user.name %></strong>: Date: <strong><%= e.start_date.strftime("%D") %></strong> - <strong><%= e.stop_date.strftime("%D") %></strong> Event: <%= e.description %></li>
-    <% end %>
-<% end %>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= render 'schedule' %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h3>Roster:</h3>
+      <% @team.users.in_groups_of(3) do |group| %>
+        <% group.each do |user| %>
+          <div class="col-md-3">
+            <% if !user.blank? %>
+              <%= image_tag(user.avatar.thumb.url) %><br><%= link_to user.name, user_path(user) %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+<%= render 'players_schedule' %>
+
+
 
 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">

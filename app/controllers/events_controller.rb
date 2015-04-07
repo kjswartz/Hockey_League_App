@@ -3,17 +3,18 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.stop_date = @event.start_date if @event.stop_date.blank?
 
     respond_to do |format|
       if @event.save
         format.html { redirect_to [@team.league, @team], notice: 'Event was successfully created.' }
-        # format.json { render :show, status: :created, location: @team }
       else
         format.html { redirect_to [@team.league, @team] }
-        # format.html { render :new }
-        # format.json { render json: @event }
       end
     end
+  end
+
+  def edit
   end
 
   def update
@@ -24,6 +25,11 @@ class EventsController < ApplicationController
         format.html { render :edit }
       end
     end
+  end
+
+  def destroy
+    Event.find_by(user: current_user, team_id: params[:team_id]).destroy
+    redirect_to league_team_path(@team.league, @team)
   end
 
   private

@@ -4,7 +4,7 @@
   <%= link_to 'New Team Registration', new_league_team_path(@league) %>
 <% end %>
 
-<div class="table-responsive" style="max-width:500px;">
+<div class="table-responsive" style="max-width:800px;">
   <table class="table">
     <h3>Teams:</h3>
     <thead>
@@ -39,7 +39,7 @@
   <p><%= link_to 'Add a Game', new_league_game_path(@league) %></p>
 <% end %>
 
-<div class="table-responsive" style="max-width:550px;">
+<div class="table-responsive" style="max-width:800px;">
   <table class="table">
     <h3>Schedule:</h3>
       <thead>
@@ -53,7 +53,7 @@
       <tbody>
         <% @league.games.each do |game| %>
         <tr>
-          <td><%= game.time.strftime("%A, %B, %e") %></td>
+          <td><%= game.time.strftime("%A %B, %e") %></td>
           <td><%= game.time.strftime("%R") %></td>
           <td><%= game.home_team.name %></td>
           <td><%= game.away_team.try(:name) %></td>

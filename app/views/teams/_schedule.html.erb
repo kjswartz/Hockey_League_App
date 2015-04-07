@@ -1,22 +1,61 @@
-<% @team.games.each do |game| %>
-<li><%= game.time.strftime("%D") %> | <strong>Home Team</strong> <%= game.home_team.try(:name) %> vs <strong>Away Team</strong> <%= game.away_team.try(:name) %></li>
-
-  <% if signed_in? && current_user.team_member?(@team) %>
-
-    <%= game.team_attendance(@team).count %> Team Members Confirmed: <%= game.attending_members(@team) %>
-
-    <% if game.attending?(current_user, @team) %>
-      <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      <%= form_tag(not_attend_league_team_path(game.league, @team), method: 'delete') do %>
-        <%= hidden_field_tag(:game_id, game.id) %>
-        <%= submit_tag "Not Attend" %>
+<div class="table-responsive" style="max-width:800px;">
+  <table class="table">
+    <h3>Game Schedule:</h3>
+    <thead>
+      <tr>
+      <% if signed_in? && current_user.team_member?(@team) %>
+        <th></th>
+        <th>RSVP</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Home Team</th>
+        <th>Away Team</th>
+        <th>Players Going</th>
+        <th>Players Not RSVP'd</th>
+      <% else %>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Home Team</th>
+        <th>Away Team</th>
       <% end %>
-    <% else %>
-      <%= form_tag will_attend_league_team_path(game.league, @team) do %>
-        <%= hidden_field_tag(:game_id, game.id) %>
-        <%= submit_tag "Will Attend" %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @team.games.each do |game| %>
+      <tr>
+      <% if signed_in? && current_user.team_member?(@team) %>
+        <td>
+          <% if game.attending?(current_user, @team) %>
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+          <% end %>
+        </td>
+        <td>
+          <% if game.attending?(current_user, @team) %>
+            <%= form_tag(not_attend_league_team_path(game.league, @team), method: 'delete') do %>
+              <%= hidden_field_tag(:game_id, game.id) %>
+              <%= submit_tag "Not Attend" %>
+            <% end %>
+          <% else %>
+            <%= form_tag will_attend_league_team_path(game.league, @team) do %>
+              <%= hidden_field_tag(:game_id, game.id) %>
+              <%= submit_tag "Will Attend" %>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= game.time.strftime("%A %B, %e") %></td>
+        <td><%= game.time.strftime("%R") %></td>
+        <td><%= game.home_team.name %></td>
+        <td><%= game.away_team.try(:name) %></td>
+        <td><%= game.team_attendance(@team).count %></td>
+        <td><%= game.not_attending(@team) %></td>
+      <% else %>
+        <td><%= game.time.strftime("%A %B, %e") %></td>
+        <td><%= game.time.strftime("%R") %></td>
+        <td><%= game.home_team.name %></td>
+        <td><%= game.away_team.try(:name) %></td>
       <% end %>
-    <% end %>
-  <% end %>
-
-<% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

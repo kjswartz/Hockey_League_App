@@ -49,4 +49,8 @@ class Game < ActiveRecord::Base
     return result
   end
 
+  def not_attending(team)
+    result = (team.users.count) - (game_attendances.where(team: team).count)
+    return result
+  end
 end
