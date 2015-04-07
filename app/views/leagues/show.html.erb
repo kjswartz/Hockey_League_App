@@ -1,14 +1,39 @@
 <h1><%= @league.skill %> League Page</h1>
-<h3>Teams:</h3>
-<ul>
-  <% @league.teams.each do |team| %>
-    <li><%= link_to team.name, league_team_path(team.league, team) %> Wins: <%= team.win %> | Losses: <%= team.lose %></li>
-  <% end %>
-</ul>
 
 <% if signed_in? %>
   <%= link_to 'New Team Registration', new_league_team_path(@league) %>
 <% end %>
+
+<div class="table-responsive" style="max-width:500px;">
+  <table class="table">
+    <h3>Teams:</h3>
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>GP</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Points</th>
+        <th>PIM</th>
+        <th>GA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @league.teams.each do |team| %>
+        <tr>
+          <td><%= link_to team.name, league_team_path(team.league, team) %></td>
+          <td><%= team.games_played %></td>
+          <td><%= team.win %></td>
+          <td><%= team.lose %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 
 <h3>Schedule:</h3>
   <% if signed_in? && current_user.admin? %>

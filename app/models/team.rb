@@ -29,4 +29,9 @@ class Team < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :owner, presence: true
 
+  # Methods
+  def games_played
+    self.win + self.lose
+  end
+
 end
