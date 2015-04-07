@@ -9,8 +9,6 @@
 #  league_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  win        :integer
-#  lose       :integer
 #
 
 class Team < ActiveRecord::Base
@@ -30,8 +28,43 @@ class Team < ActiveRecord::Base
   validates :owner, presence: true
 
   # Methods
-  def games_played
-    self.win + self.lose
+  def total_goals
+    ht_goals = games.where(home_team_id: self.id).collect {|ht| ht.home_goals}.reduce :+
+    at_goals = games.where(away_team_id: self.id).collect {|at| at.away_goals}.reduce :+
+    ht_goals = 0 if ht_goals.blank?
+    at_goals = 0 if at_goals.blank?
+    result = ht_goals + at_goals
+    return result
+  end
+
+  def winner_games
+    winner_games = games.where(winner_id: self.id).count
+    winner_games = 0 if winner_games.blank?
+    return winner_games
+  end
+
+  def loser_games
+    loser_games = games.where(loser_id: self.id).count
+    loser_games = 0 if loser_games.blank?
+    return loser_games
+  end
+
+  def total_games_played
+    result = winner_games + loser_games
+    return result
+  end
+
+  def game_points
+    ht_points = games.where(home_team_id: self.id).collect {|ht| ht.home_points}.reduce :+
+    at_points = games.where(away_team_id: self.id).collect {|at| at.away_points}.reduce :+
+    ht_points = 0 if ht_points.blank?
+    at_points = 0 if at_points.blank?
+    result = ht_points + at_points
+    return result
+  end
+
+  def penalties
+    self.rosters.collect {|roster| roster.penalties}.reduce :+
   end
 
 end

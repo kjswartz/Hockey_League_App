@@ -13,6 +13,8 @@
 #  league_id    :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  home_points  :integer          default("0")
+#  away_points  :integer          default("0")
 #
 
 class Game < ActiveRecord::Base

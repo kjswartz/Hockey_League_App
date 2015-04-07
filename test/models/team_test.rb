@@ -9,8 +9,6 @@
 #  league_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  win        :integer
-#  lose       :integer
 #
 
 require 'test_helper'

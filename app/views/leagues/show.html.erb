@@ -10,6 +10,7 @@
     <thead>
       <tr>
         <th>Team</th>
+        <th>Goals</th>
         <th>GP</th>
         <th>Wins</th>
         <th>Losses</th>
@@ -22,12 +23,12 @@
       <% @league.teams.each do |team| %>
         <tr>
           <td><%= link_to team.name, league_team_path(team.league, team) %></td>
-          <td><%= team.games_played %></td>
-          <td><%= team.win %></td>
-          <td><%= team.lose %></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= team.total_goals %></td>
+          <td><%= team.total_games_played %></td>
+          <td><%= team.winner_games %></td>
+          <td><%= team.loser_games %></td>
+          <td><%= team.game_points %></td>
+          <td><%= team.penalties %></td>
         </tr>
       <% end %>
     </tbody>
