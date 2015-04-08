@@ -1,17 +1,26 @@
-<h1><%= @user.name %></h1>
-<%= image_tag(@user.avatar.url) %>
-<ul>
-Contact Information:
-<li>Email: <%= @user.email %></li>
-<li>Phone: <%= @user.phone %></li>
-About:
-<li><%= @user.bio %></li>
-Current Teams:
-  <% @user.teams.each do |team| %>
-    <li><%= link_to team.name, league_team_path(team.league, team) %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1><%= @user.name %></h1>
+    <%= image_tag(@user.avatar.url) %>
+  </div>
+</div>
 
-<% if @user == current_user %>
-  <%= link_to 'Edit Profile', edit_user_path(@user) %>
-<% end %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <ul>
+      Contact Information:
+      <li>Email: <%= @user.email %></li>
+      <li>Phone: <%= @user.phone %></li>
+      About:
+      <li><%= @user.bio %></li>
+      Current Teams:
+      <% @user.teams.each do |team| %>
+        <li><%= link_to team.name, league_team_path(team.league, team) %></li>
+      <% end %>
+    </ul>
+
+    <% if @user == current_user %>
+      <%= link_to 'Edit Profile', edit_user_path(@user) %>
+    <% end %>
+  </div>
+</div>

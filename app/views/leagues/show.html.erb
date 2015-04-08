@@ -1,64 +1,20 @@
-<h1><%= @league.skill %> League Page</h1>
-
-<% if signed_in? %>
-  <%= link_to 'New Team Registration', new_league_team_path(@league) %>
-<% end %>
-
-<div class="table-responsive" style="max-width:800px;">
-  <table class="table">
-    <h3>Teams:</h3>
-    <thead>
-      <tr>
-        <th>Team</th>
-        <th>Goals</th>
-        <th>GP</th>
-        <th>Wins</th>
-        <th>Losses</th>
-        <th>Points</th>
-        <th>PIM</th>
-        <th>GA</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @league.teams.each do |team| %>
-        <tr>
-          <td><%= link_to team.name, league_team_path(team.league, team) %></td>
-          <td><%= team.total_goals %></td>
-          <td><%= team.total_games_played %></td>
-          <td><%= team.winner_games %></td>
-          <td><%= team.loser_games %></td>
-          <td><%= team.game_points %></td>
-          <td><%= team.penalties %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1><%= @league.skill %> League Page</h1>
+    <% if signed_in? %>
+      <%= link_to 'New Team Registration', new_league_team_path(@league) %>
+    <% end %>
+  </div>
 </div>
 
-<% if signed_in? && current_user.admin? %>
-  <p><%= link_to 'Add a Game', new_league_game_path(@league) %></p>
-<% end %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= render 'teams' %>
+  </div>
+</div>
 
-<div class="table-responsive" style="max-width:800px;">
-  <table class="table">
-    <h3>Schedule:</h3>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Home Team</th>
-          <th>Away Team</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @league.games.each do |game| %>
-        <tr>
-          <td><%= game.time.strftime("%A %B, %e") %></td>
-          <td><%= game.time.strftime("%R") %></td>
-          <td><%= game.home_team.name %></td>
-          <td><%= game.away_team.try(:name) %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= render 'schedule' %>
+  </div>
 </div>
