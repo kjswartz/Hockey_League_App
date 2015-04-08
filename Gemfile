@@ -20,11 +20,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'compass-rails', '~>2.0.4'
-
-group :assets do
-  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
-  gem 'jquery-ui-rails'
-end
+gem 'jquery-datatables-rails', '~> 3.2.0'
 
 gem 'thin'
 group :production do
