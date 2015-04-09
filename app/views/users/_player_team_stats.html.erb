@@ -1,0 +1,61 @@
+<% @user.rosters.each do |roster| %>
+  <h3><%= link_to roster.team.name, league_team_path(roster.team.league, roster.team) %><small> <%= roster.team.league.skill %> League</small></h3>
+  <p><strong><%= roster.games_played %> Games Played</strong></p>
+
+  <p><h4>Goals</h4></p>
+
+    <div class="statsbox">
+      <b>Individual Goals</b><br>
+      <b>Team Goals</b>
+    </div>
+    <section>
+      <% if roster.goals < 1 %>
+        <li>0</li>
+      <% else %>
+      <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= roster.goals %>%;min-width: 1em;max-width: 600px;"><%= roster.goals %></li><br>
+      <% end %>
+      <% if roster.team.total_goals < 1 %>
+        <li>0</li>
+      <% else %>
+        <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.total_goals %>%;max-width: 600px;"><%= roster.team.total_goals %></li><br>
+      <% end %>
+    </section>
+
+  <p><h4>Assists</h4></p>
+
+    <div class="statsbox">
+      <b>Individual Assists</b><br>
+      <b>Team Assists</b>
+    </div>
+    <section>
+      <% if roster.assists < 1 %>
+        <li>0</li>
+      <% else %>
+        <li class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" style="width:<%= roster.assists %>%;min-width: 1em;max-width: 600px;"><%= roster.assists %></li><br>
+      <% end %>
+      <% if roster.team.total_goals < 1 %>
+        <li>0</li>
+      <% else %>
+        <li class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_assists %>%;max-width: 600px;"><%= roster.team.team_assists %></li><br>
+      <% end %>
+    </section>
+
+  <p><h4>Penalty Minutes</h4></p>
+    <div class="statsbox">
+      <b>PIMS</b><br>
+      <b>Team PIMS</b>
+    </div>
+    <section>
+      <% if roster.penalties < 1 %>
+        <li>0</li>
+      <% else %>
+        <li class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" style="width:<%= roster.penalties %>%;min-width: 1em;max-width: 600px;"><%= roster.penalties %></li><br>
+      <% end %>
+      <% if roster.team.team_penalties < 1 %>
+        <li>0</li>
+      <% else %>
+        <li class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_penalties %>%;max-width: 600px;"><%= roster.team.team_penalties %></li><br>
+      <% end %>
+    </section>
+    <br>
+<% end %>
