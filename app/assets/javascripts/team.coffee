@@ -11,3 +11,9 @@ $(document).on 'page:change', ->
     width: '500px'
     no_results_text: "Oops, nothing found!"
     allow_single_deselect: true
+  $('#tstable').DataTable
+    destroy: true
+    responsive: true
+    bJqueryUI: true
+    scrollY: 300
+    paging: false

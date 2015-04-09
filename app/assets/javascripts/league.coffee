@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'page:change', ->
-  $('#table').DataTable
+  $('#lstable').DataTable
+    destroy: true
     responsive: true
     bJqueryUI: true
     scrollY: 300
