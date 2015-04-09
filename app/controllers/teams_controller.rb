@@ -28,7 +28,7 @@ class TeamsController < ApplicationController
 
   def subscribe
     UserMailer.request_team_access_email(current_user, @team).deliver_later
-    redirect_to [@team.league, @team]
+    redirect_to [@team.league, @team], alert: 'The Team captain has been alerted of your desire to join.'
   end
 
   def create
@@ -67,7 +67,7 @@ class TeamsController < ApplicationController
     end
 
     def team_owner
-      redirect_to root_path, alert: "Permission not configured." if !current_user.team_owner?(@team)
+      redirect_to root_path, alert: "Permission not configured." if current_user.blank? || !current_user.team_owner?(@team)
     end
 
     def league_select
