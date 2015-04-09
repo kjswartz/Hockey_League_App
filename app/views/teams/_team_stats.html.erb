@@ -1,0 +1,109 @@
+<h3><%= @team.name %> STATS<small> <%= link_to "#{@team.league.skill} League", @team.league %></small></h3>
+
+  <p><h4>Goals</h4></p>
+    <div class="statsbox">
+      <b>Team Goals</b><br>
+      <b>League Average</b>
+    </div>
+    <section>
+      <% if @team.total_goals < 1 %>
+        <li>0</li>
+      <% else %>
+      <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.total_goals %>%;min-width: 1em;max-width: 600px;"><%= @team.total_goals %></li><br>
+      <% end %>
+      <% if @team.league.league_avg_goals < 1 %>
+        <li>0</li>
+      <% else %>
+        <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.league.league_avg_goals %>%;max-width: 600px;"><%= @team.league.league_avg_goals %></li><br>
+      <% end %>
+    </section>
+
+    <p><h4>Wins</h4></p>
+      <div class="statsbox">
+        <b>Team Wins</b><br>
+        <b>League Average</b>
+      </div>
+      <section>
+        <% if @team.winner_games < 1 %>
+          <li>0</li>
+        <% else %>
+        <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.winner_games %>%;min-width: 1em;max-width: 600px;"><%= @team.winner_games %></li><br>
+        <% end %>
+        <% if @team.league.league_avg_wins < 1 %>
+          <li>0</li>
+        <% else %>
+          <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.league.league_avg_wins %>%;max-width: 600px;"><%= @team.league.league_avg_wins %></li><br>
+        <% end %>
+      </section>
+
+      <p><h4>Losses</h4></p>
+        <div class="statsbox">
+          <b>Team Losses</b><br>
+          <b>League Average</b>
+        </div>
+        <section>
+          <% if @team.loser_games < 1 %>
+            <li>0</li>
+          <% else %>
+          <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.loser_games %>%;min-width: 1em;max-width: 600px;"><%= @team.loser_games %></li><br>
+          <% end %>
+          <% if @team.league.league_avg_losses < 1 %>
+            <li>0</li>
+          <% else %>
+            <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.league.league_avg_losses %>%;max-width: 600px;"><%= @team.league.league_avg_losses %></li><br>
+          <% end %>
+        </section>
+
+      <p><h4>Points</h4></p>
+        <div class="statsbox">
+          <b>Team Points</b><br>
+          <b>League Average</b>
+        </div>
+        <section>
+          <% if @team.game_points < 1 %>
+            <li>0</li>
+          <% else %>
+          <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.game_points %>%;min-width: 1em;max-width: 600px;"><%= @team.game_points %></li><br>
+          <% end %>
+          <% if @team.league.league_avg_points < 1 %>
+            <li>0</li>
+          <% else %>
+            <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.league.league_avg_points %>%;max-width: 600px;"><%= @team.league.league_avg_points %></li><br>
+          <% end %>
+        </section>
+
+      <p><h4>Penalty Minutes</h4></p>
+        <div class="statsbox">
+          <b>Team PIMs</b><br>
+          <b>League Average</b>
+        </div>
+        <section>
+          <% if @team.team_penalties < 1 %>
+            <li>0</li>
+          <% else %>
+          <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.team_penalties %>%;min-width: 1em;max-width: 600px;"><%= @team.team_penalties %></li><br>
+          <% end %>
+          <% if @team.league.league_avg_penalties < 1 %>
+            <li>0</li>
+          <% else %>
+            <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.league.league_avg_penalties %>%;max-width: 600px;"><%= @team.league.league_avg_penalties %></li><br>
+          <% end %>
+        </section>
+
+        <p><h4>Goals Against</h4></p>
+          <div class="statsbox">
+            <b>Team GA</b><br>
+            <b>League Average</b>
+          </div>
+          <section>
+            <% if @team.goals_against < 1 %>
+              <li>0</li>
+            <% else %>
+            <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.goals_against %>%;min-width: 1em;max-width: 600px;"><%= @team.goals_against %></li><br>
+            <% end %>
+            <% if @team.league.league_avg_ga < 1 %>
+              <li>0</li>
+            <% else %>
+              <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= @team.league.league_avg_ga %>%;max-width: 600px;"><%= @team.league.league_avg_ga %></li><br>
+            <% end %>
+          </section>

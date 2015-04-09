@@ -63,6 +63,15 @@ class Team < ActiveRecord::Base
     return result
   end
 
+  def goals_against
+    ht_goals_against = games.where(home_team_id: self.id).collect {|opponent| opponent.away_goals}.reduce :+
+    at_goals_against = games.where(away_team_id: self.id).collect {|opponent| opponent.home_goals}.reduce :+
+    ht_goals_against = 0 if ht_goals_against.blank?
+    at_goals_against = 0 if at_goals_against.blank?
+    result = ht_goals_against + at_goals_against
+    return result
+  end
+
   def team_penalties
     self.rosters.collect {|roster| roster.penalties}.reduce :+
   end
