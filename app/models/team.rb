@@ -63,8 +63,12 @@ class Team < ActiveRecord::Base
     return result
   end
 
-  def penalties
+  def team_penalties
     self.rosters.collect {|roster| roster.penalties}.reduce :+
+  end
+
+  def team_assists
+    self.rosters.collect {|roster| roster.assists}.reduce :+
   end
 
 end
