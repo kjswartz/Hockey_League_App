@@ -12,12 +12,14 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8 col-md-offset-1">
+  <div class="col-md-3 col-md-offset-1">
+  <div class="leaguelisting">
     <h3>Leagues:</h3>
     <ul>
       <% @leagues.each do |league| %>
         <li><%= link_to league.skill, league_path(league) %></li>
       <% end %>
     </ul>
+  </div>
   </div>
 </div>
