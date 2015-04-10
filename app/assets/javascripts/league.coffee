@@ -8,3 +8,9 @@ $(document).on 'page:change', ->
     bJqueryUI: true
     scrollY: 300
     paging: false
+  $('#lstatstable').DataTable
+    destroy: true
+    responsive: true
+    bJqueryUI: true
+    scrollY: 300
+    paging: false

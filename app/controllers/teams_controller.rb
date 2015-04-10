@@ -6,12 +6,20 @@ class TeamsController < ApplicationController
 
   def will_attend
     GameAttendance.find_or_create_by(user: current_user, game_id: params[:game_id], team: @team)
-    redirect_to league_team_path(@team.league, @team)
+    if request.referer.include? 'users'
+      redirect_to current_user
+    else
+      redirect_to league_team_path(@team.league, @team)
+    end
   end
 
   def not_attend
     GameAttendance.find_by(user: current_user, game_id: params[:game_id], team: @team).destroy
-    redirect_to league_team_path(@team.league, @team)
+    if request.referer.include? 'users'
+      redirect_to current_user
+    else
+      redirect_to league_team_path(@team.league, @team)
+    end
   end
 
   def show

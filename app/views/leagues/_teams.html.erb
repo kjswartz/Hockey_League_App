@@ -1,30 +1,30 @@
 <div class="leagueteamstablewrapper">
-<div class="table-responsive" style="max-width:800px;">
-  <table class="table">
-    <h3>Teams:</h3>
+  <div class="display responsive no-wrap">
+    <table id="lstatstable" class="table-condensed">
+    <h3>League Stats:</h3>
     <thead>
       <tr>
         <th>Team</th>
-        <th>Goals</th>
         <th>GP</th>
         <th>Wins</th>
         <th>Losses</th>
         <th>Points</th>
-        <th>PIM</th>
+        <th>Goals</th>
         <th>GA</th>
+        <th>PIM</th>
       </tr>
     </thead>
     <tbody>
       <% @league.teams.active.each do |team| %>
         <tr>
           <td><%= link_to team.name, league_team_path(team.league, team) %></td>
-          <td><%= team.total_goals %></td>
           <td><%= team.total_games_played %></td>
           <td><%= team.winner_games %></td>
           <td><%= team.loser_games %></td>
           <td><%= team.game_points %></td>
-          <td><%= team.team_penalties %></td>
+          <td><%= team.total_goals %></td>
           <td><%= team.goals_against %></td>
+          <td><%= team.team_penalties %></td>
         </tr>
       <% end %>
     </tbody>

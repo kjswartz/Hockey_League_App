@@ -10,19 +10,57 @@
               </h3>
                 <thead>
                   <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Home Team</th>
-                    <th>Away Team</th>
+                    <% if signed_in? && current_user.team_member?(roster.team) %>
+                      <th></th>
+                      <th>RSVP</th>
+                      <th>Date</th>
+                      <th>Home Team</th>
+                      <th>Away Team</th>
+                      <th>Time</th>
+                      <th>Players Going</th>
+                      <th>Players Not RSVP'd</th>
+                    <% else %>
+                      <th>Date</th>
+                      <th>Home Team</th>
+                      <th>Away Team</th>
+                      <th>Time</th>
+                    <% end %>
                   </tr>
                 </thead>
                 <tbody>
                   <% roster.team.games.current(Time.zone.now).weekly(1.week.from_now).order('time asc').each do |game| %>
                   <tr>
-                    <td><%= game.time.strftime("%A %B, %e") %></td>
-                    <td><%= game.time.strftime("%R") %></td>
-                    <td><%= game.home_team.name %></td>
-                    <td><%= game.away_team.try(:name) %></td>
+                    <% if signed_in? && current_user.team_member?(roster.team) %>
+                      <td>
+                        <% if game.attending?(current_user, roster.team) %>
+                          <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if game.attending?(current_user, roster.team) %>
+                          <%= form_tag(not_attend_league_team_path(game.league, roster.team), method: 'delete') do %>
+                            <%= hidden_field_tag(:game_id, game.id) %>
+                            <%= submit_tag "Not Attend" %>
+                          <% end %>
+                        <% else %>
+                          <%= form_tag will_attend_league_team_path(game.league, roster.team) do %>
+                            <%= hidden_field_tag(:game_id, game.id) %>
+                            <%= submit_tag "Will Attend" %>
+                          <% end %>
+                        <% end %>
+                      </td>
+                      <td><%= game.time.strftime("%A %B, %e") %></td>
+                      <td><%= game.home_team.name %></td>
+                      <td><%= game.away_team.try(:name) %></td>
+                      <td><%= game.time.strftime("%R") %></td>
+                      <td><%= game.team_attendance(roster.team).count %></td>
+                      <td><%= game.not_attending(roster.team) %></td>
+                    <% else %>
+                      <td><%= game.time.strftime("%A %B, %e") %></td>
+                      <td><%= game.home_team.name %></td>
+                      <td><%= game.away_team.try(:name) %></td>
+                      <td><%= game.time.strftime("%R") %></td>
+                    <% end %>
                 </tr>
                 <% end %>
               </tbody>
@@ -34,7 +72,7 @@
 
     <div class="statsbox">
       <b>Individual Goals</b><br>
-      <b>Team Goals</b>
+      <b>Avg Team Goals</b>
     </div>
     <section>
       <% if roster.goals < 1 %>
@@ -45,7 +83,7 @@
       <% if roster.team.total_goals < 1 %>
         <li>0</li>
       <% else %>
-        <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.total_goals %>%;max-width: 600px;"><%= roster.team.total_goals %></li><br>
+        <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_avg_goals %>%;max-width: 600px;"><%= roster.team.team_avg_goals %></li><br>
       <% end %>
     </section>
 
@@ -53,7 +91,7 @@
 
     <div class="statsbox">
       <b>Individual Assists</b><br>
-      <b>Team Assists</b>
+      <b>Avg Team Assists</b>
     </div>
     <section>
       <% if roster.assists < 1 %>
@@ -64,14 +102,14 @@
       <% if roster.team.total_goals < 1 %>
         <li>0</li>
       <% else %>
-        <li class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_assists %>%;max-width: 600px;"><%= roster.team.team_assists %></li><br>
+        <li class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_avg_assists %>%;max-width: 600px;"><%= roster.team.team_avg_assists %></li><br>
       <% end %>
     </section>
 
   <p><h4>Penalty Minutes</h4></p>
     <div class="statsbox">
       <b>PIMS</b><br>
-      <b>Team PIMS</b>
+      <b>Avg Team PIMS</b>
     </div>
     <section>
       <% if roster.penalties < 1 %>
@@ -82,7 +120,7 @@
       <% if roster.team.team_penalties < 1 %>
         <li>0</li>
       <% else %>
-        <li class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_penalties %>%;max-width: 600px;"><%= roster.team.team_penalties %></li><br>
+        <li class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_avg_penalties %>%;max-width: 600px;"><%= roster.team.team_avg_penalties %></li><br>
       <% end %>
     </section>
     <br>

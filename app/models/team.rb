@@ -84,4 +84,25 @@ class Team < ActiveRecord::Base
     self.rosters.collect {|roster| roster.assists}.reduce :+
   end
 
+
+
+
+
+
+  def team_avg_goals
+    team_avg = self.total_goals / self.users.count.to_f
+    return team_avg.round(2)
+  end
+
+  def team_avg_assists
+    team_avg = self.team_assists / self.users.count.to_f
+    return team_avg.round(2)
+  end
+
+  def team_avg_penalties
+    team_avg = self.team_penalties / self.users.count.to_f
+    return team_avg.round(2)
+  end
+
+
 end
