@@ -1,3 +1,4 @@
+<div class="scheduletablewrapper">
 <%= bootstrap_form_for([@team.league, @team]) do |f| %>
   <%= f.alert_message 'Please fix the following errors:' %>
   <%= f.text_field :name %>
@@ -5,3 +6,4 @@
   <%= f.collection_select :user_ids, User.order("name ASC").all, :id, :email, {include_blank: true, label: 'Add Team Members'}, {class: 'chosen-select', multiple: true} %>
   <%= f.submit "Update" %>
 <% end %>
+</div>
