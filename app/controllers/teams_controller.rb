@@ -38,7 +38,7 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         # UserMailer.welcome_email(@user).deliver_later
-        format.html { redirect_to [@team.league, @team], notice: 'Team created and pending League Admin Approval.' }
+        format.html { redirect_to @team.league, notice: 'Team created and pending League Admin Approval.' }
       else
         flash[:error] = "We were unable to create team. #{@team.errors.full_messages.join('. ')}"
         format.html { render :new }

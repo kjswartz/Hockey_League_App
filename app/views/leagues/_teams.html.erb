@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @league.teams.each do |team| %>
+      <% @league.teams.active.each do |team| %>
         <tr>
           <td><%= link_to team.name, league_team_path(team.league, team) %></td>
           <td><%= team.total_goals %></td>

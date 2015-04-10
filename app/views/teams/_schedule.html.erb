@@ -1,7 +1,7 @@
 <div class="scheduletablewrapper">
 <div class="display responsive no-wrap">
   <table id="tstable" class="table-condensed">
-    <h3>Game Schedule:</h3>
+    <h3>Current Game Schedule:</h3>
     <thead>
       <tr>
       <% if signed_in? && current_user.team_member?(@team) %>
@@ -22,7 +22,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @team.games.each do |game| %>
+      <% @team.games.current(Time.zone.now).each do |game| %>
       <tr>
       <% if signed_in? && current_user.team_member?(@team) %>
         <td>

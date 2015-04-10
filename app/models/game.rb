@@ -18,6 +18,9 @@
 #
 
 class Game < ActiveRecord::Base
+  #scopes
+  scope :current, ->(time) { where("time > ?", time) }
+
   # Associations
   belongs_to :league
   belongs_to :home_team, class: Team
