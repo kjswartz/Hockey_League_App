@@ -60,6 +60,7 @@ class TeamsController < ApplicationController
     def set_team
       @team = Team.find(params[:id])
       @owner = User.find_by(email: @team.owner)
+      @team_weekly_games = @team.games.current(Time.zone.now).weekly(1.week.from_now).order('time asc')
     end
 
     def set_league

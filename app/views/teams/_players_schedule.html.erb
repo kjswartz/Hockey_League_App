@@ -11,7 +11,7 @@
         </tr>
       </thead>
     <tbody>
-      <% @events.each do |e| %>
+      <% @events.current(2.day.ago).each do |e| %>
         <tr>
           <td><%= e.user.name %></td>
           <td><%= e.start_date.strftime("%a %b, %e") %></td>

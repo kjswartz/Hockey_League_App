@@ -20,6 +20,8 @@
 class Game < ActiveRecord::Base
   #scopes
   scope :current, ->(time) { where("time > ?", time) }
+  scope :weekly, ->(time) { where("time < ?", time) }
+  scope :prior_games, ->(time) { where("time < ?", time) }
 
   # Associations
   belongs_to :league
@@ -56,4 +58,6 @@ class Game < ActiveRecord::Base
     result = (team.users.count) - (game_attendances.where(team: team).count)
     return result
   end
+
+
 end

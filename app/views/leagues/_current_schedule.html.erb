@@ -1,13 +1,8 @@
 <div class="scheduletablewrapper">
-<div class="display responsive no-wrap">
-  <table id="lstable" class="table-condensed">
+  <div class="table-responsive" style="max-width:800px;">
+    <table class="table">
     <h3>
-      Upcoming Games:
-      <small>
-      <% if signed_in? && current_user.admin? %>
-        <%= link_to 'Add a Game', new_league_game_path(@league) %>
-      <% end %>
-    </small>
+      Weekly Games: <%= Time.zone.now.strftime("%a %b, %e") %> - <%= 1.week.from_now.strftime("%a %b, %e") %>
     </h3>
       <thead>
         <tr>
@@ -18,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @league.games.current(Time.zone.now).each do |game| %>
+        <% @league_weekly_games.each do |game| %>
         <tr>
           <td><%= game.time.strftime("%A %B, %e") %></td>
           <td><%= game.time.strftime("%R") %></td>

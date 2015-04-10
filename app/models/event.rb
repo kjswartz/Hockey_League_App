@@ -13,6 +13,10 @@
 #
 
 class Event < ActiveRecord::Base
+  #scopes
+  scope :current, ->(time) { where("stop_date > ?", time) }
+
+  # Associations
   belongs_to :team
   belongs_to :user
 
