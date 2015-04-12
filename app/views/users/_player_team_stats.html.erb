@@ -2,7 +2,7 @@
   <h3><%= link_to roster.team.name, league_team_path(roster.team.league, roster.team) %><small> <%= roster.team.league.skill %> League</small></h3>
   <p><strong><%= roster.games_played %> Games Played</strong></p>
 
-          <div class="scheduletablewrapper">
+          <div class="statictablewrapper">
             <div class="table-responsive" style="max-width:800px;">
               <table class="table">
               <h3>
@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                   <% roster.team.games.current(Time.zone.now).weekly(1.week.from_now).order('time asc').each do |game| %>
-                  <tr>
+                  <tr style="background:white;">
                     <% if signed_in? && current_user.team_member?(roster.team) %>
                       <td>
                         <% if game.attending?(current_user, roster.team) %>

@@ -1,3 +1,4 @@
+<div class="searchtablewrapper">
 <%= bootstrap_form_for(@user) do |f| %>
   <%= f.alert_message 'Please fix the following errors:' %>
   <%= f.text_field :name %>
@@ -11,3 +12,4 @@
   <%= f.text_area :bio %>
   <%= f.submit "Submit" %>
 <% end %>
+</div>

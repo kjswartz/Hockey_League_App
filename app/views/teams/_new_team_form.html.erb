@@ -1,4 +1,5 @@
-League Skill: <%= @league.skill %><br>
+<div class="searchtablewrapper">
+  <strong>League Skill: <%= @league.skill %></strong><br><br>
 <%= bootstrap_form_for([@league, @team]) do |f| %>
   <%= f.alert_message 'Please fix the following errors:' %>
   <%= f.text_field :name, label: 'Team Name', placeholder: 'Team Name' %>
@@ -6,3 +7,4 @@ League Skill: <%= @league.skill %><br>
   <%= f.text_field :owner, value: current_user.email, label: 'Team Owner' %>
   <%= f.submit :submit %>
 <% end %>
+</div>

@@ -1,4 +1,4 @@
-<div class="scheduletablewrapper">
+<div class="statictablewrapper">
   <div class="table-responsive" style="max-width:800px;">
     <table class="table">
     <h3>
@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         <% @league.games.prior_games(Time.zone.now).each do |game| %>
-        <tr>
+        <tr style="background:white;">
           <td><%= game.time.strftime("%A %B, %e") %></td>
           <td><%= game.time.strftime("%R") %></td>
           <td><%= game.home_team.name %></td>

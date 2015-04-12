@@ -72,7 +72,7 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <% if signed_in? && current_user.team_member?(@team) %>
-      <div class="playerSchedule"><%= render 'players_schedule' %></div>
+        <%= render 'players_schedule' %>
     <% end %>
   </div>
 </div>

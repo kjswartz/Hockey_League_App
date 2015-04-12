@@ -1,4 +1,4 @@
-<div class="scheduletablewrapper">
+<div class="statictablewrapper">
   <div class="table-responsive" style="max-width:800px;">
     <table class="table">
     <h3>
@@ -25,7 +25,7 @@
       </thead>
       <tbody>
         <% @team_weekly_games.each do |game| %>
-        <tr>
+        <tr style="background:white;">
         <% if signed_in? && current_user.team_member?(@team) %>
           <td>
             <% if game.attending?(current_user, @team) %>
