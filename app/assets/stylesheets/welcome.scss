@@ -19,7 +19,7 @@
 }
 
 body {
-  background-image: url("IceRink2010.jpg");
+  background-image: image-url("IceRink2010.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -66,5 +66,5 @@ li {
 .leaguelisting {
 	padding: 20px;
 	border-radius: 0;
-	background-image: url("Ice-cut.jpg");
+	background-image: image-url("Ice-cut.jpg");
 }
