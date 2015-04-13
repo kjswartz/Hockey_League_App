@@ -20,7 +20,7 @@
         <li style="display:inline;"><h4><%= link_to league.skill, league_path(league) %></h4></li>
           <ul>
           <% league.teams.each do |team| %>
-            <li><%= link_to team.name, [league, team] %></li>
+            <li><strong><%= link_to team.name, [league, team] %></strong></li>
           <% end %>
         </ul>
       </div>
