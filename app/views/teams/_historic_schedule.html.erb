@@ -18,11 +18,11 @@
         <tr style="background:white;">
           <td><%= game.time.strftime("%A %B, %e") %></td>
           <td><%= game.time.strftime("%R") %></td>
-          <td><%= game.home_team.name %></td>
+          <td><%= game.home_team.try(:name) %></td>
           <td><%= game.home_goals %></td>
           <td><%= game.away_team.try(:name) %></td>
           <td><%= game.away_goals %></td>
-          <td><%= game.winner.name %></td>
+          <td><%= game.winner.try(:name) %></td>
         </tr>
         <% end %>
       </tbody>
