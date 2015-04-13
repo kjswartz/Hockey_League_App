@@ -17,7 +17,6 @@ $(document).on 'page:change', ->
     bJqueryUI: true
     scrollY: 300
     paging: false
-    order: [2, 'asc']
 
   $('#weeklyScheduleButton').click ->
     $('#weeklySchedule').show()

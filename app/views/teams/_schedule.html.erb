@@ -5,14 +5,14 @@
     <thead>
       <tr>
       <% if signed_in? && current_user.team_member?(@team) %>
-        <th></th>
-        <th>RSVP</th>
         <th>Date</th>
         <th>Time</th>
         <th>Home Team</th>
         <th>Away Team</th>
         <th>Players Going</th>
         <th>Players Not RSVP'd</th>
+        <th>Attending?</th>
+        <th>RSVP'd</th>
       <% else %>
         <th>Date</th>
         <th>Time</th>
@@ -24,31 +24,31 @@
     <tbody>
       <% @team.games.current(Time.zone.now).each do |game| %>
       <tr>
-      <% if signed_in? && current_user.team_member?(@team) %>
-        <td>
-          <% if game.attending?(current_user, @team) %>
-            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-          <% end %>
-        </td>
-        <td>
-          <% if game.attending?(current_user, @team) %>
-            <%= form_tag(not_attend_league_team_path(game.league, @team), method: 'delete') do %>
-              <%= hidden_field_tag(:game_id, game.id) %>
-              <%= submit_tag "Not Attend" %>
-            <% end %>
-          <% else %>
-            <%= form_tag will_attend_league_team_path(game.league, @team) do %>
-              <%= hidden_field_tag(:game_id, game.id) %>
-              <%= submit_tag "Will Attend" %>
-            <% end %>
-          <% end %>
-        </td>
         <td><%= game.time.strftime("%A %B, %e") %></td>
         <td><%= game.time.strftime("%R") %></td>
         <td><%= game.home_team.name %></td>
         <td><%= game.away_team.try(:name) %></td>
         <td><%= game.team_attendance(@team).count %></td>
         <td><%= game.not_attending(@team) %></td>
+        <% if signed_in? && current_user.team_member?(@team) %>
+          <td>
+            <% if game.attending?(current_user, @team) %>
+              <%= form_tag(not_attend_league_team_path(game.league, @team), method: 'delete') do %>
+                <%= hidden_field_tag(:game_id, game.id) %>
+                <%= submit_tag "Not Attend" %>
+              <% end %>
+            <% else %>
+              <%= form_tag will_attend_league_team_path(game.league, @team) do %>
+                <%= hidden_field_tag(:game_id, game.id) %>
+                <%= submit_tag "Will Attend" %>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <% if game.attending?(current_user, @team) %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% end %>
+          </td>
       <% else %>
         <td><%= game.time.strftime("%A %B, %e") %></td>
         <td><%= game.time.strftime("%R") %></td>
