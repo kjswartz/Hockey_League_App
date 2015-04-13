@@ -1,21 +1,26 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <h1><%= @league.skill %> League Page</h1>
-    <% if signed_in? %>
-      <%= link_to 'New Team Registration', new_league_team_path(@league) %>
-    <% end %>
+    <div class="page-header">
+      <h1><%= @league.skill %> League Page
+        <small>
+          <% if signed_in? %>
+            // <%= link_to 'New Team Registration', new_league_team_path(@league) %>
+          <% end %>
+        </small>
+      </h1>
+        <div style="text-align:center;">
+          <button type="button" class="btn btn-primary" id="leagueWeeklyScheduleButton">Weekly Schedule</button>
+          <button type="button" class="btn btn-primary" id="leagueSeasonButton">Season Schedual</button>
+          <button type="button" class="btn btn-primary" id="leagueStatsButton">League Stats</button>
+          <button type="button" class="btn btn-primary" id="leaguePriorGamesButton">Prior Games</button>
+        </div>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <%= render 'teams' %>
-  </div>
-</div>
 
-<br>
 
-<div class="row">
+<div class="row" id="leagueWeeklySchedule">
   <div class="col-md-8 col-md-offset-2">
     <%= render 'current_schedule' %>
   </div>
@@ -23,7 +28,7 @@
 
 <br>
 
-<div class="row">
+<div class="row" id="leagueSeason">
   <div class="col-md-8 col-md-offset-2">
     <%= render 'schedule' %>
   </div>
@@ -31,7 +36,15 @@
 
 <br>
 
-<div class="row">
+<div class="row" style="display:none" id="leagueStats">
+  <div class="col-md-8 col-md-offset-2">
+    <%= render 'league_standings' %>
+  </div>
+</div>
+
+<br>
+
+<div class="row" style="display:none" id="leaguePriorGames">
   <div class="col-md-8 col-md-offset-2">
     <%= render 'historic_schedule' %>
   </div>

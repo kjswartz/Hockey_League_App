@@ -1,67 +1,50 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <h1>
-      <%= @team.name.titlecase %>
-      <small>
-        <% if signed_in? && !current_user.team_member?(@team) %>
-          <a id="membershiprequestModal">Request to Join team</a>
-        <% end %>
-      </small>
-    </h1>
+    <div class="page-header">
+      <h1>
+        <%= @team.name.titlecase %>
+        <small>
+          // <%= link_to ("#{@team.league.skill} League"), @team.league %><br>
+          <% if signed_in? && current_user.team_owner?(@team) %>
+            You are the team owner: <%= link_to 'Edit', edit_league_team_path(@team.league, @team) %>
+          <% else %>
+            Team Owner: <%= @owner.name %>
+          <% end %>
+          <% if signed_in? && !current_user.team_member?(@team) %>
+            // <a id="membershiprequestModal">Request to Join team</a>
+          <% end %>
+        </small>
+      </h1>
+        <div style="text-align:center;">
+          <button type="button" class="btn btn-primary" id="weeklyScheduleButton">Current Weekly Schedule</button>
+          <button type="button" class="btn btn-primary" id="scheduleButton">Season Schedule</button>
+          <button type="button" class="btn btn-primary" id="statsButton">Stats</button>
+          <button type="button" class="btn btn-primary" id="rosterButton">Roster</button>
+        </div>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <% if signed_in? && current_user.team_owner?(@team) %>
-      <h4>You are the team owner: <%= link_to 'Edit', edit_league_team_path(@team.league, @team) %></h4>
-    <% else %>
-    <h4>Team Owner: <%= @owner.name %></h4>
-    <% end %>
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-      <li>Season Schedule</li>
-      <li>Stats</li>
-      <li>Roster</li>
-  </div>
-</div>
-
-<div class="row">
+<div class="row" id="weeklySchedule">
   <div class="col-md-8 col-md-offset-2">
     <%= render 'current_schedule' %>
   </div>
 </div>
 
-<br>
-
-<div class="row">
+<div class="row" style="display:none;" id="schedule">
   <div class="col-md-8 col-md-offset-2">
     <%= render 'schedule' %>
   </div>
 </div>
 
-<br>
-
-<div class="row">
+<div class="row" style="display:none;" id="teamStats">
   <div class="col-md-8 col-md-offset-2">
     <%= render 'historic_schedule' %>
-  </div>
-</div>
-
-<br>
-
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
     <%= render 'team_stats' %>
   </div>
 </div>
 
-
-<div class="row">
+<div class="row" style="display:none;" id="roster">
   <div class="col-md-8 col-md-offset-2">
     <h3>Roster:</h3>
     <% @team.users.in_groups_of(3) do |group| %>
@@ -76,15 +59,21 @@
   </div>
 </div>
 
-<br>
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <% if signed_in? && current_user.team_member?(@team) %>
+<% if signed_in? && current_user.team_member?(@team) %>
+  <br>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
         <%= render 'players_schedule' %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
+
+
+
+
+
+
 
 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
 <div class="modal-dialog">

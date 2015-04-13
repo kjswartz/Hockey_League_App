@@ -17,3 +17,27 @@ $(document).on 'page:change', ->
     bJqueryUI: true
     scrollY: 300
     paging: false
+
+  $('#weeklyScheduleButton').click ->
+    $('#weeklySchedule').toggle()
+    $('#schedule').hide()
+    $('#roster').hide()
+    $('#teamStats').hide()
+
+  $('#scheduleButton').click ->
+    $('#schedule').toggle()
+    $('#roster').hide()
+    $('#teamStats').hide()
+    $('#weeklySchedule').hide()
+
+  $('#statsButton').click ->
+    $('#teamStats').toggle()
+    $('#roster').hide()
+    $('#schedule').hide()
+    $('#weeklySchedule').hide()
+
+  $('#rosterButton').click ->
+    $('#roster').toggle()
+    $('#schedule').hide()
+    $('#teamStats').hide()
+    $('#weeklySchedule').hide()

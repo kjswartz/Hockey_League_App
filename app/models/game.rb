@@ -45,7 +45,7 @@ class Game < ActiveRecord::Base
   end
 
   def attending_members(team)
-    result = game_attendances.where(team: team).collect{|ga| ga.user.name}.join(", ")
+    result = team_attendance(team).collect{|ga| ga.user.name}
     return result
   end
 
@@ -58,6 +58,5 @@ class Game < ActiveRecord::Base
     result = (team.users.count) - (game_attendances.where(team: team).count)
     return result
   end
-
 
 end

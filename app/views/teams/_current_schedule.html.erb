@@ -2,7 +2,7 @@
   <div class="table-responsive" style="max-width:800px;">
     <table class="table">
     <h3>
-      Weekly Schedule: <%= Time.zone.now.strftime("%a %b, %e") %> - <%= 1.week.from_now.strftime("%a %b, %e") %>
+      Weekly Schedule: <%= Time.now.strftime("%a %b, %e") %> - <%= 1.week.from_now.strftime("%a %b, %e") %>
     </h3>
       <thead>
         <tr>
@@ -57,9 +57,23 @@
           <td><%= game.away_team.try(:name) %></td>
           <td><%= game.time.strftime("%R") %></td>
         <% end %>
-      </tr>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<% if signed_in? && current_user.team_member?(@team) %>
+  <div class="col-md-6">
+    <% @team_weekly_games.each do |game| %>
+      <h3>RSVP'd Players<small>//<%= game.time.strftime("%e %b, %a %R") %></small></h3>
+      <ul>
+        <% game.attending_members(@team).each do |player| %>
+          <li><%= player %></li>
+        <% end %>
+      </ul>
       <% end %>
-    </tbody>
-  </table>
-</div>
-</div>
+  </div>
+<% end %>
