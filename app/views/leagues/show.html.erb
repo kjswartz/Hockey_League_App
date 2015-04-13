@@ -2,17 +2,27 @@
   <div class="col-md-8 col-md-offset-2">
     <div class="page-header">
       <h1><%= @league.skill %> League Page
-        <small>
+        <small> //
+          <span class="dropdown">
+            <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">All Teams</a>
+            <span class="caret"></span>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <% @league.teams.each do |team| %>
+                <li role="presentation"><%= link_to team.name, league_team_path(@league, team) %></li>
+              <% end %>
+            </ul>
+          </span>
+        <br>
           <% if signed_in? %>
-            // <%= link_to 'New Team Registration', new_league_team_path(@league) %>
+            <%= link_to 'New Team Registration', new_league_team_path(@league) %>
           <% end %>
         </small>
       </h1>
         <div>
           <button type="button" class="btn btn-primary" id="leagueWeeklyScheduleButton">Weekly Schedule</button>
           <button type="button" class="btn btn-primary" id="leagueSeasonButton">Season Schedual</button>
-          <button type="button" class="btn btn-primary" id="leagueStatsButton">League Stats</button>
           <button type="button" class="btn btn-primary" id="leaguePriorGamesButton">Prior Games</button>
+          <button type="button" class="btn btn-primary" id="leagueStatsButton">League Stats</button>
         </div>
     </div>
   </div>

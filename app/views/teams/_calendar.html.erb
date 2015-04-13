@@ -1,8 +1,8 @@
 <h1>Add Event to Schedule</h1>
 <%= bootstrap_form_for([@team.league, @team, @event]) do |f| %>
   <%= f.alert_message 'Please fix the following errors:' %>
-  <%= f.date_field :start_date %>
-  <%= f.date_field :stop_date %>
+  <%= f.date_select :start_date %>
+  <%= f.date_select :stop_date %>
   <%= f.text_field :description %>
   <%= f.hidden_field :team_id %>
   <%= f.hidden_field :user_id %>

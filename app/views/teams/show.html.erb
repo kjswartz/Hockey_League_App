@@ -64,12 +64,13 @@
 
 <br>
 
-<div class="row" style="display:none;" id="playerSchedules">
-  <div class="col-md-8 col-md-offset-2">
-      <%= render 'players_schedule' %>
+<% if signed_in? && current_user.team_member?(@team) %>
+  <div class="row" style="display:none;" id="playerSchedules">
+    <div class="col-md-8 col-md-offset-2">
+        <%= render 'players_schedule' %>
+    </div>
   </div>
-</div>
-
+<% end %>
 
 
 
@@ -89,6 +90,7 @@
 </div>
 </div>
 
+<% if signed_in? && current_user.team_member?(@team) %>
 <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
@@ -104,3 +106,4 @@
   </div>
 </div>
 </div>
+<% end %>

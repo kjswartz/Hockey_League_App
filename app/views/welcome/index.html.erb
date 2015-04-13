@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <div class="jumbotron jumbo">
+    <div class="jumbotron jumbo" style="border-radius:0;">
       <h1>Ice Sports Forum</h1>
       <p>Ice Sports Forum's Adult Hockey program is open for all those 18-70+ years old. We have been rated #1 in the Southeast and in the top 10 nationwide by USA Hockey for the last 4 years. Our Adult program currently consists of 98 teams spread out among 13 leagues. This lets us cater to those who have never skated before, all the way to those with Stanley Cup rings.</p>
       <p><small>Our leagues run year around, with the regular season consisting of 12 games, and then playoffs. Please click one of the leagues below for more information. Listed in ascending skill levels.</small></p>
@@ -11,15 +11,20 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-3 col-md-offset-1">
-  <div class="leaguelisting">
+<div class="row" style="padding: 0px 15px 0px 15px;">
+  <div class="col-md-10 col-md-offset-1 leaguelisting">
     <h3>Leagues:</h3>
-    <ul>
-      <% @leagues.each do |league| %>
-        <li><%= link_to league.skill, league_path(league) %></li>
-      <% end %>
-    </ul>
-  </div>
+
+    <% @leagues.each do |league| %>
+      <div class="col-md-3">
+        <li style="display:inline;"><h4><%= link_to league.skill, league_path(league) %></h4></li>
+          <ul>
+          <% league.teams.each do |team| %>
+            <li><%= link_to team.name, [league, team] %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
   </div>
 </div>
