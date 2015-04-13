@@ -2,39 +2,43 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'page:change', ->
-  $('#lstable').DataTable
+  schedTable = $('#lstable').DataTable
     destroy: true
     responsive: true
     bJqueryUI: true
     scrollY: 300
     paging: false
-  $('#lstatstable').DataTable
+  statsTable = $('#lstatstable').DataTable
     destroy: true
     responsive: true
     bJqueryUI: true
     scrollY: 300
     paging: false
+    order: [4, 'desc']
 
   $('#leagueWeeklyScheduleButton').click ->
-    $('#leagueWeeklySchedule').toggle()
+    $('#leagueWeeklySchedule').show()
     $('#leagueSeason').hide()
     $('#leagueStats').hide()
     $('#leaguePriorGames').hide()
 
   $('#leagueSeasonButton').click ->
-    $('#leagueSeason').toggle()
+    $('#leagueSeason').show()
     $('#leagueWeeklySchedule').hide()
     $('#leagueStats').hide()
     $('#leaguePriorGames').hide()
+    schedTable.draw()
 
   $('#leagueStatsButton').click ->
-    $('#leagueStats').toggle()
+    $('#leagueStats').show()
     $('#leagueWeeklySchedule').hide()
     $('#leagueSeason').hide()
     $('#leaguePriorGames').hide()
+    statsTable.draw()
 
   $('#leaguePriorGamesButton').click ->
-    $('#leaguePriorGames').toggle()
+    # $('#dateColumn').toggle()
+    $('#leaguePriorGames').show()
     $('#leagueWeeklySchedule').hide()
     $('#leagueSeason').hide()
     $('#leagueStats').hide()

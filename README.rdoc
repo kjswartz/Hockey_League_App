@@ -16,4 +16,4 @@
 
 * Deployment instructions
 
-* Heroku: https://git.heroku.com/rocky-sea-8876.git
+* Heroku: https://rocky-sea-8876.herokuapp.com/

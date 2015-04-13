@@ -2,7 +2,7 @@
 <div class="display responsive no-wrap">
   <table id="lstable" class="table-condensed">
     <h3>
-      Upcoming Games:
+      Season Schedule
       <small>
       <% if signed_in? && current_user.admin? %>
         <%= link_to 'Add a Game', new_league_game_path(@league) %>
@@ -11,7 +11,7 @@
     </h3>
       <thead>
         <tr>
-          <th>Date</th>
+          <th id="dateColumn">Date</th>
           <th>Time</th>
           <th>Home Team</th>
           <th>Away Team</th>

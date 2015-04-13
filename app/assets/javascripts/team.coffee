@@ -11,33 +11,38 @@ $(document).on 'page:change', ->
     width: '500px'
     no_results_text: "Oops, nothing found!"
     allow_single_deselect: true
-  $('#tstable').DataTable
+  teamScheduleTable = $('#tstable').DataTable
     destroy: true
     responsive: true
     bJqueryUI: true
     scrollY: 300
     paging: false
+    order: [2, 'asc']
 
   $('#weeklyScheduleButton').click ->
-    $('#weeklySchedule').toggle()
+    $('#weeklySchedule').show()
     $('#schedule').hide()
     $('#roster').hide()
     $('#teamStats').hide()
 
   $('#scheduleButton').click ->
-    $('#schedule').toggle()
+    $('#schedule').show()
     $('#roster').hide()
     $('#teamStats').hide()
     $('#weeklySchedule').hide()
+    teamScheduleTable.draw()
 
   $('#statsButton').click ->
-    $('#teamStats').toggle()
+    $('#teamStats').show()
     $('#roster').hide()
     $('#schedule').hide()
     $('#weeklySchedule').hide()
 
   $('#rosterButton').click ->
-    $('#roster').toggle()
+    $('#roster').show()
     $('#schedule').hide()
     $('#teamStats').hide()
     $('#weeklySchedule').hide()
+
+  $('#playerSceduleButton').click ->
+    $('#playerSchedules').toggle()

@@ -15,11 +15,14 @@
           <% end %>
         </small>
       </h1>
-        <div style="text-align:center;">
+        <div>
           <button type="button" class="btn btn-primary" id="weeklyScheduleButton">Current Weekly Schedule</button>
           <button type="button" class="btn btn-primary" id="scheduleButton">Season Schedule</button>
           <button type="button" class="btn btn-primary" id="statsButton">Stats</button>
           <button type="button" class="btn btn-primary" id="rosterButton">Roster</button>
+          <% if signed_in? && current_user.team_member?(@team) %>
+            <button type="button" class="btn btn-primary" id="playerSceduleButton">Player's Schedule</button>
+          <% end %>
         </div>
     </div>
   </div>
@@ -31,7 +34,7 @@
   </div>
 </div>
 
-<div class="row" style="display:none;" id="schedule">
+<div class="row" style="display:none" id="schedule">
   <div class="col-md-8 col-md-offset-2">
     <%= render 'schedule' %>
   </div>
@@ -59,18 +62,13 @@
   </div>
 </div>
 
+<br>
 
-<% if signed_in? && current_user.team_member?(@team) %>
-  <br>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <%= render 'players_schedule' %>
-    </div>
+<div class="row" style="display:none;" id="playerSchedules">
+  <div class="col-md-8 col-md-offset-2">
+      <%= render 'players_schedule' %>
   </div>
-<% end %>
-
-
-
+</div>
 
 
 

@@ -8,7 +8,7 @@
           <% end %>
         </small>
       </h1>
-        <div style="text-align:center;">
+        <div>
           <button type="button" class="btn btn-primary" id="leagueWeeklyScheduleButton">Weekly Schedule</button>
           <button type="button" class="btn btn-primary" id="leagueSeasonButton">Season Schedual</button>
           <button type="button" class="btn btn-primary" id="leagueStatsButton">League Stats</button>
@@ -18,23 +18,11 @@
   </div>
 </div>
 
-
-
 <div class="row" id="leagueWeeklySchedule">
   <div class="col-md-8 col-md-offset-2">
     <%= render 'current_schedule' %>
   </div>
 </div>
-
-<br>
-
-<div class="row" id="leagueSeason">
-  <div class="col-md-8 col-md-offset-2">
-    <%= render 'schedule' %>
-  </div>
-</div>
-
-<br>
 
 <div class="row" style="display:none" id="leagueStats">
   <div class="col-md-8 col-md-offset-2">
@@ -42,10 +30,14 @@
   </div>
 </div>
 
-<br>
-
 <div class="row" style="display:none" id="leaguePriorGames">
   <div class="col-md-8 col-md-offset-2">
     <%= render 'historic_schedule' %>
+  </div>
+</div>
+
+<div class="row" style="display:none" id="leagueSeason">
+  <div class="col-md-8 col-md-offset-2">
+    <%= render 'schedule' %>
   </div>
 </div>
