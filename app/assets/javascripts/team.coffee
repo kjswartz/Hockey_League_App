@@ -6,7 +6,6 @@ $(document).on 'page:change', ->
     $('#basicModal').modal 'show'
   $('#eventcalendarModal').click ->
     $('#eventModal').modal 'show'
-  # enable chosen js
   $('.chosen-select').chosen
     width: '500px'
     no_results_text: "Oops, nothing found!"

@@ -22,9 +22,9 @@
         <% @team_weekly_games.each do |game| %>
         <tr style="background:white;">
           <td><%= game.time.strftime("%A %B, %e") %></td>
+          <td><%= game.time.strftime("%R") %></td>
           <td><%= game.home_team.name %></td>
           <td><%= game.away_team.try(:name) %></td>
-          <td><%= game.time.strftime("%R") %></td>
           <% if signed_in? && current_user.team_member?(@team) %>
             <td><%= game.team_attendance(@team).count %></td>
             <td><%= game.not_attending(@team) %></td>
