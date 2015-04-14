@@ -6,3 +6,9 @@ $(document).on 'page:change', ->
     width: '400px'
     no_results_text: "Oops, nothing found!"
     allow_single_deselect: true
+  $('#adminSeasonTable').DataTable
+    destroy: true
+    responsive: true
+    bJqueryUI: true
+    scrollY: 300
+    paging: false

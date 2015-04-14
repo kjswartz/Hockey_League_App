@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post 'teams/subscribe'
 
   resources :leagues, only: [:index, :show] do
-   resources :games;
+   resources :games, except: [:show];
    resources :teams do
      resources :events
       member do
