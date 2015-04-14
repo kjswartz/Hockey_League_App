@@ -1,146 +1,83 @@
-# @teams = Team.all
-# i = 0
-# @teams.each do |team|
-#   puts "#{team.name} being seeded"
-#   puts "Team Ccount #{i}"
-#   10.times do |counter|
-#     User.create(name: Faker::Name.name,
-#                email: Faker::Internet.safe_email,
-#                remote_avatar_url: Faker::Avatar.image,
-#                bio: Faker::Lorem.paragraph,
-#                team_ids: team.id,
-#                phone: Faker::PhoneNumber.cell_phone,
-#                goals: rand(1..15),
-#                assists: rand(1..10),
-#                penalties: rand(1..20),
-#                password: 'password',
-#                games_played: rand(1..11))
-#   end
-#   i += 1
-# end
+User.destroy_all
+Game.destroy_all
 
-# @ids = %w(561 557 544 536 528 524 518 517 511 491 488 485 482 478 472 469 468)
-# @moreids = %w(428 427 425 424 403 393 391 389 383 365 360 357 350 345 334 332 324 322 315)
-# @evenmoreids = %w(308 307 281 278 272 270 264 260 255 243 241 239 237 231 221 220 216 214)
-# @idsids = %w(207 200 195 191 190 189 185 180 177 173 168 157 156 155 152 148 145 144 143 141)
-# @idsidsids = %w(138 134 461 458 452 446 439 437 434)
-#
-# @ids.each do |id|
-#   id.to_i
-#   user = User.find_by(id: id)
-#   user.remote_avatar_url = "http://2.cdn.nhle.com/photos/mugs/#{rand(8471200..8471330)}.jpg"
-#   user.save
-# end
-#
-# puts "1 of 5 done"
-#
-# @moreids.each do |id|
-#   id.to_i
-#   user = User.find_by(id: id)
-#   user.remote_avatar_url = "http://2.cdn.nhle.com/photos/mugs/#{rand(8471200..8471330)}.jpg"
-#   user.save
-# end
-#
-# puts "2 of 5 done"
-#
-# @evenmoreids.each do |id|
-#   id.to_i
-#   user = User.find_by(id: id)
-#   user.remote_avatar_url = "http://2.cdn.nhle.com/photos/mugs/#{rand(8471200..8471330)}.jpg"
-#   user.save
-# end
-#
-# puts "3 of 5 done"
-#
-# @idsids.each do |id|
-#   id.to_i
-#   user = User.find_by(id: id)
-#   user.remote_avatar_url = "http://2.cdn.nhle.com/photos/mugs/#{rand(8471200..8471330)}.jpg"
-#   user.save
-# end
-#
-# puts "4 of 5 done"
-#
-# @idsidsids.each do |id|
-#   id.to_i
-#   user = User.find_by(id: id)
-#   user.remote_avatar_url = "http://2.cdn.nhle.com/photos/mugs/#{rand(8471200..8471330)}.jpg"
-#   user.save
-# end
-
-#
-# @users.each do |user|
-#   user.remote_avatar_url = "http://2.cdn.nhle.com/photos/mugs/#{rand(8471200..8471330)}.jpg"
-#   user.save
-# end
+@teams = Team.all
+@teams.each do |team|
+  10.times do |counter|
+    User.create!(name: Faker::Name.name,
+                 email: Faker::Internet.safe_email,
+                 remote_avatar_url: "http://2.cdn.nhle.com/photos/mugs/#{rand(8471200..8471331)}.jpg"
+                 bio: Faker::Lorem.paragraph,
+                 team_ids: team.id,
+                 phone: Faker::PhoneNumber.cell_phone,
+                 password: 'pa$$m0rd')
+  end
+end
 
 #seeding team owners
-    # @users = User.all
-    # @user_email = []
-    #
-    # @users.each do |user|
-    #   @user_email << user.email
-    # end
-    #
-    # @teams = Team.where(owner: '')
-    # @teams.each do |team|
-    #   team.owner = @user_email[rand(4..100)]
-    #   team.save
-    # end
+  @teams = Team.where(owner: '')
+  @teams.each do |team|
+    @users = User.where(team_ids: team.id)
+      @user_email = []
+      @users.each do |user|
+        @user_email << user.email
+      end
+    team.owner = @user_email.sample
+    team.save
+  end
 
 
 #seeding game schedules
-    # @leagues = League.all
-    # @gt = [00, 15, 30, 45]
-    # @leagues.each do |league|
-    #   10.times do |counter|
-    #     ltids = league.team_ids
-    #     ht = ltids.sample
-    #     newltids = ltids - [ht]
-    #     at = newltids.sample
-    #     @ht = Team.find_by(id: ht)
-    #     @at = Team.find_by(id: at)
-    #     @game = Game.create!(league: league,
-    #                 home_team_id: ht,
-    #                 away_team_id: at,
-    #                 time: "2015-#{rand(4..5)}-#{rand(3..30)} #{rand(18..23)}:#{@gt.sample}:00")
-    #     @ht.games << @game
-    #     @at.games << @game
-    #   end
-    # end
+    @leagues = League.all
+    @gt = [00, 15, 30, 45]
+    @leagues.each do |league|
+      10.times do |counter|
+        ltids = league.team_ids
+        ht = ltids.sample
+        newltids = ltids - [ht]
+        at = newltids.sample
+        @ht = Team.find_by(id: ht)
+        @at = Team.find_by(id: at)
+        @game = Game.create!(league: league,
+                    home_team_id: ht,
+                    away_team_id: at,
+                    time: "2015-#{rand(3..5)}-#{rand(3..30)} #{rand(18..23)}:#{@gt.sample}:00")
+        @ht.games << @game
+        @at.games << @game
+      end
+    end
 
 # seeding game data
-
-# @games = Game.all
-# @games.each do |game|
-#   teamids = []
-#   teamids << game.home_team_id
-#   teamids << game.away_team_id
-#   game.winner_id = teamids.sample
-#   otherid = teamids - [game.winner_id]
-#   game.loser_id = otherid.first
-#   if game.winner_id == game.home_team_id
-#     game.home_goals = rand(3..6)
-#     game.home_points = 2
-#     game.away_goals = rand(0..2)
-#     game.away_points = 1
-#   else
-#     game.home_goals = rand(0..2)
-#     game.home_points = 1
-#     game.away_goals = rand(3..6)
-#     game.away_points = 2
-#   end
-#   game.save
-# end
+  @games = Game.where("time < ?", Date.today)
+  @games.each do |game|
+    teamids = []
+    teamids << game.home_team_id
+    teamids << game.away_team_id
+    game.winner_id = teamids.sample
+    otherid = teamids - [game.winner_id]
+    game.loser_id = otherid.first
+    if game.winner_id == game.home_team_id
+      game.home_goals = rand(3..6)
+      game.home_points = 2
+      game.away_goals = rand(0..2)
+      game.away_points = 1
+    else
+      game.home_goals = rand(0..2)
+      game.home_points = 1
+      game.away_goals = rand(3..6)
+      game.away_points = 2
+    end
+    game.save
+  end
 
 #seeding user stats
-  # @users = User.all
-  # @users.each do |user|
-  #   user.rosters.each do |roster|
-  #     roster.goals = rand(0..11)
-  #     roster.assists = rand(0..10)
-  #     roster.penalties = rand(0..20)
-  #     roster.games_played = rand(3..12)
-  #     roster.save
-  #   end
-  # end
+  @users = User.all
+  @users.each do |user|
+    user.rosters.each do |roster|
+      roster.goals = rand(0..11)
+      roster.assists = rand(0..10)
+      roster.penalties = rand(0..8)
+      roster.games_played = rand(3..12)
+      roster.save
+    end
+  end
