@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   before_action :set_league
   before_action :check_user_admin, only: [:new, :create, :edit, :update, :index]
-  before_action :team_select, only: [:new, :edit, :update]
+  before_action :team_select, only: [:new, :edit, :update, :create]
   before_action :set_game, only: [:edit, :update]
 
   def index
@@ -29,7 +29,7 @@ class GamesController < ApplicationController
         @away_team.games << @game
         format.html { redirect_to @league, notice: 'Game was successfully created.' }
       else
-        flash[:error] = "Unable to sign you up. #{@game.errors.full_messages.join('. ')}"
+        flash[:error] = "Unable to create game. #{@game.errors.full_messages.join('. ')}"
         format.html { render :new }
       end
     end

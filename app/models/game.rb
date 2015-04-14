@@ -44,11 +44,18 @@ class Game < ActiveRecord::Base
   validates :home_points, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 2 }
   validates :away_points, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 2 }
   validate :winner_and_loser_validation
+  validate :homeTeam_and_awayTeam_validation
 
   # Methods
   def winner_and_loser_validation
     if self.winner.present? && self.loser.present? && self.winner == self.loser
       errors.add(:loser_id, "can't be the same as Winner")
+    end
+  end
+
+  def homeTeam_and_awayTeam_validation
+    if self.home_team == self.away_team
+      errors.add(:home_team_id, "can't be the same as Away Team")
     end
   end
 
