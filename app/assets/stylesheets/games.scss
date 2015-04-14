@@ -1,3 +1,17 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.gamesTable {
+  border: 2px solid #a1a1a1;
+  padding: 20px;
+  border-radius: 0;
+  background:#fff;
+}
+
+.editGamesTable {
+  background-image: image-url("Ice-cut.jpg");
+  border: 2px solid #a1a1a1;
+  padding: 10px 40px;
+  border-radius: 0;
+}

@@ -19,9 +19,10 @@
 
 class Game < ActiveRecord::Base
   #scopes
+  scope :prior_games, ->(time) { where("time < ?", time) }
   scope :current, ->(time) { where("time > ?", time) }
   scope :weekly, ->(time) { where("time < ?", time) }
-  scope :prior_games, ->(time) { where("time < ?", time) }
+  scope :today, lambda { where("time between ? and ?", Date.yesterday, Date.tomorrow) }
 
   # Associations
   belongs_to :league
@@ -38,8 +39,15 @@ class Game < ActiveRecord::Base
   validates :home_team_id, presence: true
   validates :away_team_id, presence: true
   validates :time, presence: true
+  validate :winner_and_loser_validation
 
   # Methods
+  def winner_and_loser_validation
+    if self.winner.present? && self.loser.present? && self.winner == self.loser
+      errors.add(:loser_id, "can't be the same as Winner")
+    end
+  end
+
   def attending?(user, team)
     game_attendances.find_by(user: user, team: team)
   end

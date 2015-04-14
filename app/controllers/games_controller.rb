@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_league
-  before_action :check_user_admin, only: [:new, :create, :edit, :update]
+  before_action :check_user_admin, only: [:new, :create, :edit, :update, :index]
   before_action :team_select, only: [:new, :edit, :update]
   before_action :set_game, only: [:edit, :update]
 
@@ -38,7 +38,7 @@ class GamesController < ApplicationController
   def update
     respond_to do |format|
       if @game.update(game_params)
-        format.html { redirect_to [@game.league, @game], notice: 'Game was successfully updated.' }
+        format.html { redirect_to league_games_path, notice: 'Game was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -48,6 +48,7 @@ class GamesController < ApplicationController
   private
     def set_game
       @game = Game.find(params[:id])
+      @stats = %w(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
     end
 
     def set_league
@@ -63,7 +64,7 @@ class GamesController < ApplicationController
     end
 
     def game_params
-      params.require(:game).permit(:time, :home_goals, :away_goals, :league_id, :home_team_id, :away_team_id, :winner_id, :loser_id)
+      params.require(:game).permit(:time, :home_goals, :away_goals, :league_id, :home_team_id, :away_team_id, :winner_id, :loser_id, :home_points, :away_points)
     end
 
 end

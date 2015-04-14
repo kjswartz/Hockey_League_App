@@ -1,2 +1,15 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+<h1><%= @league.skill %> League Games</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= render 'todays_games' %>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= render 'season_schedule' %>
+  </div>
+</div>

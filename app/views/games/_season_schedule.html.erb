@@ -1,4 +1,4 @@
-<div class="searchtablewrapper">
+<div class="gamesTable">
   <div class="display responsive no-wrap">
     <table id="lstable" class="table-condensed">
       <h3>Season Schedule</h3>
@@ -7,16 +7,26 @@
             <th>Date</th>
             <th>Time</th>
             <th>Home Team</th>
+            <th>Home Goals</th>
             <th>Away Team</th>
+            <th>Away Goals</th>
+            <th>Winner</th>
+            <th>Loser</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <% @league.games.current(Time.now).each do |game| %>
+          <% @league.games.each do |game| %>
           <tr>
             <td><%= game.time.strftime("%A %B, %e") %></td>
             <td><%= game.time.strftime("%R") %></td>
             <td><%= game.home_team.name %></td>
+            <td><%= game.home_goals %></td>
             <td><%= game.away_team.try(:name) %></td>
+            <td><%= game.away_goals %></td>
+            <td><%= game.winner.try(:name) %></td>
+            <td><%= game.loser.try(:name) %></td>
+            <td><%= link_to 'Edit', edit_league_game_path(@league, game)%></td>
         </tr>
         <% end %>
       </tbody>
