@@ -4,9 +4,9 @@
 1. User signup/in/out (facebook/twitter authentication if time)
 2. ~~email users signup~~
 3. ~~individual user profile pages (bio/stats)~~
-4. Individual Team pages (schedules/team news)
+4. ~~Individual Team pages (schedules/team news)~~
 5. ~~League pages showing teams belonging to league~~
-6. League forums/news for fans/potential users, team stats/standings
+6. League forums/news for fans/potential users, ~~team stats/standings~~
 7. ~~admin site for CRUD of leages/teams/users~~
 
 ## User Stories
@@ -44,7 +44,7 @@
 ### Setup Admin
 #### Review Active admin
 1. ~~setup Active Admin~~
-2. Admin should be able to manipulate stats
+2. ~~Admin should be able to manipulate stats~~
 3. ~~Admin should be able to update/edit team names/status~~
 4. ~~setup admin routes~~
 
@@ -81,16 +81,16 @@
 
 ### Setup teams
 1. ~~Create teams controller (create/permissions)~~
-2. Create form for setting up teams
-3. teams must belong to a league (dropdown select form for leagues)
-4. New teams must be approved by admin
-5. Create Team views (Member view / visitor view)
+2. ~~Create form for setting up teams~~
+3. ~~teams must belong to a league (dropdown select form for leagues)~
+4. ~~New teams must be approved by admin~~
+5. ~~Create Team views (Member view / visitor view)~~
 6. ~~visitor view: flat front page with users, schedule, contact info~~
 7. ~~Users should be able to request to join team (link)~~
 8. ~~Team owner's should be able to approve Users/drop users~~
-9. Team membership area should have forum, calendar function, schedule
+9. Team membership area should have forum, ~~calendar function, schedule~~
 10. Team owners should be able to set/revoke permissions
-11. Setup routes for team views
+11. ~~Setup routes for team views~~
 
 ### Additional User functionality
 1. ~~add deleted_at datetime to user model~~
@@ -99,8 +99,8 @@ http://stackoverflow.com/questions/12740397/how-to-simplify-the-soft-delete-proc
 3. signin with facebook
 
 ### Setup about page
-1. create an about page detailing app and myself
-2. about view
+1. ~~create an about page detailing app and myself~~
+2. ~~about view~~
 
 ## Data / Models
 1 Leagues (has_many teams)
@@ -142,40 +142,56 @@ http://stackoverflow.com/questions/12740397/how-to-simplify-the-soft-delete-proc
 - [x] index
 
 3 Team
-- [ ] create
-- [ ] update/edit
-- [ ] destroy
-- [ ] show
-- [ ] index
+- [x] create
+- [x] update/edit
+- [x] show
+- [x] index
+- [x] will_attend
+- [x] not_attend
 
 4 User
 - [x] show
 - [x] index
 - [x] create
 - [x] update/edit
+
+5 Games
+- [x] index
+- [x] new
+- [x] create
+- [x] update/edit
+
+6 Events
+- [x] create
+- [x] update/edit
 - [x] destroy
 
+7 Roster (stats)
+- [ ] create
+- [ ] update/edit
 
 ## Technologies/Gems
 1. S3
 2. Carrierwave / Fog
 3. Environment variables
-4. Kaminari
-5. bcrypt
-6. Search engine (browse user names)
-7. Active admin
-8. Twitter Bootstrap
-9. bootstrap_forms
-OmniAuth (facebook authentication)
+4. bcrypt
+5. ~~Search engine (browse user names)~~
+6. Active admin
+7. Twitter Bootstrap
+8. bootstrap_forms
+9. Javascript (CoffeeScript)
+10. Jquery
+11. Postgres
 
 
 ### Gems
 - [x] gem 'activeadmin', github: 'activeadmin' (setting up active admin)
 - [x] gem 'bootstrap_form'
 - [x] gem 'bcrypt', '~> 3.1.7'
+- [x] gem 'chosen-rails'
 - [x] gem 'faker' (seeding db)
 - [x] gem 'fog' (carrierwave/images)
-- [ ] gem 'kaminari' (pagination of listing all users if necessary)
+- [x] gem 'jquery-datatables-rails', '~> 3.2.0'
 - [x] gem "mini_magick" (carrierwave images)
 - [x] gem 'pg' (postgres db)
 - [x] gem 'thin' (webserver to work on heroku)
@@ -197,10 +213,11 @@ OmniAuth (facebook authentication)
 - [ ] https://coderwall.com/p/bsfitw/ruby-on-rails-4-authentication-with-facebook-and-omniauth
 2. Haven't set multiple roles before
 
-Do not set defaults in migration for stats!
 Create Branches before big changes!
 
 ##MISC
 1. add eager loading
 2. nest team routes under leagues
 3. slug some urls
+4. create UI for roster stats
+5. Set different Admin levels
