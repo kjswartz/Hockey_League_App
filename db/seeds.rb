@@ -17,12 +17,8 @@ end
 #seeding team owners
   @teams = Team.where(owner: '')
   @teams.each do |team|
-    @users = User.where(team_ids: team.id)
-      @user_email = []
-      @users.each do |user|
-        @user_email << user.email
-      end
-    team.owner = @user_email.sample
+    @users = User.where(id: team.user_ids)
+    team.owner = @users.sample.email
     team.save
   end
 
