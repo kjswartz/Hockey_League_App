@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
     team.users.find_by(id: self)
   end
 
+  def profile?(user, current_user)
+    user == current_user
+  end
+
 end

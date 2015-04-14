@@ -1,4 +1,3 @@
-<div class="searchtablewrapper">
 <%= bootstrap_form_for([@game.league, @game]) do |f| %>
   <%= f.alert_message 'Please fix the following errors:' %>
   <%= f.datetime_select :time %>
@@ -6,7 +5,6 @@
   <%= f.collection_select :home_team_id, @team_select.order("name ASC"), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-selectt'} %>
   <%= f.label 'Away Team Select' %><br>
   <%= f.collection_select :away_team_id, @team_select.order("name ASC"), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-selectt'} %>
-  <%= f.hidden_field :league_id %>
+  <%= f.hidden_field :league_id %><br>
   <%= f.submit "Submit" %>
 <% end %>
-</div>

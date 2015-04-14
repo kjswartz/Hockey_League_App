@@ -5,7 +5,7 @@
     <%= image_tag(@user.avatar.url) %>
 
     <br>
-    <% if @user == current_user %>
+    <% if @user.profile?(@user, current_user) %>
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
     <% end %>
 

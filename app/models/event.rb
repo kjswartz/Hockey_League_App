@@ -14,16 +14,22 @@
 
 class Event < ActiveRecord::Base
   #scopes
-  scope :current, ->(time) { where("stop_date > ?", time) }
+  scope :current, -> { where("stop_date > ?", 1.day.ago) }
 
   # Associations
   belongs_to :team
   belongs_to :user
 
+  #validations
   validates :start_date, presence: true
   validates :stop_date, presence: true
   validates :description, presence: true
   validates :user_id, presence: true
   validates :team_id, presence: true
+
+  #methods
+  def user_event?(event, current_user)
+    event.user == current_user
+  end
 
 end

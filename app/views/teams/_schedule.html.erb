@@ -17,9 +17,9 @@
       </tr>
     </thead>
     <tbody>
-      <% @team.games.current(Time.now).each do |game| %>
+      <% @team_current_games.each do |game| %>
         <tr>
-          <td><%= game.time.strftime("%A %B, %e") %></td>
+          <td><%= game.time.strftime("%a %b, %e") %></td>
           <td><%= game.time.strftime("%R") %></td>
           <td><%= game.home_team.name %></td>
           <td><%= game.away_team.try(:name) %></td>

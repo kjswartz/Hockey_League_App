@@ -2,7 +2,7 @@
   <div class="table-responsive" style="max-width:800px;">
     <table class="table">
     <h3>
-      Weekly Games: <%= Time.now.strftime("%a %b, %e") %> - <%= 1.week.from_now.strftime("%a %b, %e") %>
+      Weekly Games: <%= Date.today.strftime("%a %b, %e") %> - <%= 1.week.from_now.strftime("%a %b, %e") %>
     </h3>
       <thead>
         <tr>
@@ -15,7 +15,7 @@
       <tbody>
         <% @league_weekly_games.each do |game| %>
         <tr style="background:white;">
-          <td><%= game.time.strftime("%A %B, %e") %></td>
+          <td><%= game.time.strftime("%a %b, %e") %></td>
           <td><%= game.time.strftime("%R") %></td>
           <td><%= game.home_team.name %></td>
           <td><%= game.away_team.try(:name) %></td>

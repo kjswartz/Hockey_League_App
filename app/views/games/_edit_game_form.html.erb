@@ -1,20 +1,18 @@
-<div class="editGamesTable">
-  <%= bootstrap_form_for([@game.league, @game]) do |f| %>
-    <%= f.alert_message 'Please fix the following errors:' %>
-    <%= f.datetime_select :time %>
-    <%= f.label "Home Team Select" %><br>
-    <%= f.collection_select :home_team_id, @team_select.order("name ASC"), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-selectt'} %>
-    <%= f.select :home_goals, @stats, { class: "selectpicker"}, {style: "width:400px;"} %>
-    <%= f.select :home_points, %w(0 1 2), { class: "selectpicker"}, {style: "width:400px;"} %>
-    <%= f.label 'Away Team Select' %><br>
-    <%= f.collection_select :away_team_id, @team_select.order("name ASC"), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-selectt'} %>
-    <%= f.select :away_goals, @stats, { class: "selectpicker"}, {style: "width:400px;"} %>
-    <%= f.select :away_points, %w(0 1 2), { class: "selectpicker"}, {style: "width:400px;"} %>
-    <%= f.label "Winner" %><br>
-    <%= f.collection_select :winner_id, @game.teams.order("name ASC"), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-selectt'} %>
-    <%= f.label "Loser" %><br>
-    <%= f.collection_select :loser_id, @game.teams.order("name ASC"), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-selectt'} %>
-    <%= f.hidden_field :league_id %>
-    <%= f.submit "Submit" %>
-  <% end %>
-</div>
+<%= bootstrap_form_for([@game.league, @game]) do |f| %>
+  <%= f.alert_message 'Please fix the following errors:' %>
+  <%= f.datetime_select :time %>
+  <%= f.label "Home Team Select" %><br>
+  <%= f.collection_select :home_team_id, @team_select.order("name ASC"), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-selectt'} %>
+  <%= f.number_field :home_goals, {style: "width:400px;"} %>
+  <%= f.number_field :home_points, {style: "width:400px;"} %>
+  <%= f.label 'Away Team Select' %><br>
+  <%= f.collection_select :away_team_id, @team_select.order("name ASC"), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-selectt'} %>
+  <%= f.number_field :away_goals, {style: "width:400px;"} %>
+  <%= f.number_field :away_points, {style: "width:400px;"} %>
+  <%= f.label "Winner" %><br>
+  <%= f.collection_select :winner_id, @game.teams.order("name ASC"), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-selectt'} %>
+  <%= f.label "Loser" %><br>
+  <%= f.collection_select :loser_id, @game.teams.order("name ASC"), :id, :name, {include_blank: true, hide_label: true}, {class: 'chosen-selectt'} %>
+  <%= f.hidden_field :league_id %><br>
+  <%= f.submit "Submit" %>
+<% end %>

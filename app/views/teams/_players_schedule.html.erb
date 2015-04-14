@@ -11,17 +11,19 @@
         </tr>
       </thead>
     <tbody>
-      <% @events.current(2.day.ago).each do |e| %>
+      <% @current_events.each do |e| %>
         <tr style="background:white;">
           <td><%= e.user.name %></td>
           <td><%= e.start_date.strftime("%a %b, %e") %></td>
           <td><%= e.stop_date.strftime("%a %b, %e") %></td>
           <td><%= e.description %></td>
-          <% if e.user.id == current_user.try(:id) %>
+          <% if e.user_event?(e, current_user) %>
             <td><%= link_to 'Delete Event', [@team.league, @team, e], method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% else %>
             <td></td>
           <% end %>
+
+
         </tr>
       <% end %>
     </tbody>

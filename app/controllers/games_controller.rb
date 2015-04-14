@@ -27,7 +27,7 @@ class GamesController < ApplicationController
       if @game.save
         @home_team.games << @game
         @away_team.games << @game
-        format.html { redirect_to @league, notice: 'User was successfully created.' }
+        format.html { redirect_to @league, notice: 'Game was successfully created.' }
       else
         flash[:error] = "Unable to sign you up. #{@game.errors.full_messages.join('. ')}"
         format.html { render :new }
@@ -48,11 +48,11 @@ class GamesController < ApplicationController
   private
     def set_game
       @game = Game.find(params[:id])
-      @stats = %w(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
     end
 
     def set_league
       @league = League.find_by(id: params[:league_id])
+      @league_today_games = @league.games.today_games
     end
 
     def check_user_admin
@@ -60,7 +60,7 @@ class GamesController < ApplicationController
     end
 
     def team_select
-      @team_select = Team.where(league_id: @league.id)
+      @team_select = Team.active.where(league_id: @league.id)
     end
 
     def game_params

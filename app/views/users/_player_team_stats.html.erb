@@ -6,7 +6,7 @@
             <div class="table-responsive" style="max-width:800px;">
               <table class="table">
               <h3>
-                Schedule: <%= Time.now.strftime("%a %b, %e") %> - <%= 1.week.from_now.strftime("%a %b, %e") %>
+                Schedule: <%= Date.today.strftime("%a %b, %e") %> - <%= 1.week.from_now.strftime("%a %b, %e") %>
               </h3>
                 <thead>
                   <tr>
@@ -14,7 +14,7 @@
                     <th>Time</th>
                     <th>Home Team</th>
                     <th>Away Team</th>
-                  <% if signed_in? && current_user.team_member?(roster.team) %>
+                  <% if signed_in? && current_user.team_member?(roster.team) && current_user.profile?(@user, current_user)%>
                     <th>Players Going</th>
                     <th>Players Not RSVP'd</th>
                     <th>Attending?</th>
@@ -23,13 +23,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% roster.team.games.current(Time.now).weekly(1.week.from_now).order('time asc').each do |game| %>
+                  <% roster.team.games.weekly_games.each do |game| %>
                   <tr style="background:white;">
-                    <td><%= game.time.strftime("%A %B, %e") %></td>
+                    <td><%= game.time.strftime("%a %b, %e") %></td>
+                    <td><%= game.time.strftime("%R") %></td>
                     <td><%= game.home_team.name %></td>
                     <td><%= game.away_team.try(:name) %></td>
-                    <td><%= game.time.strftime("%R") %></td>
-                    <% if signed_in? && current_user.team_member?(roster.team) %>
+                    <% if signed_in? && current_user.team_member?(roster.team) && current_user.profile?(@user, current_user)%>
                       <td><%= game.team_attendance(roster.team).count %></td>
                       <td><%= game.not_attending(roster.team) %></td>
                       <td>
@@ -51,6 +51,9 @@
                       <% end %>
                       </td>
                     <% end %>
+
+
+
                   <% end %>
                   </tr>
                 </tbody>

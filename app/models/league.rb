@@ -14,8 +14,13 @@ class League < ActiveRecord::Base
   has_many :teams
   has_many :games
 
+  #validators
   validates :skill, presence: true, uniqueness: { case_sensitive: false }
 
+  #scopes
+  scope :league_weekly_games, lambda { where("time between ? and ?", Date.now, 1.week.from_now).order('time asc')}
+
+  #methods
   def league_avg_goals
     league_total_goals = self.teams.collect {|teams| teams.total_goals}.reduce :+
     league_avg = league_total_goals / self.teams.count.to_f

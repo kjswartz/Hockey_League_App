@@ -1,11 +1,14 @@
 <div class="row">
-  <div class="col-md-4 col-md-offset-3">
+  <div class="col-md-5 col-md-offset-4">
     <h1>Edit/Update Game</h1>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-5 col-md-offset-3">
-    <%= render 'edit_game_form' %>
+  <div class="col-md-5 col-md-offset-4">
+    <div class="editGamesTable">
+      <%= render 'edit_game_form' %>
+      <%= link_to "Cancel", league_games_path(@league), class: "btn btn-primary", style: "float:right; margin-top:-35px; margin-right:70px;" %>
+    </div>
   </div>
 </div>

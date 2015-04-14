@@ -1,7 +1,7 @@
 <div class="statictablewrapper">
   <div class="table-responsive">
     <table class="table">
-      <h3>Prior Games</h3>
+      <h3>Game Scores</h3>
       <thead>
         <tr>
           <th>Date</th>
@@ -14,9 +14,9 @@
         </tr>
       </thead>
       <tbody>
-        <% @team.games.prior_games(Time.zone.now).each do |game| %>
+        <% @team_prior_games.each do |game| %>
         <tr style="background:white;">
-          <td><%= game.time.strftime("%A %B, %e") %></td>
+          <td><%= game.time.strftime("%a %b, %e") %></td>
           <td><%= game.time.strftime("%R") %></td>
           <td><%= game.home_team.try(:name) %></td>
           <td><%= game.home_goals %></td>

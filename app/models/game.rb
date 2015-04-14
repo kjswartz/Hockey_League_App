@@ -19,10 +19,10 @@
 
 class Game < ActiveRecord::Base
   #scopes
-  scope :prior_games, ->(time) { where("time < ?", time) }
-  scope :current, ->(time) { where("time > ?", time) }
-  scope :weekly, ->(time) { where("time < ?", time) }
-  scope :today, lambda { where("time between ? and ?", Date.yesterday, Date.tomorrow) }
+  scope :prior_games, -> { where("time < ?", Date.today) }
+  scope :current_games, -> { where("time > ?", Date.today) }
+  scope :weekly_games, lambda { where("time between ? and ?", Date.today, 1.week.from_now).order('time asc')}
+  scope :today_games, lambda { where("time between ? and ?", Date.yesterday, Date.tomorrow) }
 
   # Associations
   belongs_to :league
@@ -39,6 +39,10 @@ class Game < ActiveRecord::Base
   validates :home_team_id, presence: true
   validates :away_team_id, presence: true
   validates :time, presence: true
+  validates :home_goals, numericality: {greater_than_or_equal_to: 0 }
+  validates :away_goals, numericality: {greater_than_or_equal_to: 0 }
+  validates :home_points, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 2 }
+  validates :away_points, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 2 }
   validate :winner_and_loser_validation
 
   # Methods

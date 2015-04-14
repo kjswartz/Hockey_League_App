@@ -3,6 +3,7 @@ class TeamsController < ApplicationController
   before_action :set_league, except: [:subscribe]
   before_action :team_owner, only: [:edit, :update]
   before_action :league_select, only: [:edit, :update, :create]
+  before_action :set_events, only: [:show]
 
   def will_attend
     GameAttendance.find_or_create_by(user: current_user, game_id: params[:game_id], team: @team)
@@ -23,8 +24,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @event = @team.events.new(user_id: current_user.try(:id))
-    @events = @team.events.where(team_id: @team)
   end
 
   def new
@@ -68,11 +67,19 @@ class TeamsController < ApplicationController
     def set_team
       @team = Team.find(params[:id])
       @owner = User.find_by(email: @team.owner)
-      @team_weekly_games = @team.games.current(Time.zone.now).weekly(1.week.from_now).order('time asc')
+      @team_weekly_games = @team.games.weekly_games
+      @team_current_games = @team.games.current_games
+      @team_prior_games = @team.games.prior_games
     end
 
     def set_league
       @league = League.find(params[:league_id])
+    end
+
+    def set_events
+      @event = @team.events.new(user_id: current_user.try(:id))
+      @events = @team.events.where(team_id: @team)
+      @current_events = @events.current
     end
 
     def team_owner

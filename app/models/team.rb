@@ -15,7 +15,6 @@ class Team < ActiveRecord::Base
   #scopes
   scope :active, ->{where(active: true)}
 
-
   #associations
   belongs_to :league
   has_many :users, through: :rosters

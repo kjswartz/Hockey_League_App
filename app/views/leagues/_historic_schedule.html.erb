@@ -2,7 +2,7 @@
   <div class="table-responsive" style="max-width:800px;">
     <table class="table">
     <h3>
-      Prior Games
+      Game Scores
     </h3>
       <thead>
         <tr>
@@ -16,9 +16,9 @@
         </tr>
       </thead>
       <tbody>
-        <% @league.games.prior_games(Time.zone.now).each do |game| %>
+        <% @league_prior_games.each do |game| %>
         <tr style="background:white;">
-          <td><%= game.time.strftime("%A %B, %e") %></td>
+          <td><%= game.time.strftime("%a %b, %e") %></td>
           <td><%= game.time.strftime("%R") %></td>
           <td><%= game.home_team.try(:name) %></td>
           <td><%= game.home_goals %></td>

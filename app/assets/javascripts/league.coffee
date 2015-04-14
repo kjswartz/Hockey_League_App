@@ -37,7 +37,6 @@ $(document).on 'page:change', ->
     statsTable.draw()
 
   $('#leaguePriorGamesButton').click ->
-    # $('#dateColumn').toggle()
     $('#leaguePriorGames').show()
     $('#leagueWeeklySchedule').hide()
     $('#leagueSeason').hide()
