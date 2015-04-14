@@ -6,7 +6,7 @@ Game.destroy_all
   10.times do |counter|
     User.create!(name: Faker::Name.name,
                  email: Faker::Internet.safe_email,
-                 remote_avatar_url: "http://2.cdn.nhle.com/photos/mugs/#{rand(8471200..8471331)}.jpg",
+                #  remote_avatar_url: "http://2.cdn.nhle.com/photos/mugs/#{rand(8471200..8471331)}.jpg",
                  bio: Faker::Lorem.paragraph,
                  team_ids: team.id,
                  phone: Faker::PhoneNumber.cell_phone,
