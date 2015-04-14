@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   #associations
   has_many :teams, through: :rosters
   has_many :rosters, dependent: :destroy
-  has_many :events
+  has_many :events, dependent: :destroy
   has_many :game_attendances, dependent: :destroy
 
   #validations
