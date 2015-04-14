@@ -45,7 +45,8 @@ class Game < ActiveRecord::Base
   validates :away_points, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 2 }
   validate :winner_and_loser_validation
   validate :homeTeam_and_awayTeam_validation
-  validate :time_cannot_be_in_the_past, on: :create
+  # commented out for seeding database of past games
+  # validate :time_cannot_be_in_the_past, on: :create
 
   # Methods
   def winner_and_loser_validation
