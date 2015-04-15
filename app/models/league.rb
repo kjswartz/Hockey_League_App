@@ -18,7 +18,7 @@ class League < ActiveRecord::Base
   validates :skill, presence: true, uniqueness: { case_sensitive: false }
 
   #scopes
-  scope :league_weekly_games, lambda { where("time between ? and ?", Date.now, 1.week.from_now).order('time asc')}
+  scope :league_weekly_games, lambda { where("time between ? and ?", 1.day.ago, 6.days.from_now).order('time asc')}
 
   #methods
   def league_avg_goals

@@ -19,10 +19,10 @@
 
 class Game < ActiveRecord::Base
   #scopes
-  scope :prior_games, -> { where("time < ?", Date.today) }
-  scope :current_games, -> { where("time > ?", Date.today) }
-  scope :weekly_games, lambda { where("time between ? and ?", Date.today, 1.week.from_now).order('time asc')}
-  scope :today_games, lambda { where("time between ? and ?", Date.yesterday, Date.tomorrow) }
+  scope :prior_games, -> { where("time < ?", 1.day.ago) }
+  scope :current_games, -> { where("time > ?", 1.day.ago) }
+  scope :weekly_games, lambda { where("time between ? and ?", 1.day.ago, 6.days.from_now).order('time asc')}
+  scope :today_games, lambda { where("time between ? and ?", 1.day.ago, 1.day.from_now) }
 
   # Associations
   belongs_to :league

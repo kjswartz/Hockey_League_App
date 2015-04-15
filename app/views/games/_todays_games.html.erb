@@ -17,7 +17,7 @@
         </thead>
         <tbody>
           <% @league_today_games.each do |game| %>
-          <tr>
+          <tr style="background:white;">
             <td><%= game.time.strftime("%A %B, %e") %></td>
             <td><%= game.time.strftime("%R") %></td>
             <td><%= game.home_team.name %></td>

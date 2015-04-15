@@ -15,29 +15,36 @@ $(document).on 'page:change', ->
     scrollY: 300
     paging: false
     order: [4, 'desc']
+  scoresTable = $('#lscorestable').DataTable
+    destroy: true
+    responsive: true
+    bJqueryUI: true
+    scrollY: 300
+    paging: false
 
   $('#leagueWeeklyScheduleButton').click ->
     $('#leagueWeeklySchedule').show()
     $('#leagueSeason').hide()
     $('#leagueStats').hide()
-    $('#leaguePriorGames').hide()
+    $('#leagueScores').hide()
 
   $('#leagueSeasonButton').click ->
     $('#leagueSeason').show()
     $('#leagueWeeklySchedule').hide()
     $('#leagueStats').hide()
-    $('#leaguePriorGames').hide()
+    $('#leagueScores').hide()
     schedTable.draw()
 
   $('#leagueStatsButton').click ->
     $('#leagueStats').show()
     $('#leagueWeeklySchedule').hide()
     $('#leagueSeason').hide()
-    $('#leaguePriorGames').hide()
+    $('#leagueScores').hide()
     statsTable.draw()
 
-  $('#leaguePriorGamesButton').click ->
-    $('#leaguePriorGames').show()
+  $('#leagueScoresButton').click ->
+    $('#leagueScores').show()
     $('#leagueWeeklySchedule').hide()
     $('#leagueSeason').hide()
     $('#leagueStats').hide()
+    scoresTable.draw()
