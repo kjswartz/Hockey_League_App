@@ -1,6 +1,6 @@
 ActiveAdmin.register Roster do
 
-  permit_params(:team, :user, :goals, :assists, :penalties, :games_played, :role)
+  permit_params(:team_id, :user_id, :goals, :assists, :penalties, :games_played, :role)
 
   index do
     selectable_column
