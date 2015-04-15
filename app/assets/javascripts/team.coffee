@@ -22,6 +22,12 @@ $(document).on 'page:change', ->
     bJqueryUI: true
     scrollY: 300
     paging: false
+  teamPriorGamesTable = $('#teamPriorGames').DataTable
+    destroy: true
+    responsive: true
+    bJqueryUI: true
+    scrollY: 300
+    paging: false
 
   $('#weeklyScheduleButton').click ->
     $('#weeklySchedule').show()
@@ -41,6 +47,7 @@ $(document).on 'page:change', ->
     $('#roster').hide()
     $('#schedule').hide()
     $('#weeklySchedule').hide()
+    teamPriorGamesTable.draw()
 
   $('#rosterButton').click ->
     $('#roster').show()
