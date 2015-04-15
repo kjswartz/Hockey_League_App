@@ -20,8 +20,8 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-    @home_team = Team.find_by(id: @game.home_team.id)
-    @away_team = Team.find_by(id: @game.away_team.id)
+    @home_team = Team.find_by(id: @game.home_team.try(:id))
+    @away_team = Team.find_by(id: @game.away_team.try(:id))
 
     respond_to do |format|
       if @game.save
