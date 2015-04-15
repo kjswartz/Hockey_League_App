@@ -1,0 +1,27 @@
+<div class="searchtablewrapper">
+  <div class="display responsive no-wrap">
+    <table id="teamRosterStats" class="table-condensed">
+      <h3><%= @team.name %> Player Stats</h3>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>GP</th>
+            <th>Goals</th>
+            <th>Assists</th>
+            <th>Penalty Minutes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @team.rosters.each do |roster| %>
+          <tr>
+            <td><%= roster.user.name %></td>
+            <td><%= roster.games_played %></td>
+            <td><%= roster.goals %></td>
+            <td><%= roster.assists %></td>
+            <td><%= roster.penalties %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
