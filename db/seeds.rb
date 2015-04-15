@@ -70,9 +70,9 @@ end
   @users = User.all
   @users.each do |user|
     user.rosters.each do |roster|
-      roster.goals = rand(0..11)
-      roster.assists = rand(0..10)
-      roster.penalties = rand(0..8)
+      roster.goals = rand(1..11)
+      roster.assists = rand(1..10)
+      roster.penalties = rand(1..2)
       roster.games_played = rand(3..12)
       roster.save
     end
