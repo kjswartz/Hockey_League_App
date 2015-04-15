@@ -77,3 +77,18 @@ end
       roster.save
     end
   end
+
+
+#seeding events
+  @teams = Team.all
+  @excuses = ["out of town", "working", "vacation", "parent teacher confrences", "getting wisdom teeth removed"]
+  @teams.each do |team|
+    @users = User.where(id: team.user_ids)
+    5.times do |counter|
+      Event.create(start_date:  "2015-#{rand(4..5)}-#{rand(3..30)}",
+                  stop_date: "2015-#{rand(4..5)}-#{rand(3..30)}",
+                  description: @excuses.sample,
+                  user_id: @users.sample.id,
+                  team_id: team.id)
+    end
+  end

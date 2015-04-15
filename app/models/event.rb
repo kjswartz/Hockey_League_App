@@ -26,8 +26,13 @@ class Event < ActiveRecord::Base
   validates :description, presence: true
   validates :user_id, presence: true
   validates :team_id, presence: true
+  validate :stop_date_cannot_be_before_start_date
 
   #methods
+  def stop_date_cannot_be_before_start_date
+    errors.add(:stop_date, "cannot be before start date") if stop_date < start_date
+  end
+
   def user_event?(event, current_user)
     event.user == current_user
   end
