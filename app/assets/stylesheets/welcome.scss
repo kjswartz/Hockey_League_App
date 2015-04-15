@@ -40,6 +40,12 @@ li {
 .jumbo {
   color:#fff;
 	background:#055DB5;
+	border-radius:0;
+	height:400px;
+	padding: 48px 60px 48px 60px;
+	margin-bottom:25px;
+	h1{font-size:50px;}
+	p{font-size: 21px;}
 }
 
 .navfooter  {
@@ -66,8 +72,21 @@ li {
 .leaguelisting {
 	padding: 20px;
 	border-radius: 0;
+	margin-top:30px;
 	background-image: image-url("Ice-cut.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center top;
+}
+
+.rosterHighlightDisplay {
+  text-align:center;
+	padding:20px;
+}
+
+.featuredPlayer {
+  float: left;
+  height: 45px;
+  padding-right:5px;
+  text-align:right;
 }

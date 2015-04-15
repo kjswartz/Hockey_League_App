@@ -1,9 +1,8 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <div class="jumbotron jumbo" style="border-radius:0;">
+    <div class="jumbo">
       <h1>Ice Sports Forum</h1>
       <p>Ice Sports Forum's Adult Hockey program is open for all those 18-70+ years old. We have been rated #1 in the Southeast and in the top 10 nationwide by USA Hockey for the last 4 years. Our Adult program currently consists of 98 teams spread out among 13 leagues. This lets us cater to those who have never skated before, all the way to those with Stanley Cup rings.</p>
-      <p><small>Our leagues run year around, with the regular season consisting of 12 games, and then playoffs. Please click one of the leagues below for more information. Listed in ascending skill levels.</small></p>
       <% if !signed_in? %>
         <br><p><%= link_to 'Sign Up!', new_user_path, class: "btn btn-danger btn-lg" %></p>
       <% end %>
@@ -11,16 +10,40 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-md-6 col-md-offset-1">
+    <h2>Featured Players</h2>
+  </div>
+  <div class="col-md-11 col-md-offset-1">
+
+      <% @user_sample.each do |user| %>
+      <div class="col-md-4">
+        <div class="featuredPlayer">
+            <%= link_to user.name, user %><br>
+            test
+        </div>
+          <section>
+            <%= link_to image_tag(user.avatar.thumb.url, style:"width:85px; border: 2px solid #a1a1a1;"), user %>
+          </section>
+
+        </div>
+      <% end %>
+
+  </div>
+</div>
+
+
+
 <div class="row" style="padding: 0px 15px 0px 15px;">
   <div class="col-md-10 col-md-offset-1 leaguelisting">
-    <h3>Leagues:</h3>
+    <h3>Leagues Directory:</h3>
 
     <% @leagues.each do |league| %>
       <div class="col-md-3">
-        <li style="display:inline;"><h4><%= link_to league.skill, league_path(league) %></h4></li>
+        <li style="display:inline;"><h4><%= link_to league.skill.upcase, league_path(league) %></h4></li>
           <ul>
           <% league.teams.each do |team| %>
-            <li><strong><%= link_to team.name, [league, team] %></strong></li>
+            <li><strong><%= link_to team.name.titlecase, [league, team] %></strong></li>
           <% end %>
         </ul>
       </div>

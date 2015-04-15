@@ -64,57 +64,72 @@
   <p><h4>Goals</h4></p>
 
     <div class="statsbox">
-      <b>Individual Goals</b><br>
+      <b>Individual Goals</b><br><br>
       <b>Avg Team Goals</b>
     </div>
     <section>
-      <% if roster.goals < 1 %>
-        <li>0</li>
-      <% else %>
-      <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= roster.goals %>%;min-width: 1em;max-width: 600px;"><%= roster.goals %></li><br>
-      <% end %>
-      <% if roster.team.total_goals < 1 %>
-        <li>0</li>
-      <% else %>
-        <li class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_avg_goals %>%;max-width: 600px;"><%= roster.team.team_avg_goals %></li><br>
-      <% end %>
+
+      <div class="progress">
+        <% if roster.goals < 1 %>
+          <div>0</div>
+        <% else %>
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= roster.goals %>%;min-width: 2em;max-width: 600px;"><%= roster.goals %></div>
+        <% end %>
+      </div>
+
+      <div class="progress">
+        <% if roster.team.total_goals < 1 %>
+          <div>0</div>
+        <% else %>
+          <div class="progress-bar" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_avg_goals %>%;max-width: 600px;min-width:2em;"><%= roster.team.team_avg_goals %></div>
+        <% end %>
+      </div>
+
     </section>
 
   <p><h4>Assists</h4></p>
 
     <div class="statsbox">
-      <b>Individual Assists</b><br>
+      <b>Individual Assists</b><br><br>
       <b>Avg Team Assists</b>
     </div>
     <section>
-      <% if roster.assists < 1 %>
-        <li>0</li>
-      <% else %>
-        <li class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" style="width:<%= roster.assists %>%;min-width: 1em;max-width: 600px;"><%= roster.assists %></li><br>
-      <% end %>
-      <% if roster.team.total_goals < 1 %>
-        <li>0</li>
-      <% else %>
-        <li class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_avg_assists %>%;max-width: 600px;"><%= roster.team.team_avg_assists %></li><br>
-      <% end %>
+      <div class="progress">
+        <% if roster.assists < 1 %>
+          <div>0</div>
+        <% else %>
+          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" style="width:<%= roster.assists %>%;min-width: 2em;max-width: 600px;"><%= roster.assists %></div>
+        <% end %>
+      </div>
+      <div class="progress">
+        <% if roster.team.total_goals < 1 %>
+          <div>0</div>
+        <% else %>
+          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_avg_assists %>%;max-width: 600px;min-width:2em;"><%= roster.team.team_avg_assists %></div>
+        <% end %>
+      </div>
     </section>
 
   <p><h4>Penalty Minutes</h4></p>
     <div class="statsbox">
-      <b>PIMS</b><br>
+      <b>PIMS</b><br><br>
       <b>Avg Team PIMS</b>
     </div>
     <section>
-      <% if roster.penalties < 1 %>
-        <li>0</li>
-      <% else %>
-        <li class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" style="width:<%= roster.penalties %>%;min-width: 1em;max-width: 600px;"><%= roster.penalties %></li><br>
-      <% end %>
-      <% if roster.team.team_penalties < 1 %>
-        <li>0</li>
-      <% else %>
-        <li class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_avg_penalties %>%;max-width: 600px;"><%= roster.team.team_avg_penalties %></li><br>
-      <% end %>
+      <div class="progress">
+        <% if roster.penalties < 1 %>
+          <div>0</div>
+        <% else %>
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" style="width:<%= roster.penalties %>%;min-width: 2em;max-width: 600px;"><%= roster.penalties %></div>
+        <% end %>
+      </div>
+      <div class="progress">
+        <% if roster.team.team_penalties < 1 %>
+          <div>0</div>
+        <% else %>
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" style="width:<%= roster.team.team_avg_penalties %>%;max-width: 600px;min-width:2em;"><%= roster.team.team_avg_penalties %></div>
+        <% end %>
+      </div>
     </section>
     <br>
 <% end %>
