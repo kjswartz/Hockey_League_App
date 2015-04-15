@@ -27,7 +27,7 @@ end
     @leagues = League.all
     @gt = [00, 15, 30, 45]
     @leagues.each do |league|
-      10.times do |counter|
+      20.times do |counter|
         ltids = league.team_ids
         ht = ltids.sample
         newltids = ltids - [ht]
@@ -55,10 +55,10 @@ end
     if game.winner_id == game.home_team_id
       game.home_goals = rand(3..6)
       game.home_points = 2
-      game.away_goals = rand(0..2)
+      game.away_goals = rand(1..2)
       game.away_points = 1
     else
-      game.home_goals = rand(0..2)
+      game.home_goals = rand(1..2)
       game.home_points = 1
       game.away_goals = rand(3..6)
       game.away_points = 2
