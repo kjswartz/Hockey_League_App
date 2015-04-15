@@ -54,7 +54,10 @@
       <% group.each do |user| %>
         <div class="col-md-3">
           <% if !user.blank? %>
-            <%= link_to image_tag(user.avatar.thumb.url), user %><br><%= link_to user.name, user %>
+            <div class="rosterDisplay">
+              <%= link_to image_tag(user.avatar.thumb.url, style:"width:85px; border: 2px solid #a1a1a1;"), user %>
+              <br><%= link_to user.name, user %><br>
+            </div>
           <% end %>
         </div>
       <% end %>

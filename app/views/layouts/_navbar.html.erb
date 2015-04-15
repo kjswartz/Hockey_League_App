@@ -7,7 +7,7 @@
             <li><%= link_to 'Sign Out', session_signout_path, method: :delete %></li>
           </ul>
 
-          <span style="float:right;"><%= link_to image_tag(current_user.avatar.thumb.url, width: "55px;"), user_path(current_user) %></span>
+          <span style="float:right;"><%= link_to image_tag(current_user.avatar.thumb.url, height: "56px;"), user_path(current_user) %></span>
 
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">

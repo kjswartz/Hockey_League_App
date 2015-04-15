@@ -2,8 +2,7 @@
 
   <div class="col-md-3 col-md-offset-1">
     <h1><%= @user.name %></h1>
-    <%= image_tag(@user.avatar.url) %>
-
+    <%= image_tag(@user.avatar.url, style:"width:180px; border:2px solid #a1a1a1;") %>
     <br>
     <% if @user.profile?(@user, current_user) %>
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
