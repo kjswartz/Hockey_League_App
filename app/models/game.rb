@@ -70,7 +70,7 @@ class Game < ActiveRecord::Base
   end
 
   def attending_members(team)
-    result = team_attendance(team).collect{|ga| ga.user.name}
+    result = team_attendance(team).collect{|ga| ga.user.name.split.first}
     return result
   end
 

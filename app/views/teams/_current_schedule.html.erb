@@ -26,7 +26,20 @@
           <td><%= game.home_team.name %></td>
           <td><%= game.away_team.try(:name) %></td>
           <% if signed_in? && current_user.team_member?(@team) %>
-            <td><%= game.team_attendance(@team).count %></td>
+          <td>
+            <div class="tooltip-item" style="width:100px;">
+              <%= game.team_attendance(@team).count %>
+              <div class="tooltip">
+                <% if game.attending_members(@team).blank? %>
+                  <p>NONE <p>
+                <% else %>
+                  <% game.attending_members(@team).each do |player| %>
+                    <li><%= player %></li>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </td>
             <td><%= game.not_attending(@team) %></td>
             <td>
               <% if game.attending?(current_user, @team) %>
@@ -53,17 +66,3 @@
     </table>
   </div>
 </div>
-
-
-<% if signed_in? && current_user.team_member?(@team) %>
-  <div class="col-md-6">
-    <% @team_weekly_games.each do |game| %>
-      <h3>RSVP'd Players<small>//<%= game.time.strftime("%e %b, %a %R") %></small></h3>
-      <ul>
-        <% game.attending_members(@team).each do |player| %>
-          <li><%= player %></li>
-        <% end %>
-      </ul>
-      <% end %>
-  </div>
-<% end %>
