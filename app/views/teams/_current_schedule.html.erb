@@ -13,8 +13,8 @@
         <% if signed_in? && current_user.team_member?(@team) %>
           <th>Players Going</th>
           <th>Players Not RSVP'd</th>
-          <th>Attending?</th>
           <th>RSVP'd</th>
+          <th>Attending?</th>
         <% end %>
         </tr>
       </thead>
@@ -30,20 +30,20 @@
             <td><%= game.not_attending(@team) %></td>
             <td>
               <% if game.attending?(current_user, @team) %>
-                <%= form_tag(not_attend_league_team_path(game.league, @team), method: 'delete') do %>
-                  <%= hidden_field_tag(:game_id, game.id) %>
-                  <%= submit_tag "Not Attend" %>
-                <% end %>
-              <% else %>
-                <%= form_tag will_attend_league_team_path(game.league, @team) do %>
-                  <%= hidden_field_tag(:game_id, game.id) %>
-                  <%= submit_tag "Will Attend" %>
-                <% end %>
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
               <% end %>
             </td>
             <td>
               <% if game.attending?(current_user, @team) %>
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <%= form_tag(not_attend_league_team_path(game.league, @team), method: 'delete') do %>
+                  <%= hidden_field_tag(:game_id, game.id) %>
+                  <%= submit_tag "Attending", {class: "btn btn-primary btn-xs"} %>
+                <% end %>
+              <% else %>
+                <%= form_tag will_attend_league_team_path(game.league, @team) do %>
+                  <%= hidden_field_tag(:game_id, game.id) %>
+                  <%= submit_tag "NOT Attending", {class: "btn btn-danger btn-xs"} %>
+                <% end %>
               <% end %>
             </td>
         <% end %>
