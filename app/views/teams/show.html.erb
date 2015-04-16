@@ -15,14 +15,28 @@
           <% end %>
         </small>
       </h1>
-        <div>
-          <button type="button" class="btn btn-primary" id="weeklyScheduleButton">Current Weekly Schedule</button>
-          <button type="button" class="btn btn-primary" id="scheduleButton">Season Schedule</button>
-          <button type="button" class="btn btn-primary" id="statsButton">Team Stats</button>
-          <button type="button" class="btn btn-primary" id="rosterButton">Roster</button>
-          <% if signed_in? && current_user.team_member?(@team) %>
-            <button type="button" class="btn btn-primary" id="playerSceduleButton">Player's Schedule</button>
-          <% end %>
+        <div class="button-group">
+          <label>
+            <input type="radio" name="button-group" value="item"  id="weeklyScheduleButton" checked>
+            <span class="button-group-item">Current Weekly Schedule</span>
+          </label>
+          <label>
+            <input type="radio" name="button-group" value="other-item" id="scheduleButton">
+            <span class="button-group-item">Season Schedule</span>
+          </label>
+          <label>
+            <input type="radio" name="button-group" value="other-item" id="statsButton">
+            <span class="button-group-item">Team Stats</span>
+          </label>
+          <label>
+            <input type="radio" name="button-group" value="third" id="rosterButton">
+            <span class="button-group-item">Roster</span>
+          </label>
+          <div style="float:right;">
+            <% if signed_in? && current_user.team_member?(@team) %>
+              <button type="button" class="btn btn-primary" id="playerSceduleButton">Player's Schedule</button>
+            <% end %>
+          </div>
         </div>
     </div>
   </div>
@@ -80,8 +94,6 @@
     </div>
   </div>
 <% end %>
-
-
 
 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
 <div class="modal-dialog">

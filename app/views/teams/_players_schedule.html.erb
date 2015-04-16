@@ -18,7 +18,7 @@
           <td><%= e.stop_date.strftime("%a %b, %e") %></td>
           <td><%= e.description %></td>
           <% if e.user_event?(e, current_user) %>
-            <td><%= link_to 'Delete Event', [@team.league, @team, e], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Delete Event', [@team.league, @team, e], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-xs" %></td>
           <% else %>
             <td></td>
           <% end %>

@@ -18,44 +18,28 @@
 
 <br>
 
-
-
-
-
-
-
 <div class="row" style="padding: 0px 15px 0px 15px;">
   <div class="col-md-10 col-md-offset-1" style="padding-left:40px;">
-
       <% @roster_sample.each do |roster| %>
-
-      <div class="col-md-4">
-        <div class="clearfix">
-          <%= link_to image_tag(roster.user.avatar.thumb.url, id: "featurePlayers"), roster.user %>
-          <p class="fpText" style="padding-top:10px;">
-            <%= link_to roster.user.name, roster.user %>
-          </p>
-          <p class="fpText">
-            G: <%= roster.total_goals(roster.user) %> |
-            A: <%= roster.total_assists(roster.user) %> |
-            PIMS: <%= roster.total_pims(roster.user) %>
-          </p>
-          <p class="fpText">
-            Teams: <%= roster.user.teams.collect {|t|t.name}.join(' | ') %>
-          </p>
+        <div class="col-md-4">
+          <div class="clearfix">
+            <%= link_to image_tag(roster.user.avatar.thumb.url, id: "featurePlayers"), roster.user %>
+            <p class="fpText" style="padding-top:10px;">
+              <%= link_to roster.user.name, roster.user %>
+            </p>
+            <p class="fpText">
+              G: <%= roster.total_goals(roster.user) %> |
+              A: <%= roster.total_assists(roster.user) %> |
+              PIMS: <%= roster.total_pims(roster.user) %>
+            </p>
+            <p class="fpText">
+              Teams: <%= roster.user.teams.collect {|t|t.name}.join(' | ') %>
+            </p>
+          </div>
         </div>
-      </div>
-
       <% end %>
-
-
   </div>
 </div>
-
-
-
-
-
 
 <br>
 
@@ -70,7 +54,7 @@
           <% league.teams.each do |team| %>
             <li><strong><%= link_to team.name.titlecase, [league, team] %></strong></li>
           <% end %>
-        </ul>
+          </ul>
       </div>
     <% end %>
 

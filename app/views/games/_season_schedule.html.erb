@@ -29,7 +29,7 @@
             <td><%= game.away_goals %></td>
             <td><%= game.winner.try(:name) %></td>
             <td><%= game.loser.try(:name) %></td>
-            <td><%= link_to 'Edit', edit_league_game_path(@league, game)%></td>
+            <td><%= link_to 'Edit', edit_league_game_path(@league, game), class: "btn btn-primary btn-xs" %></td>
         </tr>
         <% end %>
       </tbody>

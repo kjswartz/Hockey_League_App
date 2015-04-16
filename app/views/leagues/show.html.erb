@@ -18,24 +18,36 @@
           <% end %>
         </small>
       </h1>
-        <div>
-          <button type="button" class="btn btn-primary" id="leagueWeeklyScheduleButton">Weekly Schedule</button>
-          <button type="button" class="btn btn-primary" id="leagueSeasonButton">Season Schedual</button>
-          <button type="button" class="btn btn-primary" id="leagueScoresButton">Scores</button>
-          <button type="button" class="btn btn-primary" id="leagueStatsButton">League Stats</button>
-          <% if signed_in? && current_user.admin? %>
-            <span class="dropdown">
-              <button type="button" class="btn btn-primary dropdown-toggle" type="button" id="dropdownAdminMenu" data-toggle="dropdown" aria-expanded="true">
-                Admin Actions
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><%= link_to 'Add a Game', new_league_game_path(@league) %></li>
-                <li role="presentation"><%= link_to 'View/Edit Games', league_games_path(@league) %></li>
-              </ul>
-            </span>
-          <% end %>
-        </div>
+      <div class="button-group">
+        <label>
+          <input type="radio" name="button-group" value="item" id="leagueWeeklyScheduleButton" checked>
+          <span class="button-group-item">Weekly Schedule</span>
+        </label>
+        <label>
+          <input type="radio" name="button-group" value="other-item" id="leagueSeasonButton">
+          <span class="button-group-item">Season Schedual</span>
+        </label>
+        <label>
+          <input type="radio" name="button-group" value="other-item" id="leagueScoresButton">
+          <span class="button-group-item">Scores</span>
+        </label>
+        <label>
+          <input type="radio" name="button-group" value="third" id="leagueStatsButton">
+          <span class="button-group-item">League Stats</span>
+        </label>
+        <% if signed_in? && current_user.admin? %>
+          <span class="dropdown" style="float:right;">
+            <button type="button" class="btn btn-primary dropdown-toggle" type="button" id="dropdownAdminMenu" data-toggle="dropdown" aria-expanded="true">
+              Admin Actions
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><%= link_to 'Add a Game', new_league_game_path(@league) %></li>
+              <li role="presentation"><%= link_to 'View/Edit Games', league_games_path(@league) %></li>
+            </ul>
+          </span>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
