@@ -14,25 +14,50 @@
   <div class="col-md-6 col-md-offset-1">
     <h2>Featured Players</h2>
   </div>
-  <div class="col-md-11 col-md-offset-1">
+</div>
 
-      <% @user_sample.each do |user| %>
+<br>
+
+
+
+
+
+
+
+<div class="row" style="padding: 0px 15px 0px 15px;">
+  <div class="col-md-10 col-md-offset-1" style="padding-left:40px;">
+
+      <% @roster_sample.each do |roster| %>
+
       <div class="col-md-4">
-        <div class="featuredPlayer">
-            <%= link_to user.name, user %><br>
-            test
+        <div class="clearfix">
+          <%= link_to image_tag(roster.user.avatar.thumb.url, id: "featurePlayers"), roster.user %>
+          <p class="fpText" style="padding-top:10px;">
+            <%= link_to roster.user.name, roster.user %>
+          </p>
+          <p class="fpText">
+            G: <%= roster.total_goals(roster.user) %> |
+            A: <%= roster.total_assists(roster.user) %> |
+            PIMS: <%= roster.total_pims(roster.user) %>
+          </p>
+          <p class="fpText">
+            Teams: <%= roster.user.teams.collect {|t|t.name}.join(' | ') %>
+          </p>
         </div>
-          <section>
-            <%= link_to image_tag(user.avatar.thumb.url, style:"width:85px; border: 2px solid #a1a1a1;"), user %>
-          </section>
+      </div>
 
-        </div>
       <% end %>
+
 
   </div>
 </div>
 
 
+
+
+
+
+<br>
 
 <div class="row" style="padding: 0px 15px 0px 15px;">
   <div class="col-md-10 col-md-offset-1 leaguelisting">
