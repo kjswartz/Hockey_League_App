@@ -79,7 +79,7 @@ class TeamsController < ApplicationController
     def set_events
       @event = @team.events.new(user_id: current_user.try(:id))
       @events = @team.events.where(team_id: @team)
-      @current_events = @events.current
+      @current_events = @events.current.order('start_date asc')
     end
 
     def team_owner
