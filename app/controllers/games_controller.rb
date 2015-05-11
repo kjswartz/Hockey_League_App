@@ -25,8 +25,10 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        @home_team.games << @game
-        @away_team.games << @game
+
+        @game.set_teams(@game, @home_team, @away_team)
+        @game.set_team_attendance(@game, @home_team, @away_team)
+
         format.html { redirect_to @league, notice: 'Game was successfully created.' }
       else
         flash[:error] = "Unable to create game. #{@game.errors.full_messages.join('. ')}"

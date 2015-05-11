@@ -84,4 +84,22 @@ class Game < ActiveRecord::Base
     return result
   end
 
+  def set_teams(game, home_team, away_team)
+    home_team.games << game
+    away_team.games << game
+  end
+
+  def set_team_attendance(game, home_team, away_team)
+    ht_players = home_team.rosters.collect {|p| p.id}
+    at_players = away_team.rosters.collect {|p| p.id}
+
+    ht_players.each do |p|
+      GameAttendance.find_or_create_by(game_id: game.id, team: home_team, user_id: p)
+    end
+
+    at_players.each do |p|
+      GameAttendance.find_or_create_by(game_id: game.id, team: away_team, user_id: p)
+    end
+  end
+
 end
