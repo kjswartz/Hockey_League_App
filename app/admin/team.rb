@@ -6,7 +6,8 @@ ActiveAdmin.register Team do
     inputs '' do
       input :league, collection: League.order("skill ASC").all.collect { |l| [l.skill, l.id] }
       input :name
-      input :owner, collection: User.where(id: team.user_ids).order("email ASC").all.collect { |u| [u.email, u.email] }
+      input :owner, collection: User.order("email ASC").all.collect { |u| [u.email, u.email] }
+      # input :owner, collection: User.where(id: team.user_ids).order("email ASC").all.collect { |u| [u.email, u.email] }
       input :active
     end
     actions
