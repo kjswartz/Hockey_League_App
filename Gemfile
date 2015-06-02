@@ -32,8 +32,10 @@ group :development, :test do
   gem 'better_errors'
   gem 'byebug'
   gem 'dotenv-rails'
+  gem "factory_girl_rails", "~> 4.0"
   gem 'letter_opener'
   gem 'quiet_assets'
+  gem 'rspec-rails', '~> 3.0'
   gem 'spring'
   gem 'web-console', '~> 2.0'
 end
